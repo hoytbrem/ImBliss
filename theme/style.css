@@ -1,0 +1,261 @@
+/*
+ * Project: ImBliss
+ * File: style.css
+ * Authors: Hoyt, Darren, and Devon
+ * Date: 2024/03/27
+ * License: MIT
+ *
+ * This file contains the styles for My Project.
+ * You are free to use, modify, and distribute this file
+ * under the terms of the MIT license.
+ */
+
+/* Globals */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* NavBar */
+/* NavBar Parents */
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e0d9d9;
+  color: rgb(27, 15, 15);
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-bottom: 30px solid #83bead;
+}
+#navbar-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#navbar-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* NavBar Children */
+#navbar li {
+  list-style-type: none;
+}
+#navbar-links li {
+  display: inline;
+  margin: 0 10px;
+}
+#navbar-buttons li {
+  display: inline;
+  margin: 0 10px;
+}
+
+/* Footer */
+/* Footer Parents */
+footer {
+  display: flex;
+  background-color: #83bead;
+  padding: 1%;
+}
+#footer-logo {
+  flex: 0 0 20%;
+}
+#footer-links {
+  flex: 0 0 40%;
+}
+#footer-contact {
+  flex: 0 0 40%;
+}
+/* Footer Children */
+footer > * > ul {
+  display: flex;
+}
+footer > * > ul > li {
+  list-style-type: none;
+  margin: 0 20px;
+}
+
+/* Index.php ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/* Hero */
+/* Hero Parents */
+#hero {
+  background-image: url("../images/main/test-image.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Add this line */
+  height: 120vh;
+  display: flex;
+  flex-direction: column;
+}
+#hero-wrapper {
+  margin-top: 200px;
+  padding: 0;
+}
+#hero-title {
+  justify-content: space-between;
+  align-items: center;
+}
+#hero-main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#hero-left {
+  width: 50%;
+}
+#hero-right {
+  width: 50%;
+}
+#hero-secondary-img {
+  width: 40%;
+}
+
+/* Featured Products */
+/* Featured Products Parents */
+#featured-products {
+  display: flex;
+  align-items: center;
+}
+/* Featured Products Children */
+#featured-products img {
+  width: 70%;
+  margin: 50px;
+  border-radius: 50px;
+}
+
+/* Nutritional Benefits */
+/* Nutritional Benefits Parents */
+#nutritional-benefits {
+  margin: 1%;
+  background-color: #e0d9d9;
+}
+#nutritional-benefits-wrapper {
+  margin: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#nutritional-benefits-left {
+  width: 50%;
+  margin: 3%;
+  font-size: 30px;
+}
+#nutritional-benefits-right {
+  width: 50%;
+}
+/* Nutritional Benefits Children */
+#nutritional-benefits-left img {
+  width: 100%;
+  height: 200px;
+}
+#nutritional-benefits-right img {
+  width: 100%;
+  height: 880px;
+}
+
+/* Main Page Learn More */
+/* Main Page Learn More Parents */
+#main-page-learn-more {
+  display: flex;
+  align-items: center;
+}
+.main-page-learn-more-box {
+  background-image: url("../images/main/test-image.jpeg");
+  background-size: cover;
+  width: 100%;
+  height: 60vh;
+  margin: 50px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.orange {
+  background-color: orange;
+}
+.green {
+  background-color: green;
+}
+/* Main Page Learn More Children */
+.main-page-learn-more-box > * {
+  margin: 50px;
+  color: white;
+}
+.main-page-learn-more-box button {
+  border-radius: 10px;
+}
+
+/* Client Testimonials */
+/* Client Testimonials Parents */
+#client-testimonials {
+  background-color: rgb(201, 201, 201);
+  padding: 50px;
+}
+#client-testimonials-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.client-testimonial {
+  width: 30%;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+/* Client Testimonials Children */
+#client-testimonials h2 {
+  text-align: center;
+}
+
+/* Sign Up Promo */
+/* Sign Up Promo Parents */
+#sign-up-promo {
+  background-image: url("../images/main/test-image.jpeg");
+  background-size: cover;
+  width: 80%;
+  height: 60vh;
+  margin: 50px auto;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Sign Up Promo Children */
+#sign-up-promo div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#sign-up-promo h1 {
+  font-size: 150px;
+}
+#sign-up-promo h3 {
+  font-size: 50px;
+}
+#sign-up-promo h2 {
+  font-size: 60px;
+}
+#sign-up-promo h3,
+#sign-up-promo h1,
+#sign-up-promo h2 {
+  margin: 0;
+}
+#sign-up-promo button {
+  margin-bottom: 50px;
+}
+
+/*(DELETE WHEN FINISHED)*/
+.test-img {
+  width: 100px;
+}
