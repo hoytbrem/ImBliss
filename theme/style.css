@@ -11,6 +11,11 @@
  */
 
 /* Globals */
+
+:root {
+  --background-color: #e0d9d9;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -22,7 +27,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #e0d9d9;
+  background-color: var(--background-color);
   color: rgb(27, 15, 15);
   padding: 10px;
   position: fixed;
