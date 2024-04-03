@@ -19,7 +19,7 @@
     <?php include("header_nav.php"); ?>
         <article>
             <h2>Create an Account</h2>
-            <form action="process-account.php" method="POST">
+            <form action="process/process-login.php" method="POST">
                 <label>First Name:</label>
                 <input type="text" name="fName" required>
                 <label>Last Name:</label>

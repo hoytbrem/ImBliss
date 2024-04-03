@@ -27,7 +27,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true) {
     <?php include("header_nav.php"); ?>
         <article>
             <h2>User Login</h2>
-            <form action="process-login.php" method="POST">
+            <form action="process/process-login.php" method="POST">
                 <label>Email:</label>
                 <input type="text" name="email" required>
                 <label>Password:</label>
