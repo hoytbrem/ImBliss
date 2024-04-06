@@ -116,6 +116,16 @@
         </div>
     </nav>
     <main>
+        <h2>All Users</h2>
+        <?php
+            foreach($userID as $u){
+
+            }
+        ?>
+        <table>
+            <tr></tr>
+            <tr></tr>
+        </table>
     </main>
     <footer>
         <div id="footer-logo">
