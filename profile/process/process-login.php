@@ -32,16 +32,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     } else {
                         $_SESSION["admin-login"] = false;
                     }
-
 ?>
                     <script>
-                        window.location.replace("index.php");
+                        window.location.replace("../../pages/index.php");
                     </script>
                 <?php
                 } else {
                 ?>
                     <script>
-                        window.location.replace("login.php");
+                        window.location.replace("../login.php");
                     </script>
 <?php
                 }
@@ -49,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["failedLogin"] = "Incorrect Username or Password. Please Try Again.";
             ?>
             <script>
-                window.location.replace("login.php");
+                window.location.replace("../login.php");
             </script>
 <?php
         }else {

@@ -18,8 +18,9 @@
     <div class="container">
     <?php include("header_nav.php"); ?>
         <article>
-            <h2>Create an Account</h2>
-            <form action="process/process-login.php" method="POST">
+            <h2>Sign Up</h2>
+            <p>Already a member? <a href = "login.php">Login</a></p>
+            <form action="process/process-account.php" method="POST" id="signup-form">
                 <label>First Name:</label>
                 <input type="text" name="fName" required>
                 <label>Last Name:</label>
@@ -27,13 +28,27 @@
                 <label>Email:</label>
                 <input type="email" name="email" required>
                 <label>Password:</label>
-                <input type="password" name="tpassword" required>
+                <input id="password" type="password" name="tpassword" required>
                 <label>Confirm Password:</label>
-                <input type="password" required>
+                <input id="confirm_password" type="password" required>
                 <input class="btn btn-success" type="submit" value="Sign Up">
             </form>
+            <p>or sign up with</p>
         </article>
     </div>
+
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+
+            if (password !== confirmPassword){
+                alert("Password do not match");
+                event.preventDefault();
+            }
+        });
+    </script>
+
 </body>
 
 </html>

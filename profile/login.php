@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true) {
     ?>
         <script>
-            window.location.replace("index.php");
+            window.location.replace("../pages/index.php");
         </script>
     <?php
     } else {

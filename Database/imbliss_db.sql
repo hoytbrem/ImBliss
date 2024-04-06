@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 28, 2024 at 04:18 AM
+-- Generation Time: Apr 04, 2024 at 04:51 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -42,7 +42,9 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `user_first_name`, `user_last_name`, `user_email`, `user_password`, `user_admin`) VALUES
 (1, 'Devon', 'Plagemann', 'test@email.com', 'test', 1),
-(2, 'Person', 'PersonLName', 'person@email.com', 'test', NULL);
+(2, 'Person', 'PersonLName', 'person@email.com', 'test', NULL),
+(3, 'Sam', 'Samson', 'sam@email.com', 'Sam', NULL),
+(4, 'Alex', 'Johnson', 'alex@email.com', 'testing', NULL);
 
 --
 -- Indexes for dumped tables
@@ -62,7 +64,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

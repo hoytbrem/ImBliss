@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,8 +39,6 @@
 
 <body class="container-fluid">
 
-
-
     <?php // <!-- Other Includes -->
     include ("./partial/cart.php"); // Cart    ?>
 
@@ -60,9 +63,29 @@
                 <li>
                     <input type="text" placeholder="Search">
                 </li>
-                <li>
-                    <a>Account</a>
-                </li>
+                <?php 
+                    if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
+                        $username = $_SESSION["fName"];
+                        echo "
+                        <li>
+                            <a href='../profile/user-profile.php'>$username</a>
+                        </li>
+                        ";
+                    }else{
+                        echo "
+                        <li>
+                            <a href='../profile/create-account.php'>
+                                Sign Up
+                            </a>
+                        </li>
+                        <li>
+                            <a href='../profile/login.php'>
+                                Log In
+                            </a>
+                        </li>
+                        ";
+                    }
+                ?>
                 <li>
                     <!-- Open Shopping Cart -->
                     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"

@@ -34,7 +34,7 @@ if ($success) {
 ?>
         <script>
             setTimeout(function() {
-                window.location.href = 'login.php';
+                window.location.href = '../login.php';
             }, 5000);
         </script>
 <?php
