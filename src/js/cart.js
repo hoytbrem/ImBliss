@@ -1,6 +1,9 @@
 class Item {
-    constructor(element_node, item_id, name, price, qty, description, category, image, alt_text, rating = 0) {
-        this._element_node = element_node;
+    
+
+    // buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
+    // this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
+    constructor(item_id, name, price, qty, description, category, image, alt_text, rating = 0) {
         this._item_id = item_id;
         this._name = name;
         this._price = price;
@@ -10,105 +13,42 @@ class Item {
         this._image = image;
         this._alt_text = alt_text;
         this._rating = rating;
-        this._total = price * this._qty;
+        this._totalPrice = price;
+        this._cartPrice = document.createElement("span");
+        this._buttonQuantitySpacer = document.createElement("div");
     }
 
-    get element_node() {
-        return this._element_node;
+    addPrice(value) {
+        this._totalPrice += value;
+        this.updateTotalAndPrice();
     }
 
-    set element_node(value) {
-        this._element_node = value;
+    subtractPrice(value) {
+        this._totalPrice -= value;
     }
 
-    get item_id() {
-        return this._item_id;
+    getTotal() {
+        return this._totalPrice;
     }
 
-    set item_id(value) {
-        this._item_id = value;
+    updateTotalAndPrice() {
+
+        let tempList = [...cartList];
+        let sum = 0;
+
+        for (let tempItem of tempList) {
+            sum += tempItem.getTotal();
+        }
+
+        let subTotal = document.getElementById("subTotal");
+        let itemCount = document.getElementById("cart-item-count");
+
+        // Corrected the syntax for template literals below
+        subTotal.innerHTML = `&dollar;${sum.toFixed(2) ?? 0.00}`;
+        itemCount.innerHTML = tempList.length > 0 ? `${tempList.length} Items` : tempList == 1 ? `1 Item` : `No Items` ;
     }
 
-    get name() {
-        return this._name;
-    }
-
-    set name(value) {
-        this._name = value;
-    }
-
-    get price() {
-        return parseFloat(this._total).toFixed(2);
-    }
-
-    set price(value) {
-        this._price = parseFloat(value).toFixed(2);
-        this._total = this._price * this._qty;
-    }
-
-    get qty() {
-        return this._qty;
-    }
-
-    set qty(value) {
-        this._qty = value;
-        this._total = this._price * this._qty;
-    }
-
-    get description() {
-        return this._description;
-    }
-
-    set description(value) {
-        this._description = value;
-    }
-
-    get category() {
-        return this._category;
-    }
-
-    set category(value) {
-        this._category = value;
-    }
-
-    get image() {
-        return this._image;
-    }
-
-    set image(value) {
-        this._image = value;
-    }
-
-    get alt_text() {
-        return this._alt_text;
-    }
-
-    set alt_text(value) {
-        this._alt_text = value;
-    }
-}
-
-function setAttributes(element, attributes) {
-    for (let key in attributes) {
-        element.setAttribute(key, attributes[key]);
-    }
-}
-
-
-function populateCart(dataReceived) {
-    let paddedControlledContainer = document.getElementById("imbliss-cart-list");
-
-    let imblissCartContainer = document.createElement("div");
-    setAttributes(imblissCartContainer, {
-        "class": "imbliss-cart-list"
-    });
-    paddedControlledContainer.appendChild(imblissCartContainer);
-
-    var data = [...dataReceived];
-
-    data.forEach(itemObject => {
-        let { item_id, qty, name, description, category, image, price, alt_text } = itemObject;
-
+    renderCartItem(imblissCartContainer) {
         // New List Item with its own container.
         let listGroupItemContainer = document.createElement("div");
         setAttributes(listGroupItemContainer, { "class": "row" });
@@ -122,15 +62,15 @@ function populateCart(dataReceived) {
         setAttributes(cartItemRow, { "class": "imbliss-cart-item row" });
         listGroupItem.appendChild(cartItemRow);
 
-        let item = new Item(listGroupItem, item_id, name, price, qty, description, category, image, alt_text);
 
+        //console.log(item);
 
         // Cart product image
         let cartItemImage = document.createElement("img");
         setAttributes(cartItemImage, {
             "class": "col-sm-5 imbliss-cart-img ",
-            "src": `../images/product-images/${item.image}`,
-            "alt": item.alt_text
+            "src": `../images/product-images/${this._image}`,
+            "alt": this._alt_text
         });
         listGroupItemContainer.append(cartItemImage);
         listGroupItemContainer.append(listGroupItem);
@@ -138,7 +78,7 @@ function populateCart(dataReceived) {
         // Cart header
         let cartHeader = document.createElement("h3");
         setAttributes(cartHeader, { "class": "col-sm-12" });
-        cartHeader.innerText = item.name;
+        cartHeader.innerText = this._name;
         cartItemRow.append(cartHeader);
 
         // Ratings
@@ -153,23 +93,15 @@ function populateCart(dataReceived) {
 
             star.addEventListener("click", () => {
                 let starIndex = index + 1;
-
-                console.log(starIndex);
-
-                switch (starIndex) {
-                    case 1:
-                    //setAttributes(this, "");
-                }
             });
 
             ratingGroup.appendChild(star);
         }
 
         // Price 
-        let cartPrice = document.createElement("span");
-        setAttributes(cartPrice, { "class": "col-sm-12 price-tag" });
-        cartPrice.innerHTML = `&dollar;${item.price}`;
-        cartItemRow.append(cartPrice);
+        setAttributes(this._cartPrice, { "class": "col-sm-12 price-tag" });
+        this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
+        cartItemRow.append(this._cartPrice);
 
         // Cart Minus/Plus/Remove Buttons/Spacer for Buttons
 
@@ -181,7 +113,7 @@ function populateCart(dataReceived) {
         });
         cartItemRow.append(cartButtonGroup);
 
-        let buttonQuantitySpacer = document.createElement("div");
+        //let this._buttonQuantitySpacer = document.createElement("div");
 
         // Minus Button
         let cartButtonMinus = document.createElement("button");
@@ -191,13 +123,20 @@ function populateCart(dataReceived) {
         });
         cartButtonMinus.innerHTML = "";
         cartButtonMinus.addEventListener("click", () => {
-            item.qty--;
-            if (item.qty <= 0) {
+            this._qty--;
+            this.subtractPrice(this._price);
+            if (this._qty <= 0) {
                 listGroupItemContainer.remove();
-                data = removeItem(item.item_id, data);
+                cartList = removeItem(this._item_id, cartList);
+
+                // Renders empty item if there's no items in the cart.
+                console.log(cartList);
+                if (cartList.length == 0)
+                    handleIfEmpty(imblissCartContainer);
             }
-            buttonQuantitySpacer.innerHTML = `<span class="item-qty">${item.qty}</span>`;
-            cartPrice.innerHTML = `&dollar;${item.price}`;
+            this.updateTotalAndPrice();
+            this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
+            this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
         });
         cartButtonGroup.append(cartButtonMinus);
 
@@ -207,8 +146,8 @@ function populateCart(dataReceived) {
         setAttributes(disabledButtonSpreader, { "class": "cart-button-size text-center qty" });
         cartButtonGroup.append(disabledButtonSpreader);
 
-        disabledButtonSpreader.appendChild(buttonQuantitySpacer);
-        buttonQuantitySpacer.innerHTML = `<span class="item-qty">${item.qty}</span>`;
+        disabledButtonSpreader.appendChild(this._buttonQuantitySpacer);
+        this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
 
 
         // Add Button
@@ -219,13 +158,136 @@ function populateCart(dataReceived) {
             "type": "button"
         });
         cartButtonAdd.addEventListener("click", () => {
-            item.qty++;
-            buttonQuantitySpacer.innerHTML = `<span class="item-qty">${item.qty}</span>`;
-            cartPrice.innerHTML = `&dollar;${item.price}`;
+            this._qty++;
+            this.addPrice(this._price);
+            //item.totalPrice = item.price * item.qty;
+            this.updateTotalAndPrice(); // Call the updateTotalAndPrice() function here
+
+            this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
+            this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
         });
 
         cartButtonGroup.append(cartButtonAdd);
+    }
+    get item_id() {
+        return this._item_id;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    get price() {
+        return this._price;
+    }
+
+    get qty() {
+        return this._qty;
+    }
+
+    get description() {
+        return this._description;
+    }
+
+    get category() {
+        return this._category;
+    }
+
+    get image() {
+        return this._image;
+    }
+
+    get alt_text() {
+        return this._alt_text;
+    }
+
+    get rating() {
+        return this._rating;
+    }
+
+    get totalPrice() {
+        return this._totalPrice;
+    }
+
+    set item_id(value) {
+        this._item_id = value;
+    }
+
+    set name(value) {
+        this._name = value;
+    }
+
+    set price(value) {
+        this._price = value;
+    }
+
+    set qty(value) {
+        this._qty = value;
+        this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
+        this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
+    }
+
+    set description(value) {
+        this._description = value;
+    }
+
+    set category(value) {
+        this._category = value;
+    }
+
+    set image(value) {
+        this._image = value;
+    }
+
+    set alt_text(value) {
+        this._alt_text = value;
+    }
+
+    set rating(value) {
+        this._rating = value;
+    }
+
+    set totalPrice(value) {
+        this._totalPrice = value;
+    }
+}
+
+
+let initialLoad = true;
+var cartList = [];
+
+var imblissCartContainer = document.createElement("div");
+
+function setAttributes(element, attributes) {
+    for (let key in attributes) {
+        element.setAttribute(key, attributes[key]);
+    }
+}
+
+/**
+ * This function populates the cart list with data received and renders each item using the itemRender function.
+ * @param {Array} dataReceived - The data received to populate the cart list.
+ * @param {Function} itemRender - The function used to render each item in the cart list.
+*/
+function populateCart(dataReceived, itemRender) {
+    let paddedControlledContainer = document.getElementById("imbliss-cart-list");
+
+
+    setAttributes(imblissCartContainer, {
+        "class": "imbliss-cart-list"
     });
+    paddedControlledContainer.appendChild(imblissCartContainer);
+
+    data = [...dataReceived];
+
+    if (data.length == 0 && cartList.length == 0) {
+        handleIfEmpty(imblissCartContainer);
+    }
+
+    data.forEach(itemObject => {
+        itemRender(itemObject, imblissCartContainer);
+    });
+    initialLoad = false;
 }
 
 fetch("../src/php/get-cart-data.php")
@@ -236,7 +298,7 @@ fetch("../src/php/get-cart-data.php")
         return response.json();
     })
     .then((data) => {
-        populateCart(data);
+        populateCart(data, renderCartItem);
     })
     .catch((error) => {
         console.log(`Error: ${error}`);
@@ -252,26 +314,89 @@ function removeItem(value, array) {
 
 var documentDone = false;
 
+// Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", () => {
+    // Get the cart row element
     let cartCollapse = document.getElementById("cartRow");
+    // Get the cart open button element
     let cartOpenButton = document.getElementById("cartOpenButton");
     cartOpenButton.addEventListener("click", () => {
         cartCollapse.classList.toggle("cart-collapse-open")
     });
+    // Set a flag to indicate that the document is done loading
     documentDone = true;
 });
 
-function addItem({ item_id, qty, name, description, category, image, price, alt_text }) {
+/**
+ * Renders a single item in the cart.
+ * @param {Item} itemObject - The object representing the this.updateTotalAndPrice()
+ * @param {HTMLElement} imblissCartContainer - The container element for the cart.
+*/
+
+function renderCartItem(itemObject, imblissCartContainer) {
+    let item = createNewItemObject(itemObject);
+    item.renderCartItem(imblissCartContainer);
+    cartList.push(item);
+}
+
+function createNewItemObject(itemObject) {
+    let { item_id, name, price, qty, description, category, image, alt_text } = itemObject
+    return new Item(item_id, name, price, qty, description, category, image, alt_text);
+}
+
+/**
+ * Adds an item to the cart.
+ * @param {Item} itemObject - The item object to be added.
+*/
+function addItem(itemObject) {
+    let { item_id } = itemObject;
+
+    
+
+
     if (documentDone) {
         let found = false;
-        found = data.filter((element) => {
+        found = cartList.filter((element) => {
             if (element.item_id == item_id) {
                 element.qty++;
+                console.log(item_id);
                 return true;
             }
         });
 
-        if (!found)
-            data.push({ item_id, qty, name, description, category, image, price, alt_text });
+        if (!found) {
+            renderCartItem(itemObject);
+            console.log("not found, adding");
+            handleIfEmpty(imblissCartContainer);
+        }
     }
 }
+
+/**
+ * Renders an empty list item in the cart container.
+ * @param {HTMLElement} cartContainer - The container element where the empty list item will be appended.
+*/
+function handleIfEmpty(cartContainer) {
+    let emptyListItem = document.getElementById("emptyListItem") ?? document.createElement("div");
+    if (cartList.length == 0) {
+        emptyListItem.innerHTML = "<h3>No Items Yet!</h3>";
+        setAttributes(emptyListItem, {
+            "class": "col-sm-12 text-center w-100 mt-4 text-larger tk-source-serif-4-display",
+            "id": "emptyListItem"
+        });
+        cartContainer.appendChild(emptyListItem);
+    } else {
+        emptyListItem.remove();
+    }
+}
+
+/**
+ * Sets up a repeating interval that attempts to update the total and price of the first item in a cart list.
+ * This operation is attempted every 1000 milliseconds (1 second).
+ */
+setInterval(() => {
+    try {
+        cartList[0].updateTotalAndPrice();
+        handleIfEmpty(imblissCartContainer);
+    } catch { }
+}, 500);
