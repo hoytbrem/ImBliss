@@ -21,11 +21,12 @@
 <body class="container-fluid">
 
 
+    
 
-    <?php // <!-- Other Includes -->
-    include ("./partial/cart.php"); // Cart    ?>
 
     <?php include("./partial/nav.html"); ?>
+    <?php // <!-- Other Includes -->
+    include ("./partial/cart.php"); // Cart ?>
 
 
     <!-- Hero Section -->
