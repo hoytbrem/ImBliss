@@ -68,7 +68,7 @@
             </a>
             <!-- Navigation Links -->
             <ul id="navbar-links">
-                <li>Home</li>
+                <li><a href="../pages/index.php">Home</a></li>
                 <li>Products</li>
                 <li>About Us</li>
                 <li>Contact</li>
@@ -117,14 +117,34 @@
     </nav>
     <main>
         <h2>All Users</h2>
+        <table>
         <?php
             foreach($userID as $u){
-
+                ?>
+                <tr>
+                <td><?php 
+                        if($u["user_admin"] == 1){
+                            echo "Admin";
+                        }
+                    ?></td>
+                <td><?php echo $u["user_first_name"]; ?></td>
+                <td><?php echo $u["user_last_name"]; ?></td>
+                <td>
+                    <?php 
+                        if($u["user_admin"] != 1){
+                            ?>
+                                <form action="process/process-admin-update-user.php" method="POST">
+                                    <input type="hidden" name="user_id" value="<?php echo $u["user_id"]?>">
+                                    <input type="submit" value="Make Admin">
+                                </form>
+                            <?php
+                        }
+                    ?>
+                </td>
+                </tr>
+                <?php
             }
         ?>
-        <table>
-            <tr></tr>
-            <tr></tr>
         </table>
     </main>
     <footer>
