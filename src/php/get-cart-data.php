@@ -7,7 +7,7 @@ include ("connect-db.php");
 
 if ($justCartItem) {
     $sql = "SELECT
-            item.item_id, item.name, item.price, item.description, item.category, item.image, 
+            item.item_id, item.name, item.price, item.totalPrice, item.description, item.category, item.image, 
             meta.alt_text
             FROM item
             INNER JOIN meta
