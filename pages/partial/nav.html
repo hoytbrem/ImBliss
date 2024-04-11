@@ -1,45 +1,61 @@
 <!-- Navigation Bar -->
-<nav id="navbar">
-  <div id="navbar-left">
-    <!-- Logo -->
-    <a id=" navbar-logo">
-      <img src="../images/main/test-image.jpeg" class="test-img" />
-    </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Logo -->
+  <a class="navbar-brand" href="#">
+    <img src="../images/main/test-image.jpeg" class="test-img" />
+  </a>
+  <!-- Hamburger menu -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
     <!-- Navigation Links -->
-    <ul id="navbar-links">
-      <li>
-        <a href="index.php">Home</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Home</a>
       </li>
-      <li>
-        <a href="product-page.php">Products</a>
+      <li class="nav-item">
+        <a class="nav-link" href="product-page.php">Products</a>
       </li>
-      <li>About Us</li>
-      <li>Contact</li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
     </ul>
-  </div>
-  <!-- Search Bar / Account / Cart-->
-  <div id="navbar-right">
-    <ul id="navbar-buttons">
-      <li>
-        <input type="text" placeholder="Search" />
+    <!-- Search Bar / Account / Cart-->
+    <form class="d-flex">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Account</a>
+        <a class="nav-link" href="login.php">Login</a>
+        <a class="nav-link" href="sign-up.php">Register</a>
+        <a class="nav-link" href="account.php">Account</a>
+        <a class="nav-link" href="checkout.php">checkout</a>
+        <a class="nav-link" href="checkout-address.php">checkout address</a>
+        <a class="nav-link" href="checkout-payment.php">checkout payment</a>
+        <a class="nav-link" href="checkout-edit.php">checkout edit</a>
       </li>
-      <li>
-        <a>Account</a>
-      </li>
-      <li>
-        <!-- Open Shopping Cart -->
-        <button 
-        class="btn btn-primary custom" 
-        type="button" 
-        id="cartOpenButton">
-
-          <div class="card-header imbliss-cart-card-header">
-            <i class="bi bi-cart align-self-right" id="cart-header-icon"></i
-            >Cart
-          </div>
-        </button>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Cart</a>
       </li>
     </ul>
   </div>
 </nav>
-<div id="space-under-nav"></div>
