@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["failedLogin"] = "Incorrect Username or Password. Please Try Again.";
             ?>
             <script>
-                window.location.replace("../login.php");
+                window.location.replace("../../pages/login.php");
             </script>
 <?php
         }else {

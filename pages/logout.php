@@ -3,5 +3,5 @@
     session_destroy();
 ?>
 <script>
-    window.location.replace("../pages/index.php");
+    window.location.replace("index.php");
 </script>

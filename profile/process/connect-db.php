@@ -4,7 +4,7 @@ $username = "root";
 $password = "";
 try{
     $db = new PDO($servername, $username, $password);
-    echo "Connected successfully";
+    // echo "Connected successfully";
 }
 catch(PDOException $e){
     echo "Connection failed: " . $e->getMessage();

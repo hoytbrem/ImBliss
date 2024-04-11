@@ -23,9 +23,7 @@
         }
         ?>
         <script>
-            setTimeout(function() {
-                window.location.href = '../user-list.php';
-            }, 5000);
+            window.location.replace("../../pages/admin-user-list.php");
         </script>
         <?php
         } else {

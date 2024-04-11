@@ -49,6 +49,9 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+#space-under-nav {
+  height: 121px;
+}
 
 /* NavBar Children */
 #navbar li {
@@ -69,6 +72,8 @@ footer {
   display: flex;
   background-color: #83bead;
   padding: 1%;
+  bottom: 0px;
+  margin: 0;
 }
 #footer-logo {
   flex: 0 0 20%;
@@ -258,6 +263,13 @@ footer > * > ul > li {
 }
 #sign-up-promo button {
   margin-bottom: 50px;
+}
+
+/* view products */
+/* view products parents */
+.quanity-input {
+  width: 50px !important;
+  background-color: #83bead !important;
 }
 
 /*(DELETE WHEN FINISHED)*/
