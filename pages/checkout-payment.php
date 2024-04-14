@@ -16,7 +16,7 @@
 </head>
 
 <body class="container-fluid">
-    <?php include("./partial/nav.html"); ?>
+    <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
     include ("./partial/cart.php"); // Cart ?>
     <main>

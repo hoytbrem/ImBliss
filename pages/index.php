@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,15 +19,12 @@
     <meta name="keywords" content="healthy, snacks, nutritious" />
 
     <?php include("partial/every-page.html"); ?>
+    <?php include("partial/every-page.html"); ?>
 </head>
 
 <body class="container-fluid">
 
-
-    
-
-
-    <?php include("./partial/nav.html"); ?>
+    <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
     include ("./partial/cart.php"); // Cart ?>
 
@@ -157,6 +157,7 @@
             <button>Sign Up</button>
         </section>
     </main>
+    <?php include("./partial/footer.html"); ?>
     <?php include("./partial/footer.html"); ?>
 </body>
 

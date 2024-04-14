@@ -1,4 +1,21 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+    // Checking that user is logged in
+    if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true) {
+        $username = $_SESSION["fName"];
+        $isAdmin = false;
+        // Checking if user is an admin
+        if(isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true){
+            $isAdmin = true;
+        }
+    } else {
+    ?>
+        <script>
+            window.location.replace("login.php");
+        </script>
+    <?php
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +33,7 @@
 </head>
 
 <body class="container-fluid">
-    <?php include("./partial/nav.html"); ?>
+    <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
     include ("./partial/cart.php"); // Cart ?>
 
@@ -29,13 +46,27 @@
             </div>
             <div class="d-flex flex-column p-3 py-5">
 
-                <span class="font-weight-bold">Username</span>
+                <!-- Added Username in the account page. Username is simply the first name on the account. -->
+                <span class="font-weight-bold"><?php echo $username ?></span>
                 <span class="text-secondary">email@example.com</span>
                 <span class="text-secondary">Address</span>
                 <span class="text-secondary">Password</span>
                 <span class="text-secondary">Payment</span>
                 <span class="text-secondary">Subscription</span>
-                <button class="btn btn-primary">Logout</button>
+                <!-- Checks if the user is an admin
+                If they are, they will see the link that leads them to the user list.
+                With this list an admin is able to make another user an admin -->
+                <?php
+                    if($isAdmin){
+                        ?>
+                            <a href="admin-user-list.php">Admin Panel</a>
+                        <?php
+                    }
+                ?>
+                <!-- Had to put in form for button to lead to logout -->
+                <form action="logout.php">
+                    <button class="btn btn-primary" type="submit">Logout</button>
+                </form>
             </div>
         </div>
         <!-- Main content -->

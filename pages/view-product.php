@@ -1,30 +1,61 @@
+<?php
+    session_start();
+
+    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+        $item_id = $_GET["item_id"];
+    }
+
+    require_once("../src/php/connect-db.php");
+
+    $sql = "SELECT item.*,
+    meta.description AS meta_description,
+    meta.title AS meta_title,
+    meta.keywords AS meta_keywords,
+    meta.robots AS meta_robots,
+    meta.alt_text AS meta_alt_text
+    FROM item INNER JOIN meta ON item.meta_id = meta.meta_id WHERE item.item_id = :item_id";
+    
+    $statement = $db->prepare($sql);
+    $statement->bindValue(":item_id", $item_id);
+
+    if ($statement->execute()) {
+        $item = $statement->fetch();
+        $statement->closeCursor();
+    }
+
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <?php // <!-- Header Includes -->
-    include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
+    include("../src/php/function-helpers.php"); // Various helpful functions    
+    ?>
 
     <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   ?>
+    $dirLevel = getDirLevel(1); // this will return "../"   
+    ?>
 
-    <title>Product Page</title>
-    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description"
-        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" />
+    <title><?php echo $item["meta_title"]?></title>
+    <!-- <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
+    <meta name="description" content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
+    <meta name="keywords" content="healthy, snacks, nutritious" /> -->
+    <meta name="title" content="<?php echo $item["meta_title"]?>" />
+    <meta name="description" content="<?php echo $item["meta_description"]?>" />
+    <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
+    
 
     <?php include("partial/every-page.html"); ?>
 </head>
 
 <body>
-    <?php include ("./partial/cart.php");?>
-    <?php include("./partial/nav.html"); ?>
-
+    <!-- <?php echo $userMessage; ?> -->
+    <?php include("./partial/cart.php"); ?>
+    <?php include("./partial/nav.php"); ?>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <img src="product-image.jpg" class="img-fluid" alt="Product Image">
+                <img src="../images/product-images/<?php echo $item["image"];?>" class="img-fluid" alt="Product Image">
                 <div class="row mt-3">
                     <div class="col"><img src="preview1.jpg" class="img-fluid" alt="Preview Image 1"></div>
                     <div class="col"><img src="preview2.jpg" class="img-fluid" alt="Preview Image 2"></div>
@@ -32,22 +63,18 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h2>Product Name</h2>
-                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                        class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                        class="bi bi-star-half"></span>120 reviews</p>
-                <h4>$7.90</h4>
-                <p>Product description goes here. More info about the product can go under details</p>
+                <h2><?php echo $item["name"]; ?></h2>
+                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span>120 reviews</p>
+                <h4>$<?php echo number_format($item["price"], 2); ?></h4>
+                <p><?php echo $item["description"]; ?></p>
                 <div class="accordion" id="productAccordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 Details
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                            data-bs-parent="#productAccordion">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#productAccordion">
                             <div class="accordion-body">
                                 Product details...
                             </div>
@@ -55,13 +82,11 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Shipping & Handling
                             </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#productAccordion">
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#productAccordion">
                             <div class="accordion-body">
                                 Shipping and handling details...
                             </div>
@@ -70,8 +95,7 @@
                 </div>
                 <div class="input-group mt-3">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
-                    <input type="text" class="form-control quantity-input" placeholder="1"
-                        aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <input type="text" class="form-control quantity-input" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
                 </div>
                 <button class="btn btn-primary mt-3"><span class="bi bi-heart"></span> Add to Cart</button>
@@ -79,44 +103,35 @@
         </div>
         <div>
             <!-- reviews -->
-            <div class="row">
-                <h3>Reviews</h3>
-                <div class="col-md-3">
-                    <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                            class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                            class="bi bi-star-half"></span> 5 stars</p>
-                    <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
-                        product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
-                    <h6>By: name here</h6>
-                </div>
-                <div class="col-md-3">
-                    <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                            class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                            class="bi bi-star-half"></span> 5 stars</p>
-                    <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
-                        product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
-                    <h6>By: name here</h6>
-                </div>
-                <div class="col-md-3">
-                    <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                            class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                            class="bi bi-star-half"></span> 5 stars</p>
-                    <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
-                        product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
-                    <h6>By: name here</h6>
-                </div>
-                <div class="col-md-3">
-                    <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                            class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span
-                            class="bi bi-star-half"></span> 5 stars</p>
-                    <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
-                        product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
-                    <h6>By: name here</h6>
-                </div>
+        <div class="row">
+            <h3>Reviews</h3>
+            <div class="col-md-3">
+                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span> 5 stars</p>
+                <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
+                    product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
+                <h6>By: name here</h6>
+            </div>
+            <div class="col-md-3">
+                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span> 5 stars</p>
+                <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
+                    product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
+                <h6>By: name here</h6>
+            </div>
+            <div class="col-md-3">
+                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span> 5 stars</p>
+                <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
+                    product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
+                <h6>By: name here</h6>
+            </div>
+            <div class="col-md-3">
+                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span> 5 stars</p>
+                <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
+                    product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
+                <h6>By: name here</h6>
             </div>
         </div>
-
-        <?php include("./partial/footer.html"); ?>
+    </div>
+    <?php include("./partial/footer.html"); ?>
 </body>
 
 </html>

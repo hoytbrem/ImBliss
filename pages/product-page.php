@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +23,7 @@
 
 <body>
     <?php include ("./partial/cart.php");?>
-    <?php include("./partial/nav.html"); ?>
+    <?php include("./partial/nav.php"); ?>
     <div class="container-fluid">
         <div class="row">
             <!-- Filter Section -->
@@ -105,32 +109,7 @@
             <!-- Product Grid -->
             <div class="col-9">
                 <div class="row">
-                    <a href="./view-product.php">this will be the link to the view-product.php but it doesnt work on the
-                        include examples</a>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
-                    <?php include("./partial/product-example.html"); ?>
+                    <?php include("./partial/product.php"); ?>
                 </div>
             </div>
         </div>
