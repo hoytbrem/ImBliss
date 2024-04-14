@@ -10,7 +10,7 @@
         }
 
     $userMessage = "";
-    require_once("../profile/process/connect-db.php");
+    require_once("../src/php/connect-db.php");
     $sql = "SELECT * FROM user";
     $statement = $db->prepare($sql);
 

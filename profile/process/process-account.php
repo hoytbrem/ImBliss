@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if ($success) {
 
-    require_once("connect-db.php");
+    require_once("../../src/php/connect-db.php");
 
     // Running the sql statement putting the info into the database
     $sql = "insert into user (user_first_name, user_last_name, user_email, user_password) values (:fName, :lName, :email, :tpassword)";

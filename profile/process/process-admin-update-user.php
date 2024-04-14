@@ -11,7 +11,7 @@
     }
 
     if ($success){
-        require_once("connect-db.php");
+        require_once("../../src/php/connect-db.php");
         $sql = "update user set user_admin = 1 where user_id = :userId";
         $statement = $db->prepare($sql);
 

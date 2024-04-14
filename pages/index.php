@@ -19,6 +19,7 @@
     <meta name="keywords" content="healthy, snacks, nutritious" />
 
     <?php include("partial/every-page.html"); ?>
+    <?php include("partial/every-page.html"); ?>
 </head>
 
 <body class="container-fluid">
@@ -156,6 +157,7 @@
             <button>Sign Up</button>
         </section>
     </main>
+    <?php include("./partial/footer.html"); ?>
     <?php include("./partial/footer.html"); ?>
 </body>
 

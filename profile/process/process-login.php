@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $success = true;
 
     if ($success) {
-        require_once("connect-db.php");
+        require_once("../../src/php/connect-db.php");
         $sql = "select * from user where user_email = :enteredEmail and user_password = :enteredPassword";
         $statement = $db->prepare($sql);
 
