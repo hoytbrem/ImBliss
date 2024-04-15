@@ -51,7 +51,7 @@
                             <label class="form-check-label" for="filter3">Energy Bites</label>
                         </div>
                         <div class="col-3 text-end">
-                            <input class="form-check-input" type="checkbox" name="filter" id="filter3">
+                            <input class="form-check-input" type="checkbox" name="filter" id="filter3" value="energy bites">
                         </div>
                     </div>
                     <div class="row">
@@ -59,7 +59,7 @@
                             <label class="form-check-label" for="filter4">Granola</label>
                         </div>
                         <div class="col-3 text-end">
-                            <input class="form-check-input" type="checkbox" name="filter" id="filter4">
+                            <input class="form-check-input" type="checkbox" name="filter" id="filter4" value="granola">
                         </div>
                     </div>
                     <div class="row">
@@ -67,7 +67,7 @@
                             <label class="form-check-label" for="filter5">Merch</label>
                         </div>
                         <div class="col-3 text-end">
-                            <input class="form-check-input" type="checkbox" name="filter" id="filter5">
+                            <input class="form-check-input" type="checkbox" name="filter" id="filter5" value="merch">
                         </div>
                     </div>
                     <div class="row">
