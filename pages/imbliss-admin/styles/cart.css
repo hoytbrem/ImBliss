@@ -1,0 +1,41 @@
+body {
+  background-color: grey;
+}
+
+.imbliss-icon-cart {
+  color: white;
+}
+
+.list-group-item, .imbliss-cart-container {
+  background-color: #bfbfbf;
+}
+
+.imbliss-cart-header {
+  font-size: 0.75em;
+}
+
+#cart-header-icon {
+  margin-right: 5px;
+}
+
+.imbliss-cart-card-header {
+  font-size: 1.0675em;
+}
+
+.imbliss-cart-container {
+  padding: 10px;
+}
+
+.imbliss-cart-quantity {
+  font-size: 0.75em;
+}
+
+.imbliss-cart-img {
+  width: 206px;
+  height: 126px;
+}
+
+.btn-primary, .btn-primary.disabled {
+  background-color: #19aaaa;
+  border-color: grey;
+}/*# sourceMappingURL=cart.css.map */

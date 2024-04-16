@@ -8,6 +8,7 @@
   opacity: 0.75;
   transition: top 0.5s ease, opacity 0.25s ease;
   max-height: 734px;
+  z-index: 0;
 }
 
 #cartOverflow {

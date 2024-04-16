@@ -52,13 +52,6 @@
                             }
                         ?>
                     </div>
-                    <div class="mt-3">
-                        <p>or login with</p>
-                    </div>
-                    <div class="mt-3">
-                        <img src="../images/main/test-img.jpeg" alt="Google" style="width: 50px; height: 50px;">
-                        <img src="../images/main/test-img.jpeg" alt="Facebook" style="width: 50px; height: 50px;">
-                    </div>
                 </form>
             </div>
         </div>
