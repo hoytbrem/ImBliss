@@ -1,5 +1,10 @@
 <?php
-    require_once("../src/php/connect-db.php");
+    include("../../src/php/function-helpers.php");
+$dirLevel = getDirLevel(2);
+    include("nav.php");
+    include ("cart.php");
+    
+    require_once("$dirLevel/src/php/connect-db.php");
 
     $sql = "SELECT item.*, meta.alt_text AS meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id";
 
@@ -18,7 +23,7 @@
             <div class="card">
                 <div class="row g-0">
                     <div class="col-md-6">
-                        <img src="../images/product-images/<?php echo $i["image"];?>" class="img-fluid rounded-start" alt="<?php echo $i["meta_alt_text"]; ?>" />
+                        <img src="<?php echo $dirLevel ?>/images/product-images/<?php echo $i["image"];?>" class="img-fluid rounded-start" alt="<?php echo $i["meta_alt_text"]; ?>" />
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
