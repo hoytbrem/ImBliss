@@ -79,7 +79,7 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
             <input id="search_query" class="rounded-pill" name="search_query" type="text" placeholder="Search">
           </div>
 
-          <!-- Open Shopping Cart -->
+          <!-- Open Account -->
           <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/person-circle.svg" type="button"
             id="accountOpenButton">
 
