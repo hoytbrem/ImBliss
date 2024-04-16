@@ -77,7 +77,7 @@
                     <img src="../images/main/healthy-natural-vegetables-display.jpg" class="img-fluid" alt="Image">
                 </div>
                 <div class="col-md-6">
-                    <img src="your-image-url" class="img-fluid" alt="Image">
+                    <img src="../images/main/healthy-natural-oats-display.jpg" class="img-fluid" alt="Image">
                 </div>
             </div>
         </div>
@@ -86,11 +86,11 @@
     <!-- New Arrivals and Planet Section -->
     <div class="container my-4">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" id="new-arrivals-container">
                 <h2>New Arrivals</h2>
                 <a class="btn btn-primary" href="#" role="button">Explore</a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" id="dedicated-to-our-planet-container">
                 <h2>Dedicated to our planet</h2>
                 <a class="btn btn-primary" href="#" role="button">Learn More</a>
             </div>
@@ -98,11 +98,30 @@
     </div>
 
     <!-- Client Testimonials Section -->
-    <div class="container my-4">
+    <div id="testimonial-container">
         <h2 class="text-center">Client Testimonials</h2>
         <div class="row">
-            <!-- Repeat this div for each testimonial -->
-            <div class="col-md-3">
+            <div class="col md-2 testimonial">
+                <h5>Title</h5>
+                <p>Lorem ipsum sample text</p>
+                <p><small>- Name</small></p>
+            </div>
+            <div class="col md-2 testimonial">
+                <h5>Title</h5>
+                <p>Lorem ipsum sample text</p>
+                <p><small>- Name</small></p>
+            </div>
+            <div class="col md-2 testimonial">
+                <h5>Title</h5>
+                <p>Lorem ipsum sample text</p>
+                <p><small>- Name</small></p>
+            </div>
+            <div class="col md-2 testimonial">
+                <h5>Title</h5>
+                <p>Lorem ipsum sample text</p>
+                <p><small>- Name</small></p>
+            </div>
+            <div class="col md-2 testimonial">
                 <h5>Title</h5>
                 <p>Lorem ipsum sample text</p>
                 <p><small>- Name</small></p>
@@ -111,7 +130,7 @@
     </div>
 
     <!-- Sign Up Section -->
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center container my-6" id="sign-up-container">
         <h1 class="display-4">Sign up today and get</h1>
         <p class="lead">15% off</p>
         <p>Your first purchase</p>

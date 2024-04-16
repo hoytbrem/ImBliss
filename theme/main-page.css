@@ -1,3 +1,7 @@
+* {
+  font-family: serif;
+}
+
 /* hero section */
 #hero-section {
   background: linear-gradient(90deg, #ffffff 0%, #ffffff00 100%),
@@ -7,6 +11,9 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100vh;
+}
+#hero-section div div div h1 {
+  font-family: serif;
 }
 #hero-section-image {
   border: 1px solid var(--unnamed-color-707070);
@@ -42,3 +49,139 @@
 }
 
 /* Nutritional Benefits Section */
+img[src*="healthy-natural-oats-display.jpg"] {
+  transform: rotate(-90deg);
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+/* New Arrivals and Planet Section */
+#new-arrivals-container {
+  background: transparent
+    url("../images/main/ImBliss-natural-tasty-bars-display.jpg") 0% 0% no-repeat
+    padding-box;
+  background-size: cover;
+  height: 40vh;
+}
+
+#dedicated-to-our-planet-container {
+  background: transparent url("../images/main/natural-sustainable.jpg") 0% 0%
+    no-repeat padding-box;
+  background-size: cover;
+  height: 40vh;
+}
+
+#new-arrivals-container,
+#dedicated-to-our-planet-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#new-arrivals-container h2,
+#dedicated-to-our-planet-container h2 {
+  align-self: center;
+  text-align: center;
+}
+
+#new-arrivals-container a,
+#dedicated-to-our-planet-container a {
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: 20px;
+  align-self: center;
+  text-align: center;
+}
+
+#new-arrivals-container h2 {
+  /* UI Properties */
+  background: var(--unnamed-color-ff6421) 0% 0% no-repeat padding-box;
+  background: #ff6421 0% 0% no-repeat padding-box;
+  opacity: 1;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-normal) var(--unnamed-font-size-40) /
+    var(--unnamed-line-spacing-54) var(--unnamed-font-family-petersburg);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-f9f8f7);
+  text-align: left;
+  font: normal normal normal 40px/54px Petersburg;
+  letter-spacing: 0px;
+  color: #f9f8f7;
+  padding: 5px 15px;
+}
+
+#dedicated-to-our-planet-container h2 {
+  /* UI Properties */
+  background: var(--unnamed-color-3b876e) 0% 0% no-repeat padding-box;
+  background: #3b876e 0% 0% no-repeat padding-box;
+  opacity: 1;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-normal) var(--unnamed-font-size-40) /
+    var(--unnamed-line-spacing-54) var(--unnamed-font-family-petersburg);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-f9f8f7);
+  text-align: left;
+  font: normal normal normal 40px/54px Petersburg;
+  letter-spacing: 0px;
+  color: #f9f8f7;
+  padding: 5px 15px;
+}
+
+#new-arrivals-container a {
+  /* UI Properties */
+  background: var(--unnamed-color-3b876e) 0% 0% no-repeat padding-box;
+  background: #3b876e 0% 0% no-repeat padding-box;
+  box-shadow: 0px 7px 14px #000000ba;
+  opacity: 1;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-normal) var(--unnamed-font-size-20) / 25px
+    var(--unnamed-font-family-komet);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-f9f8f7);
+  text-align: left;
+  font: normal normal normal 20px/25px Komet;
+  letter-spacing: 0px;
+  color: #f9f8f7;
+}
+
+#dedicated-to-our-planet-container a {
+  /* UI Properties */
+  background: var(--unnamed-color-ff6421) 0% 0% no-repeat padding-box;
+  background: #ff6421 0% 0% no-repeat padding-box;
+  box-shadow: 0px 7px 14px #000000ba;
+  border-radius: 28px;
+  opacity: 1;
+  font: var(--unnamed-font-style-normal) normal
+    var(--unnamed-font-weight-normal) var(--unnamed-font-size-20) / 25px
+    var(--unnamed-font-family-komet);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-f9f8f7);
+  text-align: left;
+  font: normal normal normal 20px/25px Komet;
+  letter-spacing: 0px;
+  color: #f9f8f7;
+}
+
+/* Client testimonials */
+#testimonial-container {
+  background-image: url("../images/main/organic-white-background.jpg");
+  width: 100% !important;
+}
+#client-testimonials {
+  display: flex;
+  justify-content: space-between;
+}
+
+.testimonial {
+  flex: 1 0 18%;
+  margin: 0 1%;
+  background-color: white;
+}
+
+/* sign up section */
+#sign-up-container {
+  background-image: url("../images/main/natural-vibrant-display.jpg");
+  color: white;
+}
