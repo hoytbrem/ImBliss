@@ -1,8 +1,5 @@
+const directoryLevelOfPage = dirLevel
 class Item {
-    
-
-    // buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
-    // this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
     constructor(item_id, name, price, qty, description, category, image, alt_text, rating = 0) {
         this._item_id = item_id;
         this._name = name;
@@ -62,16 +59,14 @@ class Item {
         setAttributes(cartItemRow, { "class": "imbliss-cart-item row" });
         listGroupItem.appendChild(cartItemRow);
 
-
-        //console.log(item);
-
         // Cart product image
         let cartItemImage = document.createElement("img");
         setAttributes(cartItemImage, {
             "class": "col-sm-5 imbliss-cart-img ",
-            "src": `../images/product-images/${this._image}`,
+            "src": `${directoryLevelOfPage}/images/product-images/${this._image}`,
             "alt": this._alt_text
         });
+        
         listGroupItemContainer.append(cartItemImage);
         listGroupItemContainer.append(listGroupItem);
 
@@ -290,7 +285,7 @@ function populateCart(dataReceived, itemRender) {
     initialLoad = false;
 }
 
-fetch("../src/php/get-cart-data.php")
+fetch(`${dirLevel}/src/php/get-cart-data.php`)
     .then((response) => {
         if (!response.ok) {
             throw new Error("Could not grab cart data.");
