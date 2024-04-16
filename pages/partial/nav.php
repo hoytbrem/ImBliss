@@ -71,7 +71,7 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
           <button style="border: none; background: transparent;"><img class="" src="<?php //echo $dirLevel ?>images/nav-assets/cart3.svg" id="cartOpenButton"></button>
           </div>
           <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-        </div> -->
+        </div> f-->
 
         <div class="d-flex" id="functionPanel">
           <div class="search " id="searchBar">
