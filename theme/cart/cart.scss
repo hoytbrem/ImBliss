@@ -9,6 +9,7 @@
     opacity: 0.75;
     transition: top .5s ease, opacity .25s ease;
     max-height: 734px;
+    z-index: 0;
 }
 
 #cartOverflow {
@@ -59,7 +60,6 @@
             font-weight: bold;
             text-align: right;
             height: 43px;
-            //margin-right: 10px;
             margin-bottom: 0 !important;
             padding-left: 0 !important;
             position: relative;
@@ -69,10 +69,6 @@
     }
 
     #imbliss-cart-footer-row {
-        //max-width: 600px !important;
-        // top: 837px;
-        // left: 1283px;
-        //width: 634px;
         height: 45px;
         bottom: -2px;
         position: relative;

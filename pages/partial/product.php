@@ -1,7 +1,12 @@
 <?php
+    include("../../src/php/function-helpers.php");
+$dirLevel = getDirLevel(2);
+    include("nav.php");
+    include ("cart.php");
+    
 $categoryOrder = ["bars", "variety pack", "energy bites", "granola", "merch"];
 
-require_once("../../src/php/connect-db.php");
+require_once("$dirLevel/src/php/connect-db.php");
 
 $sql = "SELECT item.*, meta.alt_text as meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id ORDER BY item.name";
 
