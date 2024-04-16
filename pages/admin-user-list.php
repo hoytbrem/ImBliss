@@ -79,6 +79,7 @@
             }
         ?>
         </table>
+        <a href="admin.php">Back To Admin Page</a>
     </main>
     <?php include("./partial/footer.html"); ?>
 </body>
