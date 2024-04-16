@@ -59,7 +59,7 @@
                 <?php
                     if($isAdmin){
                         ?>
-                            <a href="admin-user-list.php">Admin Panel</a>
+                            <a href="admin.php">Admin Panel</a>
                         <?php
                     }
                 ?>
