@@ -1,24 +1,14 @@
-/* Import adobe */
+/* Import */
 @import url("https://use.typekit.net/kxn5mjl.css");
 
-h2 {
-    /* Layout Properties */
-    top: 259px;
-    left: 1085px;
-    width: 240px;
-    height: 54px;
-    /* UI Properties */
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-40)/var(--unnamed-line-spacing-54) var(--unnamed-font-family-source-serif-4-display);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-707070);
-    text-align: left;
-    font: normal normal bold 40px/54px Source Serif 4 Display;
-    letter-spacing: 0px;
+h2{
     color: #707070;
-    opacity: 1;
+    margin-bottom: 74px;
+    font-weight: bold;
+    font-family: serif;
 }
 
-.view-page-price {
+.view-page-price{
     font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 22px/30px var(--unnamed-font-family-source-serif-4-display);
     letter-spacing: var(--unnamed-character-spacing-0);
     color: var(--unnamed-color-484848);
@@ -35,33 +25,21 @@ h2 {
     font-family: serif;
 }
 
-.view-page-desc {
-    /* Layout Properties */
-    top: 494px;
-    left: 1085px;
-    width: 596px;
-    height: 88px;
-    /* UI Properties */
-    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20)/30px var(--unnamed-font-family-komet);
-    letter-spacing: var(--unnamed-character-spacing-0);
-    color: var(--unnamed-color-707070);
-    text-align: left;
-    font: normal normal normal 20px/30px Komet;
-    letter-spacing: 0px;
+.view-page-desc{
+    size: 20px;
     color: #707070;
-    opacity: 1;
 }
 
-.product_img {
+.product_img{
     margin-right: 149px;
 }
 
-.product {
+.product{
     margin-top: 144px;
-    margin-bottom: 200px;
+    margin-bottom:200px;
 }
 
-.btn-add-to-cart {
+.btn-add-to-cart{
     background-color: #FF6421;
     color: #F9F8F7;
     font-size: 19px;
@@ -71,25 +49,25 @@ h2 {
     float: right;
 }
 
-.btn-add-to-cart>span {
+.btn-add-to-cart > span{
     margin-right: 18px;
 }
 
-.review {
+.review{
     margin-bottom: 276px;
 }
 
-.input-group {
+.input-group{
     margin-left: 20px;
     top: -60px;
     float: left;
 }
 
-.input-group>span>input[type="text"] {
+.input-group>span>input[type="text"]{
     width: 30;
     text-align: center;
 }
 
-#review_total {
+#review_total{
     margin-left: 18px;
 }
