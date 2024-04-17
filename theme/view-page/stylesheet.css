@@ -2,6 +2,14 @@
 @import url("https://use.typekit.net/kxn5mjl.css");
 
 h2{
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-40)/var(--unnamed-line-spacing-54) var(--unnamed-font-family-source-serif-4-display);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-707070);
+    text-align: left;
+    font: normal normal bold 40px/54px Source Serif 4 Display;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
     color: #707070;
     margin-bottom: 74px;
     font-weight: bold;
@@ -26,6 +34,14 @@ h2{
 }
 
 .view-page-desc{
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20)/30px var(--unnamed-font-family-komet);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-707070);
+    text-align: left;
+    font: normal normal normal 20px/30px Komet;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
     size: 20px;
     color: #707070;
 }
