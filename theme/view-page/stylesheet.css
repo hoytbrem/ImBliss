@@ -1,0 +1,72 @@
+@import url("https://use.typekit.net/kxn5mjl.css");
+
+h2{
+    color: #707070;
+    margin-bottom: 74px;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.view-page-price{
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 22px/30px var(--unnamed-font-family-source-serif-4-display);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-484848);
+    text-align: left;
+    font: normal normal bold 22px/30px Source Serif 4 Display;
+    letter-spacing: 0px;
+    color: #484848;
+    opacity: 1;
+    margin-top: 31px;
+    margin-bottom: 30px;
+    color: #484848;
+    size: 22px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) 22px/30px var(--unnamed-font-family-source-serif-4-display);
+    font-family: serif;
+}
+
+.view-page-desc{
+    size: 20px;
+    color: #707070;
+}
+
+.product_img{
+    margin-right: 149px;
+}
+
+.product{
+    margin-top: 144px;
+    margin-bottom:200px;
+}
+
+.btn-add-to-cart{
+    background-color: #FF6421;
+    color: #F9F8F7;
+    font-size: 19px;
+    padding: 10px 60px;
+    margin-right: 20px;
+    border-radius: 80px;
+    float: right;
+}
+
+.btn-add-to-cart > span{
+    margin-right: 18px;
+}
+
+.review{
+    margin-bottom: 276px;
+}
+
+.input-group{
+    margin-left: 20px;
+    top: -60px;
+    float: left;
+}
+
+.input-group>span>input[type="text"]{
+    width: 30;
+    text-align: center;
+}
+
+#review_total{
+    margin-left: 18px;
+}
