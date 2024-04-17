@@ -13,7 +13,7 @@ session_start();
     $dirLevel = getDirLevel(1); // this will return "../" 
     include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
-    ?>
+    ?>    console.log(itemObject);
     <link rel="stylesheet" href="../theme/product/product-page.css" />
         <script>
         // Embedding PHP into JavaScript to pass the $_GET["search_query"] value
