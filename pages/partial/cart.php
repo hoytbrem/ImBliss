@@ -30,6 +30,9 @@
                         <p id="subTotal">&dollar;24.00</p>
                     </div>
                     <button class="col-sm-3" id="checkOut">Checkout</button>
+                    <form action="POST">
+                        
+                    </form>
                 </div>
             </div>
         </div>

@@ -3,21 +3,20 @@
 <html lang="en">
 
 <head>
-    <?php // <!-- Header Includes -->
-    include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
-    <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   ?>
-    <title>Login</title>
-    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description"
-        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" />
-    <?php include("partial/every-page.html"); ?>
+<?php 
+    // <!-- Header Includes -->
+    include ("../src/php/function-helpers.php"); // Various helpful functions    
+    $dirLevel = getDirLevel(1); // this will return "../" 
+    include("{$dirLevel}partial/every-page.html"); // Google Analytics
+    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}src/php/grab-cart-variables.php"); grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist.
+    ?>
 </head>
 
 <body class="container-fluid">
     <?php include("./partial/nav.php"); ?>
-    <?php // <!-- Other Includes -->
+    <?php 
+    // <!-- Other Includes -->
     include ("./partial/cart.php"); // Cart ?>
     <main class="d-flex align-items-center justify-content-center" style="height: 80vh;">
         <div class="container">

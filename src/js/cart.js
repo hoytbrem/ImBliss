@@ -43,6 +43,7 @@ class Item {
         // Corrected the syntax for template literals below
         subTotal.innerHTML = `&dollar;${sum.toFixed(2) ?? 0.00}`;
         itemCount.innerHTML = tempList.length > 0 ? `${tempList.length} Items` : tempList == 1 ? `1 Item` : `No Items` ;
+        localStorage.setItem("cart_items", cartList);
     }
 
     renderCartItem(imblissCartContainer) {
@@ -247,7 +248,6 @@ class Item {
     }
 }
 
-
 let initialLoad = true;
 var cartList = [];
 
@@ -345,9 +345,6 @@ function createNewItemObject(itemObject) {
 */
 function addItem(itemObject) {
     let { item_id } = itemObject;
-
-    
-
 
     if (documentDone) {
         let found = false;
