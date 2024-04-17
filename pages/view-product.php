@@ -56,29 +56,37 @@
             <div class="col-md-1"></div>
             <div class="col-md-5">
                 <h2><?php echo $item["name"]; ?></h2>
-                <p><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_empty.png" alt="image of a grey star"></span><span id="review_total">120 reviews</span></p>
-                <p class="view-page-price">$<?php echo number_format($item["price"], 2); ?></p>
-                <p class="view-page-desc"><?php echo $item["description"]; ?></p>
-                <div class="accordion accordion-flush" id="productAccordion">
+                <p><img src="../images/products/star-fill.svg" alt="heart"><img src="../images/products/star-fill.svg"
+                        alt="heart"><img src="../images/products/star-fill.svg" alt="heart"><img
+                        src="../images/products/star-fill.svg" alt="heart"><img src="../images/products/star-fill.svg"
+                        alt="heart">120 reviews</p>
+                <h4>$<?php echo number_format($item["price"], 2); ?></h4>
+                <p><?php echo $item["description"]; ?></p>
+                <div class="accordion no-border" id="productAccordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 Details
                             </button>
                         </h2>
+
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#productAccordion" >
                             <div class="accordion-body">
                                 <?php echo $item["description"]; ?>
                             </div>
                         </div>
                     </div>
+                    <hl style="margin-top: 10px; margin-bottom: 10px;" />
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Shipping & Handling
                             </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#productAccordion">
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#productAccordion">
                             <div class="accordion-body">
                                 Shipping and handling details...
                             </div>
@@ -91,7 +99,6 @@
                     <span><input type="text" class="form-control quantity-input" style="width: 40px" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1"></span>
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
                 </div>
-                
             </div>
         </div>
         <div>

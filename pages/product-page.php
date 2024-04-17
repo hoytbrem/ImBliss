@@ -20,23 +20,27 @@ session_start();
     <meta name="title" content="<?php echo $item["meta_title"]?>" />
     <meta name="description" content="<?php echo $item["meta_description"]?>" />
     <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
+    <link rel="stylesheet" href="../theme/style.css" />
+    <link rel="stylesheet" href="../theme/product/product-page.css" />
 
-    <script>
+    <?php include("partial/every-page.html"); ?>
+        <script>
         // Embedding PHP into JavaScript to pass the $_GET["search_query"] value
         var searchQuery = "<?php echo isset($_GET["search_query"]) ? $_GET["search_query"] : '' ?>";
     </script>
 </head>
 
-<body>
-    <?php include("{$dirLevel}pages/partial/nav.php"); ?>
+<body class="container-fluid">
+
+      <?php include("{$dirLevel}pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
     include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
-    <div class="container-fluid">
+     <div class="container-fluid">
         <div class="row">
             <!-- Filter Section -->
-            <div class="col-2">
-                <div class="list-group">
-                    <h5 class="mb-3">Filter by:</h5>
+            <div class="col-2"
+                style="background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFFC9 65%, #FFFFFF69 87%, #FFFFFF00 100%) 0% 0% no-repeat, url('../images/products/natural-vibrant-display.jpg'); max-height: 700px;">
+                <div class="list-group" style=" margin: 10px; margin-left: 50px; margin-top: 50px;">
                     <form id="filterForm">
                         <div class="row">
                             <div class="col-6">
@@ -115,8 +119,8 @@ session_start();
             </div>
             <!-- Product Grid -->
             <div class="col-9">
-                <div class="row">
-                    <div id="filteredProducts">
+                <div class="container">
+                    <div id="filteredProducts" class="container row" style="margin-top: 50px;">
                         <!-- Filtered items will be displayed here -->
                     </div>
                 </div>
