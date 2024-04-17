@@ -61,9 +61,9 @@
                 <!-- Added Username in the account page. Username is simply the first name on the account. -->
                 <span class="font-weight-bold"><?php echo $username ?></span>
                 <span class="text-secondary"><?php echo $userAccount["user_email"]?></span>
-                <span class="text-secondary"><?php echo $userAccount["user_street_address"]?></span>
-                <span class="text-secondary"><?php echo $userAccount["user_city"]?></span>
-                <span class="text-secondary"><?php echo $userAccount["user_state"]?></span>
+                <span class="text-secondary"><?php echo $userAccount["user_street_address"]." ". $userAccount["user_city"] .", ". $userAccount["user_state"]?></span>
+                <!-- <span class="text-secondary"><?php echo $userAccount["user_state"]?></span> -->
+                <!-- <span class="text-secondary"><?php echo $userAccount["user_subscription"]?></span> -->
                 <!-- Checks if the user is an admin
                 If they are, they will see the link that leads them to the user list.
                 With this list an admin is able to make another user an admin -->

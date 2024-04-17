@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +100,7 @@ session_start();
                         </div>
                     </form>
                     <script src="../src/js/filter.js"></script>
-                    <img id="background-leaves" src="../images/product-page-assets/leafy-background.png">
+                    <!-- <img id="background-leaves" src="../images/product-page-assets/leafy-background.png"> -->
                 </div>
             </div>
             <div>
