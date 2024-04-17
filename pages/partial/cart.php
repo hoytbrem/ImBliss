@@ -15,7 +15,7 @@
                         <h3>Shopping Cart</h3>
                     </div>
                     <div class="col-sm-3" id="cart-item-count-header">
-                        <h3 id="cart-item-count">4 Items</h3>
+                        <h3 id="cart-item-count">No Items</h3>
                     </div>
                 </div>
                 <div id="cartOverflow" class="cart">
@@ -27,9 +27,12 @@
                         <h3 id="totalFooterText">Total</h3>
                     </div>
                     <div class="col-sm-3" id="totalContainer">
-                        <p id="subTotal">&dollar;24.00</p>
+                        <p id="subTotal">&dollar;0.00</p>
                     </div>
                     <button class="col-sm-3" id="checkOut">Checkout</button>
+                    <form action="POST">
+                        
+                    </form>
                 </div>
             </div>
         </div>
