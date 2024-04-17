@@ -22,6 +22,7 @@ function renderHeader($page_title, $dirLevel)
   <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/style.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/normalize.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/stylesheet.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/sage-styles.css" />
   <link rel="stylesheet" href="<?php echo $dirLevel ?>/theme/nav/account-context.css" />
 
   <!-- Scripts -->
