@@ -1,4 +1,34 @@
 const directoryLevelOfPage = dirLevel
+let fakeItemList = [{ "item_id": 4, "qty": 1 }, { "item_id": 5, "qty": 1 }, { "item_id": 6, "qty": 1 }, { "item_id": 7, "qty": 1 }, { "item_id": 8, "qty": 1 }, { "item_id": 9, "qty": 1 }, { "item_id": 10, "qty": 1 }, { "item_id": 11, "qty": 1 }, { "item_id": 12, "qty": 1 }, { "item_id": 13, "qty": 1 }, { "item_id": 14, "qty": 1 }, { "item_id": 15, "qty": 1 }, { "item_id": 16, "qty": 1 }, { "item_id": 17, "qty": 1 }, { "item_id": 18, "qty": 1 }, { "item_id": 19, "qty": 1 }, { "item_id": 20, "qty": 1 }];
+let fakerList = [
+    {
+        "_item_id": 4,
+        "_name": "Recycled Cotton T-Shirt",
+        "_price": 15,
+        "_qty": 1,
+        "_description": "Wear the ImBliss brand in 100% recycled cotton- soft, breathable and eco-friendly.",
+        "_category": "merch",
+        "_image": "ImBliss-Hanging-White-T-Shirt.jpg",
+        "_alt_text": "T-shirt with the ImBliss logo, on a wooden coat hanger, on light blue background",
+        "_rating": 0,
+        "_totalPrice": 15,
+        "_cartPrice": {},
+        "_buttonQuantitySpacer": {}
+    },
+    {
+        "_item_id": 5,
+        "_name": "ImBliss Recycled Cotton Sweatshirt",
+        "_price": 22,
+        "_qty": 1,
+        "_description": "Wear the ImBliss brand in 100% recycled cotton- soft and breathable.",
+        "_category": "merch",
+        "_image": "ImBliss-Model-Sweatshirt.jpg",
+        "_alt_text": "Woman on a beach, joyful, wearing a white sweatshirt with the ImBliss logo.",
+        "_rating": 0,
+        "_totalPrice": 22,
+        "_cartPrice": {},
+        "_buttonQuantitySpacer": {}
+    }];
 class Item {
     constructor(item_id, name, price, qty, description, category, image, alt_text, rating = 0) {
         this._item_id = item_id;
@@ -10,7 +40,7 @@ class Item {
         this._image = image;
         this._alt_text = alt_text;
         this._rating = rating;
-        this._totalPrice = price;
+        this._totalPrice = price ?? 0;
         this._cartPrice = document.createElement("span");
         this._buttonQuantitySpacer = document.createElement("div");
     }
@@ -29,7 +59,6 @@ class Item {
     }
 
     updateTotalAndPrice() {
-
         let tempList = [...cartList];
         let sum = 0;
 
@@ -42,7 +71,8 @@ class Item {
 
         // Corrected the syntax for template literals below
         subTotal.innerHTML = `&dollar;${sum.toFixed(2) ?? 0.00}`;
-        itemCount.innerHTML = tempList.length > 0 ? `${tempList.length} Items` : tempList == 1 ? `1 Item` : `No Items` ;
+        itemCount.innerHTML = tempList.length > 0 ? `${tempList.length} Items` : tempList == 1 ? `1 Item` : `No Items`;
+        //cart_items();
     }
 
     renderCartItem(imblissCartContainer) {
@@ -66,7 +96,7 @@ class Item {
             "src": `${directoryLevelOfPage}/images/product-images/${this._image}`,
             "alt": this._alt_text
         });
-        
+
         listGroupItemContainer.append(cartItemImage);
         listGroupItemContainer.append(listGroupItem);
 
@@ -247,9 +277,46 @@ class Item {
     }
 }
 
-
 let initialLoad = true;
 var cartList = [];
+
+function getCartItems() {
+    let storage_cart_items = JSON.parse(localStorage.getItem("cart_items"), revive);
+    if (!storage_cart_items)
+        return null;
+
+    return storage_cart_items;
+}
+
+/**
+ * Grabs the cart items as a proper list, without private identifiers.
+ * @param {boolean} justQty rebuilds just the cart item objects with item_ids and qtys.
+ * @returns Either a minimal or complex list of item objects.
+ */
+async function setCartItems(justQty = false) {
+    if (cartList.length == 0)
+        return [];
+    if (justQty) {
+        let minList = cartList.map(item => {
+            return {
+                item_id: item._item_id,
+                qty: item._qty
+            };
+        });
+        localStorage.setItem("cart_items", JSON.stringify(minList));
+        return minList;
+    } else if (!justQty) {
+        let fullList = cartList.map(item => {
+            let newItem = {};
+            for (let key in item) {
+                newItem[key.replace("_", "")] = item[key];
+            }
+            return newItem;
+        });
+        localStorage.setItem("cart_items", JSON.stringify(fullList));
+        return fullList;
+    }
+};
 
 var imblissCartContainer = document.createElement("div");
 
@@ -264,7 +331,7 @@ function setAttributes(element, attributes) {
  * @param {Array} dataReceived - The data received to populate the cart list.
  * @param {Function} itemRender - The function used to render each item in the cart list.
 */
-function populateCart(dataReceived, itemRender) {
+async function populateCart(dataReceived, itemRender) {
     let paddedControlledContainer = document.getElementById("imbliss-cart-list");
 
 
@@ -273,31 +340,86 @@ function populateCart(dataReceived, itemRender) {
     });
     paddedControlledContainer.appendChild(imblissCartContainer);
 
+    if (!dataReceived) {
+        handleIfEmpty(imblissCartContainer);
+        return null;
+    }
     data = [...dataReceived];
 
     if (data.length == 0 && cartList.length == 0) {
         handleIfEmpty(imblissCartContainer);
     }
 
-    data.forEach(itemObject => {
+    await data.forEach(itemObject => {
         itemRender(itemObject, imblissCartContainer);
     });
+
+    await setCartItems();
     initialLoad = false;
 }
 
-fetch(`${dirLevel}/src/php/get-cart-data.php`)
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error("Could not grab cart data.");
+
+
+let revive = (key, value) => {
+
+    switch (key) {
+        case "item_id":
+            return parseInt(value);
+        case "qty":
+            return parseInt(value);
+        case "name":
+            return value.toString();
+        case "price":
+            return parseFloat(value);
+        case "description":
+            return value.toString();
+        case "category":
+            return value.toString();
+        case "image":
+            return value.toString();
+        case "alt_text":
+            return value.toString();
+        case "rating":
+            return parseInt(value);
+        case "totalPrice":
+            return parseFloat(value);
+        case "cartPrice":
+            return value;
+        case "buttonQuantitySpacer":
+            return value;
+        default:
+            return value;
+    }
+};
+
+async function validateItems() {
+    // This allows more secure data encapsulation.
+    let myRequest = new Request(`${dirLevel}/src/php/get-cart-data.php`);
+
+    await fetch(myRequest, {
+        method: "POST",
+        body: JSON.stringify(setCartItems(true)),
+        headers: {
+            'Content-Type': 'application/json'
         }
-        return response.json();
     })
-    .then((data) => {
-        populateCart(data, renderCartItem);
-    })
-    .catch((error) => {
-        console.log(`Error: ${error}`);
-    });
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Could not grab cart data.");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log("Data:");
+            console.log(data);
+            if (!data)
+                return null;
+            populateCart(data, renderCartItem);
+        })
+        .catch((error) => {
+            throw new Error(error);
+        });
+};
 
 function removeItem(value, array) {
     let thisData = [...array];
@@ -320,6 +442,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // Set a flag to indicate that the document is done loading
     documentDone = true;
+
+    populateCart(getCartItems(), renderCartItem);
 });
 
 /**
@@ -328,15 +452,16 @@ document.addEventListener("DOMContentLoaded", () => {
  * @param {HTMLElement} imblissCartContainer - The container element for the cart.
 */
 
-function renderCartItem(itemObject, imblissCartContainer) {
+async function renderCartItem(itemObject, imblissCartContainer) {
     let item = createNewItemObject(itemObject);
-    item.renderCartItem(imblissCartContainer);
+    console.log(item.renderCartItem(imblissCartContainer));
     cartList.push(item);
+    await setCartItems();
 }
 
 function createNewItemObject(itemObject) {
-    let { item_id, name, price, qty, description, category, image, alt_text } = itemObject
-    return new Item(item_id, name, price, qty, description, category, image, alt_text);
+    let { item_id, name, price, description, category, image, meta_alt_text } = itemObject;
+    return new Item(item_id, name, price, description, category, image, meta_alt_text);
 }
 
 /**
@@ -344,10 +469,12 @@ function createNewItemObject(itemObject) {
  * @param {Item} itemObject - The item object to be added.
 */
 function addItem(itemObject) {
-    let { item_id } = itemObject;
 
+    let parsedObject = JSON.parse(itemObject, revive);
+
+    console.log(parsedObject);
     
-
+    let { item_id } = parsedObject;
 
     if (documentDone) {
         let found = false;
@@ -361,7 +488,6 @@ function addItem(itemObject) {
 
         if (!found) {
             renderCartItem(itemObject);
-            console.log("not found, adding");
             handleIfEmpty(imblissCartContainer);
         }
     }
@@ -391,7 +517,7 @@ function handleIfEmpty(cartContainer) {
  */
 setInterval(() => {
     try {
-        cartList[0].updateTotalAndPrice();
         handleIfEmpty(imblissCartContainer);
+        cartList[0].updateTotalAndPrice();
     } catch { }
 }, 500);

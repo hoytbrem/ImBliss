@@ -14,16 +14,7 @@ session_start();
     include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
-    <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
-    <link rel="stylesheet" type="text/css" href="../theme/product-page/stylesheet.css"/>
-    <title><?php echo $item["meta_title"]?></title>
-    <meta name="title" content="<?php echo $item["meta_title"]?>" />
-    <meta name="description" content="<?php echo $item["meta_description"]?>" />
-    <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
-    <link rel="stylesheet" href="../theme/style.css" />
     <link rel="stylesheet" href="../theme/product/product-page.css" />
-
-    <?php include("partial/every-page.html"); ?>
         <script>
         // Embedding PHP into JavaScript to pass the $_GET["search_query"] value
         var searchQuery = "<?php echo isset($_GET["search_query"]) ? $_GET["search_query"] : '' ?>";
