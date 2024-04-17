@@ -13,16 +13,16 @@
                     <div class="d-flex justify-content-between">
                         <form action="view-product.php" method="GET">
                             <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
-                            <button type="submit" class="btn btn-primary">View</a>
+                            <button type="submit" class="btn btn-view">View</a>
                         </form>
-                        <button class="btn btn-success">Add to Cart</button>
-                        <button class="btn btn-outline-danger bi bi-heart"></button>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                        <img src="../images/product-page-assets/suit-heart.svg" type="button" alt="Heart icon to mark a favorite item">
                     </div>
                     <div class="mt-2">
                         <span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star"></span>
                         <!-- Add more stars as needed -->
                         <span class="ms-2">120 Reviews</span>
-                        <p class="mt-1">$<?php echo number_format($i["price"], 2); ?></p>
+                        <p class="mt-1 price">$<?php echo number_format($i["price"], 2); ?></p>
                     </div>
                 </div>
             </div>

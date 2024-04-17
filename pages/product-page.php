@@ -14,6 +14,7 @@ session_start();
     include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
     <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
+    <link rel="stylesheet" type="text/css" href="../theme/product-page/stylesheet.css"/>
     <title><?php echo $item["meta_title"]?></title>
     <meta name="title" content="<?php echo $item["meta_title"]?>" />
     <meta name="description" content="<?php echo $item["meta_description"]?>" />
@@ -98,7 +99,10 @@ session_start();
                         </div>
                     </form>
                     <script src="../src/js/filter.js"></script>
+                    <img id="background-leaves" src="../images/product-page-assets/leafy-background.png">
                 </div>
+            </div>
+            <div>
             </div>
             <!-- Product Grid -->
             <div class="col-9">

@@ -11,8 +11,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true) {
   $userLoggedIn = false;
 }
 
-//echo var_dump($testest);
-
 // Checking to see if the user has an admin flag on their account
 if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
   $isAdmin = "true";
