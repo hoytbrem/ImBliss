@@ -25,46 +25,48 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
 
 <header class="" id="imbliss-Header">
 
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
 
-      <a class="navbar-brand" href="#">
-        <div id="imblissHeaderLogo" class="d-flex align-items-center p-3">
-          <img src="<?php echo $dirLevel ?>/images/main/IWC_Final_Logo.svg"
-            alt="ImBliss main logo, in a serif font, with green-teal leaves to the left.">
-        </div>
-      </a>
+            <a class="navbar-brand" href="#">
+                <div id="imblissHeaderLogo" class="d-flex align-items-center p-3">
+                    <img src="<?php echo $dirLevel ?>/images/main/IWC_Final_Logo.svg"
+                        alt="ImBliss main logo, in a serif font, with green-teal leaves to the left.">
+                </div>
+            </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<?php echo $dirLevel ?>pages/index.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page"
-              href="<?php echo $dirLevel ?>pages/product-page.php">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Contact</a>
-          </li>
-        </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="<?php echo $dirLevel ?>pages/index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="<?php echo $dirLevel ?>pages/product-page.php">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="about-us.php">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="contact-us.php">Contact</a>
+                    </li>
+                </ul>
 
-        <!-- <form class="d-flex" role="search">
+                <!-- <form class="d-flex" role="search">
           <input id="searchBar" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
 
-        <!-- <div class="input-group mb-3">
+                <!-- <div class="input-group mb-3">
           <div class="input-group-prepend">
           <button style="border: none; background: transparent;"><img class="" src="<?php //echo $dirLevel ?>images/nav-assets/cart3.svg" id="cartOpenButton"></button>
           </div>
@@ -79,18 +81,18 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
           </form>
         </div>
 
-          <!-- Open Account -->
-          <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/person-circle.svg" type="button"
-            id="accountOpenButton">
+                    <!-- Open Account -->
+                    <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/person-circle.svg" type="button"
+                        id="accountOpenButton">
 
 
-          <!-- Open Shopping Cart -->
-          <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/cart3.svg" type="button"
-            id="cartOpenButton">
+                    <!-- Open Shopping Cart -->
+                    <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/cart3.svg" type="button"
+                        id="cartOpenButton">
+                </div>
+
+            </div>
         </div>
-
-      </div>
-    </div>
-  </nav>
-  <!-- <div id="linearGradientDivider"></div> -->
+    </nav>
+    <!-- <div id="linearGradientDivider"></div> -->
 </header>

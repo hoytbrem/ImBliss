@@ -1,7 +1,3 @@
-header {}
-
-
-
 #imbliss-Header {
     --navBackground: #EFEAE9;
     $navBackground: var(--navBackground);
@@ -9,7 +5,7 @@ header {}
     height: 115px;
     z-index: 1;
     overflow: hidden;
-    position: relative;
+    position: fixed;
     width: 100% !important;
 
     #imblissHeaderLogo {

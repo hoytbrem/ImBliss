@@ -20,6 +20,19 @@ session_start();
     <meta name="title" content="<?php echo $item["meta_title"]?>" />
     <meta name="description" content="<?php echo $item["meta_description"]?>" />
     <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
+    <?php // <!-- Header Includes -->
+    include("../src/php/function-helpers.php"); // Various helpful functions    
+    ?>
+
+    <?php // <!-- "Global" variables --> 
+    $dirLevel = getDirLevel(1); // this will return "../"   
+    ?>
+
+    <title>Product Page</title>
+    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
+    <meta name="description"
+        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
+    <meta name="keywords" content="healthy, snacks, nutritious" />
 
     <script>
         // Embedding PHP into JavaScript to pass the $_GET["search_query"] value
@@ -59,7 +72,8 @@ session_start();
                                 <label class="form-check-label" for="filter3">Energy Bites</label>
                             </div>
                             <div class="col-3 text-end">
-                                <input class="form-check-input" type="checkbox" name="filter" id="filter3" value="energy bites">
+                                <input class="form-check-input" type="checkbox" name="filter" id="filter3"
+                                    value="energy bites">
                             </div>
                         </div>
                         <div class="row">
@@ -67,7 +81,8 @@ session_start();
                                 <label class="form-check-label" for="filter4">Granola</label>
                             </div>
                             <div class="col-3 text-end">
-                                <input class="form-check-input" type="checkbox" name="filter" id="filter4" value="granola">
+                                <input class="form-check-input" type="checkbox" name="filter" id="filter4"
+                                    value="granola">
                             </div>
                         </div>
                         <div class="row">
@@ -75,7 +90,8 @@ session_start();
                                 <label class="form-check-label" for="filter5">Merch</label>
                             </div>
                             <div class="col-3 text-end">
-                                <input class="form-check-input" type="checkbox" name="filter" id="filter5" value="merch">
+                                <input class="form-check-input" type="checkbox" name="filter" id="filter5"
+                                    value="merch">
                             </div>
                         </div>
                         <div class="mb-3"></div> <!-- Little space -->

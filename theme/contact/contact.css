@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+  .form-container {
+    width: 110% !important;
+  }
+}
+
+h2 {
+  font-family: serif;
+}
