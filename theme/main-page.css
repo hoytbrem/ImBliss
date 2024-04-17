@@ -16,9 +16,6 @@
   font-family: serif;
 }
 #hero-section-image {
-  border: 1px solid var(--unnamed-color-707070);
-  background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #707070;
   opacity: 1;
   width: 813px;
   height: 635px;
@@ -40,9 +37,7 @@
 
 /* product mockups */
 .product-mockups {
-  border: 1px solid var(--unnamed-color-707070);
   background: #dbdbdb 0% 0% no-repeat padding-box;
-  border: 1px solid #707070;
   border-radius: 22px;
   width: auto;
   height: 40vh !important;
