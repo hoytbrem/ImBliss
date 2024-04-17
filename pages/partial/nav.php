@@ -3,21 +3,21 @@
 // If so, the user account Id and user account first name are saved in variables
 $message = "";
 if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true) {
-  $userAccountID = $_SESSION["user-id"];
-  $username = $_SESSION["fName"];
-  $userLoggedIn = true;
+    $userAccountID = $_SESSION["user-id"];
+    $username = $_SESSION["fName"];
+    $userLoggedIn = true;
 } else {
-  $username = "Not Logged In";
-  $userLoggedIn = false;
+    $username = "Not Logged In";
+    $userLoggedIn = false;
 }
 
 //echo var_dump($testest);
 
 // Checking to see if the user has an admin flag on their account
 if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
-  $isAdmin = "true";
+    $isAdmin = "true";
 } else {
-  $isAdmin = "false";
+    $isAdmin = "false";
 }
 ?>
 
@@ -56,10 +56,12 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
                             href="<?php echo $dirLevel ?>pages/product-page.php">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="about-us.php">About Us</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="<?php echo $dirLevel ?>pages/about-us.php">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="contact-us.php">Contact</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="<?php echo $dirLevel ?>pages/contact-us.php">Contact</a>
                     </li>
                 </ul>
 
@@ -97,3 +99,7 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
     </nav>
     <!-- <div id="linearGradientDivider"></div> -->
 </header>
+
+<?php // including the context menu for managing account quickly.
+include ("{$dirLevel}/pages/partial/account-context-menu.php");
+?>

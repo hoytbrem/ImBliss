@@ -1,3 +1,11 @@
+html {
+  overflow-y: hidden;
+}
+
+body.container-fluid {
+  overflow-y: hidden;
+}
+
 #indexBody {
   padding: 0 !important;
 }

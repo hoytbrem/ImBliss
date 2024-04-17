@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
 </head>
 
-<body class="container-fluid" id="indexBody">
+<body class="" id="indexBody">
 
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
