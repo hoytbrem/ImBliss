@@ -29,7 +29,7 @@ let fakerList = [
         "_cartPrice": {},
         "_buttonQuantitySpacer": {}
     }];
-class Item {
+export class Item {
     constructor(item_id, name, price, qty, description, category, image, alt_text, rating = 0) {
         this._item_id = item_id;
         this._name = name;
