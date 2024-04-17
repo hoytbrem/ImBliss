@@ -20,18 +20,24 @@ function filterItems() {
         }
     };
 
+    var url = "partial/product.php?filters=" + JSON.stringify(selectedFilters);
+
     switch(true){
         case priceLowToHighRadio.checked:
-            xhr.open("GET", "partial/product.php?filters=" + JSON.stringify(selectedFilters) + "&sort=low-to-high", true);
+            url += "&sort=low-to-high";
             break;
         case priceHighToLowRadio.checked:
-            xhr.open("GET", "partial/product.php?filters=" + JSON.stringify(selectedFilters) + "&sort=high-to-low", true);
+            url += "&sort=high-to-low";
             break;
         case reviewRadio:
         default:
-            xhr.open("GET", "partial/product.php?filters=" + JSON.stringify(selectedFilters), true);
-    }
+        }
 
+    if(searchQuery !== null || searchQuery == " "){
+        url += "&search_query=" + searchQuery;
+    }
+        
+    xhr.open("GET", url, true);
     xhr.send();
     
 }

@@ -72,7 +72,7 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
         </div> f-->
 
         <div class="d-flex" id="functionPanel">
-          <form action="" method="GET">
+          <form action="product-page.php" method="GET">
             <div class="search " id="searchBar">
               <span id="imbliss-search-icon"></span>
                 <input id="search_query" class="rounded-pill" name="search_query" type="text" placeholder="Search">

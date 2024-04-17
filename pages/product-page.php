@@ -20,6 +20,11 @@ session_start();
     <meta name="title" content="<?php echo $item["meta_title"]?>" />
     <meta name="description" content="<?php echo $item["meta_description"]?>" />
     <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
+
+    <script>
+        // Embedding PHP into JavaScript to pass the $_GET["search_query"] value
+        var searchQuery = "<?php echo isset($_GET["search_query"]) ? $_GET["search_query"] : '' ?>";
+    </script>
 </head>
 
 <body>
