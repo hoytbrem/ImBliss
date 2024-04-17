@@ -16,7 +16,8 @@ session_start();
 
     <title>Product Page</title>
     <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description" content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
+    <meta name="description"
+        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
     <meta name="keywords" content="healthy, snacks, nutritious" />
 
     <?php include("partial/every-page.html"); ?>
@@ -53,7 +54,8 @@ session_start();
                                 <label class="form-check-label" for="filter3">Energy Bites</label>
                             </div>
                             <div class="col-3 text-end">
-                                <input class="form-check-input" type="checkbox" name="filter" id="filter3" value="energy bites">
+                                <input class="form-check-input" type="checkbox" name="filter" id="filter3"
+                                    value="energy bites">
                             </div>
                         </div>
                         <div class="row">
@@ -61,7 +63,8 @@ session_start();
                                 <label class="form-check-label" for="filter4">Granola</label>
                             </div>
                             <div class="col-3 text-end">
-                                <input class="form-check-input" type="checkbox" name="filter" id="filter4" value="granola">
+                                <input class="form-check-input" type="checkbox" name="filter" id="filter4"
+                                    value="granola">
                             </div>
                         </div>
                         <div class="row">
@@ -69,7 +72,8 @@ session_start();
                                 <label class="form-check-label" for="filter5">Merch</label>
                             </div>
                             <div class="col-3 text-end">
-                                <input class="form-check-input" type="checkbox" name="filter" id="filter5" value="merch">
+                                <input class="form-check-input" type="checkbox" name="filter" id="filter5"
+                                    value="merch">
                             </div>
                         </div>
                         <div class="mb-3"></div> <!-- Little space -->
