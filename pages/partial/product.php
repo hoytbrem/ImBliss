@@ -1,8 +1,6 @@
 <?php
     include("../../src/php/function-helpers.php");
-$dirLevel = getDirLevel(2);
-    include("nav.php");
-    include ("cart.php");
+    $dirLevel = getDirLevel(2);
     
 $categoryOrder = ["bars", "variety pack", "energy bites", "granola", "merch"];
 

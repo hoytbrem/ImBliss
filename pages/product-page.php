@@ -6,25 +6,24 @@ session_start();
 <html>
 
 <head>
-    <?php // <!-- Header Includes -->
-    include("../src/php/function-helpers.php"); // Various helpful functions    
+    <?php 
+    // <!-- Header Includes -->
+    include ("../src/php/function-helpers.php"); // Various helpful functions    
+    $dirLevel = getDirLevel(1); // this will return "../" 
+    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
-
-    <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   
-    ?>
-
-    <title>Product Page</title>
-    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description" content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" />
-
-    <?php include("partial/every-page.html"); ?>
+    <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
+    <title><?php echo $item["meta_title"]?></title>
+    <meta name="title" content="<?php echo $item["meta_title"]?>" />
+    <meta name="description" content="<?php echo $item["meta_description"]?>" />
+    <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
 </head>
 
 <body>
-    <?php include("./partial/cart.php"); ?>
-    <?php include("./partial/nav.php"); ?>
+    <?php include("{$dirLevel}pages/partial/nav.php"); ?>
+    <?php // <!-- Other Includes -->
+    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
     <div class="container-fluid">
         <div class="row">
             <!-- Filter Section -->
@@ -104,7 +103,6 @@ session_start();
             <!-- Product Grid -->
             <div class="col-9">
                 <div class="row">
-
                     <div id="filteredProducts">
                         <!-- Filtered items will be displayed here -->
                     </div>

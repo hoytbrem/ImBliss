@@ -27,31 +27,26 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
-    <?php // <!-- Header Includes -->
-    include("../src/php/function-helpers.php"); // Various helpful functions    
+    <?php 
+    // <!-- Header Includes -->
+    include ("../src/php/function-helpers.php"); // Various helpful functions    
+    $dirLevel = getDirLevel(1); // this will return "../" 
+    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
-
-    <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   
-    ?>
-
+    <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
     <title><?php echo $item["meta_title"]?></title>
-    <!-- <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description" content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" /> -->
     <meta name="title" content="<?php echo $item["meta_title"]?>" />
     <meta name="description" content="<?php echo $item["meta_description"]?>" />
     <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
-    
-
-    <?php include("partial/every-page.html"); ?>
 </head>
 
 <body>
-    <!-- <?php echo $userMessage; ?> -->
-    <?php include("./partial/cart.php"); ?>
-    <?php include("./partial/nav.php"); ?>
+    <?php include("{$dirLevel}pages/partial/nav.php"); ?>
+    <?php // <!-- Other Includes -->
+    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
