@@ -1,39 +1,41 @@
 <?php
 session_start();
+
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <?php // <!-- Header Includes -->
-    include("../src/php/function-helpers.php"); // Various helpful functions    
+    <?php 
+    // <!-- Header Includes -->
+    include ("../src/php/function-helpers.php"); // Various helpful functions    
+    $dirLevel = getDirLevel(1); // this will return "../" 
+    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
-
-    <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   
-    ?>
-
-    <title>Product Page</title>
-    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description"
-        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
+    <link rel="stylesheet" type="text/css" href="../theme/product-page/stylesheet.css"/>
+    <title><?php echo $item["meta_title"]?></title>
+    <meta name="title" content="<?php echo $item["meta_title"]?>" />
+    <meta name="description" content="<?php echo $item["meta_description"]?>" />
+    <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
     <link rel="stylesheet" href="../theme/style.css" />
     <link rel="stylesheet" href="../theme/product/product-page.css" />
 
     <?php include("partial/every-page.html"); ?>
+        <script>
+        // Embedding PHP into JavaScript to pass the $_GET["search_query"] value
+        var searchQuery = "<?php echo isset($_GET["search_query"]) ? $_GET["search_query"] : '' ?>";
+    </script>
 </head>
 
-<body>
-    <?php include("./partial/cart.php"); ?>
-    <?php include("./partial/nav.php"); ?>
-    <div>
+<body class="container-fluid">
+
+      <?php include("{$dirLevel}pages/partial/nav.php"); ?>
+    <?php // <!-- Other Includes -->
+    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
+     <div class="container-fluid">
         <div class="row">
             <!-- Filter Section -->
             <div class="col-2"
@@ -110,7 +112,10 @@ session_start();
                         </div>
                     </form>
                     <script src="../src/js/filter.js"></script>
+                    <!-- <img id="background-leaves" src="../images/product-page-assets/leafy-background.png"> -->
                 </div>
+            </div>
+            <div>
             </div>
             <!-- Product Grid -->
             <div class="col-9">

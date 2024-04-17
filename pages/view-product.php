@@ -27,46 +27,34 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
-    <?php // <!-- Header Includes -->
-    include("../src/php/function-helpers.php"); // Various helpful functions    
+    <?php 
+    // <!-- Header Includes -->
+    include ("../src/php/function-helpers.php"); // Various helpful functions    
+    $dirLevel = getDirLevel(1); // this will return "../" 
+    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
-
-    <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   
-    ?>
-
+    <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
+    <link rel="stylesheet" type="text/css" href="../theme/view-page/stylesheet.css"/>
     <title><?php echo $item["meta_title"]?></title>
-    <!-- <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description" content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" /> -->
     <meta name="title" content="<?php echo $item["meta_title"]?>" />
     <meta name="description" content="<?php echo $item["meta_description"]?>" />
     <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-    <link rel="stylesheet" href="../theme/style.css">
-    <link rel="stylesheet" href="../theme/view-product/view-product.css">
-
-
-
-    <?php include("partial/every-page.html"); ?>
 </head>
 
 <body>
-    <!-- <?php echo $userMessage; ?> -->
-    <?php include("./partial/cart.php"); ?>
-    <?php include("./partial/nav.php"); ?>
+    <?php include("{$dirLevel}pages/partial/nav.php"); ?>
+    <?php // <!-- Other Includes -->
+    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
     <div class="container mt-5">
-        <div class="row">
+        <div class="row product">
             <div class="col-md-6">
-                <img src="../images/product-images/<?php echo $item["image"];?>" class="img-fluid" alt="Product Image">
-
+                <img src="../images/product-images/<?php echo $item["image"];?>" class="img-fluid product_img" alt="<?php echo $item["meta_alt_text"]?>">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
                 <h2><?php echo $item["name"]; ?></h2>
                 <p><img src="../images/products/star-fill.svg" alt="heart"><img src="../images/products/star-fill.svg"
                         alt="heart"><img src="../images/products/star-fill.svg" alt="heart"><img
@@ -82,10 +70,10 @@
                                 Details
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                            data-bs-parent="#productAccordion">
+
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#productAccordion" >
                             <div class="accordion-body">
-                                Product details...
+                                <?php echo $item["description"]; ?>
                             </div>
                         </div>
                     </div>
@@ -105,42 +93,36 @@
                         </div>
                     </div>
                 </div>
+                <button class="btn btn-add-to-cart mt-3"><span><img src="../images/view-page-assets/cart.svg"></span>Add to Cart</button>
                 <div class="input-group mt-3">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
-                    <input type="text" class="form-control quantity-input" placeholder="1"
-                        aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <span><input type="text" class="form-control quantity-input" style="width: 40px" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1"></span>
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
                 </div>
-                <button class="btn mt-3" style="background: #FF6421; border-radius: 30px; color: white;"><img
-                        src="../images/products/cart3.svg" alt="shopping cart"> Add to
-                    Cart</button>
             </div>
         </div>
         <div>
             <!-- reviews -->
-            <div class="row" style="margin-top: 2%; margin-bottom: 2%;">
-                <h3>Reviews</h3>
-                <div class="col-md-3">
-                    <h4>"Wonderful Product!"</h4>
-                    <p>This was such a wonderful product. It arrived in the mail and I was super happy with the quality
-                        of it just WOW</p>
-                    <h6>By: Terry</h6>
-                </div>
-                <div class="col-md-3">
-                    <h4>"Delicious"</h4>
-                    <p>Never had a better tasting product I LOOOOVVE this</p>
-                    <h6>By: Abigail</h6>
-                </div>
-                <div class="col-md-3">
-                    <h4>"Good"</h4>
-                    <p>good</p>
-                    <h6>By: Payton</h6>
-                </div>
-                <div class="col-md-3">
-                    <h4>"Great product!"</h4>
-                    <p>This is completely right up my alley! Blown away</p>
-                    <h6>By: Amy</h6>
-                </div>
+        <div class="row review">
+            <div class="col-md-3">
+                <p><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_empty.png" alt="image of a grey star"></span></p>
+                <p>Great product!</p>
+                <h6>By: Ashley Johnson</h6>
+            </div>
+            <div class="col-md-3">
+                <p><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_empty.png" alt="image of a grey star"></span></p>
+                <p>These are my favorites</p>
+                <h6>By: Casey Brown </h6>
+            </div>
+            <div class="col-md-3">
+                <p><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_empty.png" alt="image of a grey star"></span></p>
+                <p>I love having these before going to work!</p>
+                <h6>By: Morgan Davis</h6>
+            </div>
+            <div class="col-md-3">
+                <p><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span><span><img src="../images/view-page-assets/star_filled.png" alt="image of a blue star"></span></span></p>
+                <p>Possibly one of the best snacks I have had 5 STARS!!</p>
+                <h6>By: Taylor Johnson</h6>
             </div>
         </div>
     </div>

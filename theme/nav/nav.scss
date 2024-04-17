@@ -1,15 +1,11 @@
-header {}
-
-
-
 #imbliss-Header {
     --navBackground: #EFEAE9;
     $navBackground: var(--navBackground);
 
     height: 115px;
-    z-index: 1;
+    z-index: 3;
     overflow: hidden;
-    position: relative;
+    position: fixed;
     width: 100% !important;
 
     #imblissHeaderLogo {
@@ -89,4 +85,10 @@ header {}
         background: transparent linear-gradient(0deg, #32B2AD 0%, #3A8C75 8%, #000000 100%) 0% 0% no-repeat padding-box;
         opacity: 1;
     }
+}
+
+.account-context-collapse-open {
+    top: 115px !important;
+    opacity: 1 !important;
+    display: block;
 }

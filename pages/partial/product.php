@@ -6,9 +6,18 @@ $categoryOrder = ["bars", "variety pack", "energy bites", "granola", "merch"];
 
 require_once("$dirLevel/src/php/connect-db.php");
 
-$sql = "SELECT item.*, meta.alt_text as meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id ORDER BY item.name";
 
-$statement = $db->prepare($sql);
+$searchQuery = isset($_GET["search_query"]) ? $_GET["search_query"] : null;
+
+if($searchQuery !== null){
+    $searchQuery = $_GET["search_query"];
+    $sql = "SELECT item.*, meta.alt_text as meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id WHERE item.name LIKE :searchQuery ORDER BY item.name";
+    $statement = $db->prepare($sql);
+    $statement->bindValue(":searchQuery", "%".$searchQuery."%");
+}else{
+    $sql = "SELECT item.*, meta.alt_text as meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id ORDER BY item.name";
+    $statement = $db->prepare($sql);
+}
 
 if ($statement->execute()) {
     $item = $statement->fetchAll();

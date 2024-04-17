@@ -1,0 +1,17 @@
+#navAccountContextMenu {
+  position: fixed;
+  top: -4000px;
+  right: 50px;
+  transition: top 0.35s ease;
+  border: 1px solid var(--unnamed-color-32b2ad);
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  opacity: 0;
+  z-index: 1;
+}
+#navAccountContextMenu form > input {
+  width: 113px !important;
+  height: 50px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #32B2AD;
+  opacity: 1;
+}/*# sourceMappingURL=account-context.css.map */
