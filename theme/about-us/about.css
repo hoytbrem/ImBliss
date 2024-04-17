@@ -1,0 +1,25 @@
+.headshot-circle {
+  border-radius: 50% !important;
+}
+
+.full-width-image {
+  height: 300px;
+  background-position: center;
+}
+
+.banner {
+  height: 30vh;
+  background-position: center;
+  width: 100%;
+  background-size: cover;
+}
+
+* {
+  font-family: serif;
+}
+
+h1 {
+  color: #484848;
+  font-weight: bold;
+  font-size: 4em;
+}
