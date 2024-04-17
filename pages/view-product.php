@@ -43,7 +43,15 @@
     <meta name="title" content="<?php echo $item["meta_title"]?>" />
     <meta name="description" content="<?php echo $item["meta_description"]?>" />
     <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="../theme/style.css">
+    <link rel="stylesheet" href="../theme/view-product/view-product.css">
+
+
 
     <?php include("partial/every-page.html"); ?>
 </head>
@@ -56,37 +64,41 @@
         <div class="row">
             <div class="col-md-6">
                 <img src="../images/product-images/<?php echo $item["image"];?>" class="img-fluid" alt="Product Image">
-                <div class="row mt-3">
-                    <div class="col"><img src="preview1.jpg" class="img-fluid" alt="Preview Image 1"></div>
-                    <div class="col"><img src="preview2.jpg" class="img-fluid" alt="Preview Image 2"></div>
-                    <div class="col"><img src="preview3.jpg" class="img-fluid" alt="Preview Image 3"></div>
-                </div>
+
             </div>
             <div class="col-md-6">
                 <h2><?php echo $item["name"]; ?></h2>
-                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span>120 reviews</p>
+                <p><img src="../images/products/star-fill.svg" alt="heart"><img src="../images/products/star-fill.svg"
+                        alt="heart"><img src="../images/products/star-fill.svg" alt="heart"><img
+                        src="../images/products/star-fill.svg" alt="heart"><img src="../images/products/star-fill.svg"
+                        alt="heart">120 reviews</p>
                 <h4>$<?php echo number_format($item["price"], 2); ?></h4>
                 <p><?php echo $item["description"]; ?></p>
-                <div class="accordion" id="productAccordion">
+                <div class="accordion no-border" id="productAccordion">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 Details
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#productAccordion">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#productAccordion">
                             <div class="accordion-body">
                                 Product details...
                             </div>
                         </div>
                     </div>
+                    <hl style="margin-top: 10px; margin-bottom: 10px;" />
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Shipping & Handling
                             </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#productAccordion">
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#productAccordion">
                             <div class="accordion-body">
                                 Shipping and handling details...
                             </div>
@@ -95,39 +107,40 @@
                 </div>
                 <div class="input-group mt-3">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
-                    <input type="text" class="form-control quantity-input" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                    <input type="text" class="form-control quantity-input" placeholder="1"
+                        aria-label="Example text with button addon" aria-describedby="button-addon1">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
                 </div>
-                <button class="btn btn-primary mt-3"><span class="bi bi-heart"></span> Add to Cart</button>
+                <button class="btn mt-3" style="background: #FF6421; border-radius: 30px; color: white;"><img
+                        src="../images/products/cart3.svg" alt="shopping cart"> Add to
+                    Cart</button>
             </div>
         </div>
         <div>
             <!-- reviews -->
-        <div class="row">
-            <h3>Reviews</h3>
-            <div class="col-md-3">
-                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span> 5 stars</p>
-                <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
-                    product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
-                <h6>By: name here</h6>
-            </div>
-            <div class="col-md-3">
-                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span> 5 stars</p>
-                <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
-                    product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
-                <h6>By: name here</h6>
-            </div>
-            <div class="col-md-3">
-                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span> 5 stars</p>
-                <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
-                    product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
-                <h6>By: name here</h6>
-            </div>
-            <div class="col-md-3">
-                <p><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-fill"></span><span class="bi bi-star-half"></span> 5 stars</p>
-                <p>Great product!Great product!Great product!Great product!Great product!Great product!Great
-                    product!Great product!Great product!Great product!Great product!Great product!Great product!</p>
-                <h6>By: name here</h6>
+            <div class="row" style="margin-top: 2%; margin-bottom: 2%;">
+                <h3>Reviews</h3>
+                <div class="col-md-3">
+                    <h4>"Wonderful Product!"</h4>
+                    <p>This was such a wonderful product. It arrived in the mail and I was super happy with the quality
+                        of it just WOW</p>
+                    <h6>By: Terry</h6>
+                </div>
+                <div class="col-md-3">
+                    <h4>"Delicious"</h4>
+                    <p>Never had a better tasting product I LOOOOVVE this</p>
+                    <h6>By: Abigail</h6>
+                </div>
+                <div class="col-md-3">
+                    <h4>"Good"</h4>
+                    <p>good</p>
+                    <h6>By: Payton</h6>
+                </div>
+                <div class="col-md-3">
+                    <h4>"Great product!"</h4>
+                    <p>This is completely right up my alley! Blown away</p>
+                    <h6>By: Amy</h6>
+                </div>
             </div>
         </div>
     </div>

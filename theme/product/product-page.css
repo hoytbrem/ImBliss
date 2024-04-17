@@ -1,0 +1,20 @@
+.view-button {
+  background: #32b2ad;
+  border-radius: 28px;
+  color: white;
+  width: 100%;
+}
+.add-to-cart-button {
+  background: #ff6421;
+  border-radius: 28px;
+  color: white;
+}
+* {
+  font-family: serif;
+}
+
+input,
+input[type="checkbox"],
+input[type="radio"] {
+  border: 5px solid #32b2ad !important;
+}
