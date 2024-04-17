@@ -22,6 +22,7 @@ function renderHeader($page_title, $dirLevel)
   <link rel="stylesheet" type="text/css" href="../theme/style.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/normalize.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/stylesheet.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/sage-styles.css" />
 
   <!-- Scripts -->
   <script src="<?php echo $dirLevel ?>src/js/imbliss.js" defer></script>
