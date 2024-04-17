@@ -10,8 +10,8 @@
     // <!-- Header Includes -->
     include ("../src/php/function-helpers.php"); // Various helpful functions    
     $dirLevel = getDirLevel(1); // this will return "../" 
-    include("{$dirLevel}partial/every-page.html"); // Google Analytics
     include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
     <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
 </head>

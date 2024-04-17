@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $city = htmlspecialchars($_POST["city"]);
     $state = htmlspecialchars($_POST["state"]);
     $zipCode = htmlspecialchars($_POST["zipCode"]);
+    $password = htmlspecialchars($_POST["password"]);
     $success = true;
 } else {
     echo "<h4> Error getting information</h4>";
@@ -25,7 +26,7 @@ if ($success) {
 
     // Running the sql statement putting the info into the database
     $sql = "update user set user_first_name = :fname, user_last_name = :lname, user_email = :email, user_street_address = :streetAddress, 
-    user_city = :city, user_state = :state, user_zip_code = :zipCode WHERE user_id = :userId";
+    user_city = :city, user_state = :state, user_zip_code = :zipCode, user_password = :password WHERE user_id = :userId";
 
     $statement = $db->prepare($sql);
 
@@ -38,6 +39,7 @@ if ($success) {
     $statement->bindValue(":city", $city);
     $statement->bindValue(":state", $state);
     $statement->bindValue(":zipCode", $zipCode);
+    $statement->bindValue(":password", $password);
 
     if ($statement->execute()) {
         $statement->closeCursor();

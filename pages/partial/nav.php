@@ -11,8 +11,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true) {
     $userLoggedIn = false;
 }
 
-//echo var_dump($testest);
-
 // Checking to see if the user has an admin flag on their account
 if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
     $isAdmin = "true";
@@ -77,12 +75,13 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
           <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
         </div> f-->
 
-                <div class="d-flex" id="functionPanel">
-                    <div class="search " id="searchBar">
-                        <span id="imbliss-search-icon"></span>
-                        <input id="search_query" class="rounded-pill" name="search_query" type="text"
-                            placeholder="Search">
-                    </div>
+        <div class="d-flex" id="functionPanel">
+          <form action="product-page.php" method="GET">
+            <div class="search " id="searchBar">
+              <span id="imbliss-search-icon"></span>
+                <input id="search_query" class="rounded-pill" name="search_query" type="text" placeholder="Search">
+          </form>
+        </div>
 
                     <!-- Open Account -->
                     <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/person-circle.svg" type="button"

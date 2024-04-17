@@ -50,7 +50,7 @@ if ($statement->execute()) {
         <div class="card" style="width: 40rem;">
             <div class="card-body">
                 <h5 class="card-title text-center">Edit Account</h5>
-                <form action="../profile/process/process-user-account-update.php" method="POST" id="signup-form">
+                <form action="../profile/process/process-user-account-update.php" method="POST" id="edit-form">
                     <input type="hidden" name="user_id" value="<?php echo $userAccount["user_id"] ?>">
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -84,6 +84,26 @@ if ($statement->execute()) {
                             <label for="inputStreetAddress" class="form-label">Zip Code</label>
                             <input type="text" class="form-control" id="inputZipCode" name="zipCode" aria-describedby="zipCodeHelp" value="<?php echo $userAccount["user_zip_code"] ?>">
                         </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="inputStreetAddress" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="inputPassword" name="password" aria-describedby="passwordHelp" value="<?php echo $userAccount["user_password"] ?>">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="inputStreetAddress" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="inputPasswordConfirm" name="confirmPassword" aria-describedby="confirmPasswordHelp" value="<?php echo $userAccount["user_password"] ?>">
+                        </div>
+                        <!-- Placeholder Password Confirmation. Will display an alert if the passwords do not match. -->
+                        <script>
+                            document.getElementById("edit-form").addEventListener("submit", function(event) {
+                                var password = document.getElementById("inputPassword").value;
+                                var confirmPassword = document.getElementById("inputPasswordConfirm").value;
+
+                                if (password !== confirmPassword){
+                                    alert("Passwords do not match");
+                                    event.preventDefault();
+                                }
+                            });
+                        </script>
                     </div>
                     <button type="submit" class="btn btn-primary">Update Account</button>
                 </form>
