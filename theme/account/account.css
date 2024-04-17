@@ -1,0 +1,29 @@
+.pfp {
+  border-radius: 50%;
+  width: 9em;
+  height: 9em;
+}
+#edit-account {
+  background: #ff6421;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  left: 0;
+  text-decoration: none;
+}
+
+#users-data > * {
+  margin: 10px 0;
+}
+
+* {
+  font-family: serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
