@@ -14,12 +14,33 @@
   background-size: cover;
 }
 
+.meet-the-team {
+  position: relative;
+}
+
+.meet-the-team::before {
+  content: "";
+  background-image: url("../../images/about/organic-white-background.jpg");
+  opacity: 0.22;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
 * {
   font-family: serif;
+  color: #484848;
 }
 
 h1 {
   color: #484848;
   font-weight: bold;
   font-size: 4em;
+}
+
+p {
+  font-family: sans-serif;
 }
