@@ -19,11 +19,11 @@ function renderHeader($page_title, $dirLevel)
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/style.css" />
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/normalize.css" />
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/stylesheet.css" />
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/sage-styles.css" />
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/nav/account-context.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/style.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/stylesheet.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/sage-styles.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/nav/account-context.css" />
 
   <!-- Scripts -->
   <script src="<?php echo $dirLevel ?>src/js/imbliss.js" defer></script>
