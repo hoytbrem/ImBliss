@@ -3,10 +3,10 @@
     if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
         } else {
             ?>
-                <script>
-                    window.location.replace("login.php");
-                </script>
-            <?php
+<script>
+window.location.replace("login.php");
+</script>
+<?php
         }
 
     $userMessage = "";
@@ -25,19 +25,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <?php // <!-- Header Includes -->
-    include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
-    <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   ?>
-    <title>Account</title>
-    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description"
-        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" />
-    <?php include("../pages/partial/every-page.html"); ?>
-</head>
 
+<head>
+    <?php 
+    // <!-- Header Includes -->
+    include ("../src/php/function-helpers.php"); // Various helpful functions    
+    $dirLevel = getDirLevel(1); // this will return "../" 
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
+    include("{$dirLevel}pages/partial/header.php"); 
+    renderHeader("Admin User List", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    ?>
+</head>
 
 <body class="container-fluid">
 
@@ -45,16 +43,16 @@
     <?php // <!-- Other Includes -->
     include ("../pages/partial/cart.php"); // Cart ?>
 
-    <main>
+    <main style="margin-top: 115px;">
         <h2>All Users</h2>
         <!-- Table grabs all of the users in the database.
         There is also a button that shows up to make a user an admin, if not already one. -->
         <!-- Yes it's not pretty, but we can worry about this later -->
         <table>
-        <?php
+            <?php
             foreach($userID as $u){
                 ?>
-                <tr>
+            <tr>
                 <td style="font-weight: bold;"><?php 
                         if($u["user_admin"] == 1){
                             echo "Admin";
@@ -66,16 +64,16 @@
                     <?php 
                         if($u["user_admin"] != 1){
                             ?>
-                                <form action="../profile/process/process-admin-update-user.php" method="POST">
-                                    <input type="hidden" name="user_id" value="<?php echo $u["user_id"]?>">
-                                    <input type="submit" value="Make Admin">
-                                </form>
-                            <?php
+                    <form action="../profile/process/process-admin-update-user.php" method="POST">
+                        <input type="hidden" name="user_id" value="<?php echo $u["user_id"]?>">
+                        <input type="submit" value="Make Admin">
+                    </form>
+                    <?php
                         }
                     ?>
                 </td>
-                </tr>
-                <?php
+            </tr>
+            <?php
             }
         ?>
         </table>
@@ -83,4 +81,5 @@
     </main>
     <?php include("./partial/footer.html"); ?>
 </body>
+
 </html>

@@ -11,12 +11,13 @@
     include ("../src/php/function-helpers.php"); // Various helpful functions    
     $dirLevel = getDirLevel(1); // this will return "../" 
     include("{$dirLevel}partial/every-page.html"); // Google Analytics
-    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}pages/partial/header.php"); 
+    renderHeader("Contact Us", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     ?>
-    <link rel="stylesheet" type="text/css" href="../theme/contact/contact.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel?>/theme/contact/contact.css" />
 </head>
 
-<body class="container-fluid" id="indexBody">
+<body class="container-fluid">
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
     include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>

@@ -9,6 +9,15 @@
   border-radius: 28px;
   color: white;
 }
+
+.filter-section {
+  height: 90vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 * {
   font-family: serif;
 }
@@ -16,5 +25,5 @@
 input,
 input[type="checkbox"],
 input[type="radio"] {
-  border: 5px solid #32b2ad !important;
+  border: 2px solid #32b2ad !important;
 }

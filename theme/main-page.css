@@ -4,8 +4,7 @@
 
 /* hero section */
 #hero-section {
-  background: linear-gradient(90deg, #ffffff 0%, #ffffff00 100%),
-    url("../images/main/kitchen-countertop-background.jpg");
+  margin-top: 115px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

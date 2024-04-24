@@ -16,18 +16,21 @@
                             <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
                             <button type="submit" class="btn view-button">View</a>
                         </form>
-                        <button onclick='addItem(` <?php echo json_encode($i) ?> `)' class="btn add-to-cart-button">Add to
+                        <button onclick='addItem(` <?php echo json_encode($i) ?> `)' class="btn add-to-cart-button">Add
+                            to
                             Cart</button>
                         <button class="btn"><img src="../images/products/heart.svg" alt="star" /></button>
                     </div>
-                    <div class="mt-2">
+                    <div class="mt-4">
                         <div class="row">
-                            <div class="col-4"><img src="../images/products/star-fill.svg" alt="star" /><img
-                                    src="<?php echo $dirLevel ?>/images/products/star-fill.svg" alt="star" /><img
-                                    src="<?php echo $dirLevel ?>/images/products/star-fill.svg" alt="star" /><img
-                                    src="<?php echo $dirLevel ?>/images/products/star-fill.svg" alt="star" /><img
-                                    src="<?php echo $dirLevel ?>/images/products/star-fill.svg" alt="star" /></div>
-                            <div class="col-5"><span class="ms-2">120 Reviews</span></div>
+                            <div class="col-5">
+                                <img src="../images/products/star-fill.svg" alt="star" />
+                                <img src="../images/products/star-fill.svg" alt="star" />
+                                <img src="../images/products/star-fill.svg" alt="star" />
+                                <img src="../images/products/star-fill.svg" alt="star" />
+                                <img src="../images/products/star-fill.svg" alt="star" />
+                            </div>
+                            <div class="col-4"><span class="ms-2">120 Reviews</span></div>
                             <div class="col-1">
                                 <strong class="mt-1">$<?php echo number_format($i["price"], 2); ?></strong>
                             </div>

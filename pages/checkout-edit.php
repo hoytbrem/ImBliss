@@ -3,14 +3,16 @@
 <html lang="en">
 
 <head>
-<?php 
+    <?php 
 $_SESSION["cart_items"] = "somethin";
     // <!-- Header Includes -->
     include ("../src/php/function-helpers.php"); // Various helpful functions    
     $dirLevel = getDirLevel(1); // this will return "../" 
     include("{$dirLevel}partial/every-page.html"); // Google Analytics
-    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
-    include("{$dirLevel}src/php/grab-cart-variables.php"); grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist.
+    include("{$dirLevel}pages/partial/header.php"); 
+    renderHeader("Checkout Edit", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}src/php/grab-cart-variables.php"); 
+    grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist.
     ?>
     <?php include("partial/every-page.html"); ?>
 </head>

@@ -62,10 +62,11 @@ body {
 /* Footer Parents */
 footer {
   display: flex;
-  background-color: #83bead;
+  background: transparent linear-gradient(180deg, #32b2ad 0%, #257e7b 100%) 0%
+    0% no-repeat padding-box;
+  margin: auto;
   padding: 1%;
-  bottom: 0px;
-  margin: 0;
+  text-decoration: none;
 }
 #footer-logo {
   flex: 0 0 20%;
@@ -73,14 +74,22 @@ footer {
 #footer-links {
   flex: 0 0 40%;
 }
+.footer-link {
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0 20px;
+  color: white;
+}
 #footer-contact {
   flex: 0 0 40%;
+}
+#footer-contact > * {
+  color: white;
 }
 /* Footer Children */
 footer > * > ul {
   display: flex;
 }
-footer > * > ul > li {
+footer div ul li {
   list-style-type: none;
-  margin: 0 20px;
 }
