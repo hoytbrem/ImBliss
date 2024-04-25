@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
 ?>
                     <script>
-                        window.location.replace("../../pages/index.php");
+                        window.location.replace("../../pages/account.php");
                     </script>
                 <?php
                 } else {

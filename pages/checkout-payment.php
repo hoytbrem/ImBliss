@@ -4,15 +4,17 @@
 
 <head>
     <?php // <!-- Header Includes -->
-    include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
+    $_SESSION["cart_items"] = "somethin";
+    include("../src/php/function-helpers.php"); // Various helpful functions    
+    ?>
     <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   ?>
-    <title>Login</title>
-    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description"
-        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" />
-    <?php include("partial/every-page.html"); ?>
+    $dirLevel = getDirLevel(1); // this will return "../"  
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
+    include("{$dirLevel}pages/partial/header.php");
+    renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}src/php/grab-cart-variables.php");
+    grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. 
+    ?>
 </head>
 
 <body class="container-fluid">
