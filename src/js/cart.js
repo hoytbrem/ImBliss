@@ -6,32 +6,31 @@ let revive = (key, value) => {
 
     switch (key) {
         case "_item_id":
+        case "item_id":
             return parseInt(value);
         case "_qty":
+        case "qty":    
             return parseInt(value);
         case "_name":
+        case "name":           
             return value.toString();
         case "_price":
+        case "price":
             return parseFloat(value);
-        case "_description":
-            return value.toString();
-        case "_category":
-            return value.toString();
-        case "_image":
-            return value.toString();
-        case "_alt_text":
-            return value.toString();
         case "_rating":
+        case "rating":
             return parseInt(value);
         case "_totalPrice":
+        case "totalPrice":
             return parseFloat(value);
         default:
+            return value;
     }
 };
 
 async function getCartItems(testingFor = "") {
 
-    let storage_cart_items = await JSON.parse(localStorage.getItem("cart_items"));
+    let storage_cart_items = await JSON.parse(localStorage.getItem("cart_items"), revive);
 
     console.log(`Storage: ${storage_cart_items}`);
 
@@ -140,7 +139,7 @@ async function validateItems() {
             }
             return response.text();
         })
-        .then(async (data) => {
+        .then((data) => {
             if (!data) {
                 console.log("No cart data to validate.");
                 return null;
@@ -151,7 +150,7 @@ async function validateItems() {
                 } else {
                     console.log("Cart integrity has been damaged.");
                     cartList = [];
-                    await localStorage.clear();
+                    localStorage.clear();
                     handleIfEmpty(imblissCartContainer);
 
                     return false;
@@ -314,4 +313,4 @@ setInterval(() => {
             cartList[0].updateTotalAndPrice();
         }
     } catch { }
-}, 500);
+}, 1000);

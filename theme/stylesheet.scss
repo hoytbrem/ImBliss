@@ -34,3 +34,29 @@ body {
     padding-left: 20px;
     font-size: 20px;
 }
+
+.invalid-input {
+    background: #a7282840 !important;
+
+    &::after {
+        content: " Please Check Again."
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem #a7282840;
+    }
+}
+
+.valid-input {
+    background: 28a75540 !important;
+
+    &::after {
+        font-size: 2em;
+        color: black;
+        content: " Looks Good!"
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem #28a75540;
+    }
+}

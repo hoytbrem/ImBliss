@@ -16,12 +16,8 @@
     <?php // <!-- Header Includes -->
     include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
     <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   ?>
-    <title>Login</title>
-    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description"
-        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" />
+    $dirLevel = getDirLevel(1); // this will return "../"   
+    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); ?>
     <?php include("partial/every-page.html"); ?>
 </head>
 
@@ -29,8 +25,8 @@
     <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
     include ("./partial/cart.php"); // Cart ?>
-    <main class="d-flex align-items-center justify-content-center" style="height: 80vh;">
-        <div class="card" style="width: 40rem;">
+    <main class="d-flex align-items-center justify-content-center" style="height: 80vh; ">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title text-center">Sign Up</h5>
                 <h6 class="card-subtitle mb-2 text-muted text-center">Already have an account? <a
