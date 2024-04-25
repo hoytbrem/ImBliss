@@ -1,17 +1,23 @@
-<?php session_start(); ?>
+<?php session_start();
+    if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
+        header('Location: checkout-form.php');
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <?php // <!-- Header Includes -->
+    <?php // Header Includes
     include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
     <?php // <!-- "Global" variables --> 
     $dirLevel = getDirLevel(1); // this will return "../"  
-    include ("{$dirLevel}partial/every-page.html"); // Google Analytics
+    include ("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     include ("{$dirLevel}pages/partial/header.php");
     renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include ("{$dirLevel}src/php/grab-cart-variables.php");
     grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. ?>
+    
     <!-- <?php
     // <!-- Header Includes -->
     // include ("../src/php/function-helpers.php"); // Various helpful functions    
@@ -38,7 +44,7 @@
                     </div>
                     <div>
                         <h5>Sign In</h5>
-                        <form>
+                        <form action="checkout-form.php" method="POST">
                             <div class="mb-3">
                                 <input type="email" class="form-control" placeholder="Email">
                             </div>
@@ -50,7 +56,9 @@
                     </div>
                     <div>
                         <h5>Guest</h5>
-                        <button class="btn btn-secondary">Checkout as a guest</button>
+                        <form action="checkout-form.php" method="GET">
+                            <button class="btn btn-secondary">Checkout as a guest</button>
+                        </form>
                     </div>
                 </div>
                 <!-- Right side -->
