@@ -2,8 +2,22 @@
 
 function renderHeader($page_title, $dirLevel)
 {
-  ?>
-  <title><?php echo $page_title ?></title>
+  $php_page_name ??= basename($_SERVER["PHP_SELF"], ".php");
+  $php_page_name = preg_replace_callback('/(-)|(\b[a-z])/', function ($matches) {
+
+    if (!empty ($matches[1])) { // If the match is a hyphen
+
+      return " "; // Replace it with a space
+
+    } else { // If the match is the first letter of a word
+      
+      return strtoupper($matches[0]); // Capitalize it
+    }
+  }, $php_page_name);
+
+  $php_page_name = $php_page_name == "Index" ? "Home" : $php_page_name ?>
+
+  <title><?php echo !str_contains(ucfirst($page_title), $php_page_name) ? $php_page_name : $page_title ?></title>
   <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
   <meta name="description"
     content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
