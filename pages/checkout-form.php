@@ -31,8 +31,8 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
     include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     include("{$dirLevel}pages/partial/header.php");
     renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
-    // include("{$dirLevel}src/php/grab-cart-variables.php");
-    // grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. 
+    include("{$dirLevel}src/php/grab-cart-variables.php");
+    grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. 
     ?>
 
     <!-- <?php
