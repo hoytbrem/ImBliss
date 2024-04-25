@@ -70,6 +70,10 @@ if ($success){
     include ("./partial/cart.php"); // Cart ?>
     <main>
         <div class="container">
+            <!-- Temporary Solution to spacing issue -->
+        <div class="row mb-5"></div>
+        <div class="row mb-5"></div>
+        <div class="row mb-5"></div>
             <div class="row">
                 <!-- Left side -->
                 <div class="col-md-8">
