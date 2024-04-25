@@ -66,31 +66,31 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
                             <input type="hidden" name="user_id" value="<?php echo $userAccount["user_id"] ?>">
                             <div class="row">
                                 <div class="mb-2 col-md-6">
-                                    <input class="form-control" type="text" placeholder="First Name" name="fName" value="<?php if(isset($userAccount)){echo $userAccount["user_first_name"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="First Name" name="fName" value="<?php if(isset($userAccount)){echo $userAccount["user_first_name"];} ?>" required>
                                 </div>
                                 <div class="mb-2 col-md-6">
-                                    <input class="form-control" type="text" placeholder="Last Name" name="lName" value="<?php if(isset($userAccount)){echo $userAccount["user_last_name"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="Last Name" name="lName" value="<?php if(isset($userAccount)){echo $userAccount["user_last_name"];} ?>" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-2 col-md-12">
-                                    <input class="form-control" type="text" placeholder="Address" name="streetAddress" value="<?php if(isset($userAccount)){echo $userAccount["user_street_address"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="Address" name="streetAddress" value="<?php if(isset($userAccount)){echo $userAccount["user_street_address"];} ?>" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-6">
-                                    <input class="form-control" type="text" placeholder="City" name="city" value="<?php if(isset($userAccount)){echo $userAccount["user_city"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="City" name="city" value="<?php if(isset($userAccount)){echo $userAccount["user_city"];} ?>" required>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <input class="form-control" type="text" placeholder="State" name="state" value="<?php if(isset($userAccount)){echo $userAccount["user_state"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="State" name="state" value="<?php if(isset($userAccount)){echo $userAccount["user_state"];} ?>" required>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <input class="form-control" type="text" placeholder="Zip Code" name="zipCode" value="<?php if(isset($userAccount)){echo $userAccount["user_zip_code"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="Zip Code" name="zipCode" value="<?php if(isset($userAccount)){echo $userAccount["user_zip_code"];} ?>" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-12">
-                                    <input class="form-control" type="email" placeholder="Email" name="email" value="<?php if(isset($userAccount)){echo $userAccount["user_email"];} ?>" require>
+                                    <input class="form-control" type="email" placeholder="Email" name="email" value="<?php if(isset($userAccount)){echo $userAccount["user_email"];} ?>" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -105,13 +105,13 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
                             </div>
                             <div class="row">
                                 <div class=" mb-4 col-md-6">
-                                    <input class="form-control" type="text" placeholder="Card Information" name="cardNumber" value="<?php if(isset($userAccount)){echo $userAccount["user_card_number"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="Card Information" name="cardNumber" value="<?php if(isset($userAccount)){echo $userAccount["user_card_number"];} ?>" required>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" type="text" placeholder="Date" name="cardDate" value="<?php if(isset($userAccount)){echo $userAccount["user_card_date"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="Date" name="cardDate" value="<?php if(isset($userAccount)){echo $userAccount["user_card_date"];} ?>" required>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" type="text" placeholder="CSV" name="cardCSV" value="<?php if(isset($userAccount)){echo $userAccount["user_csv"];} ?>" require>
+                                    <input class="form-control" type="text" placeholder="CSV" name="cardCSV" value="<?php if(isset($userAccount)){echo $userAccount["user_csv"];} ?>" required>
                                 </div>
                             </div>
                         <div class="row">
