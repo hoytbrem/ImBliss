@@ -15,9 +15,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
 }
 
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,12 +44,14 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
 </head>
 
 <body class="container-fluid">
-    <main class="d-flex align-items-center justify-content-center container-fluid" style="height: 80vh;">
         <?php include("./partial/nav.php"); ?>
         <?php
         // <!-- Other Includes -->
         include("./partial/cart.php"); // Cart 
         ?>
+    <div class="row mb-5"></div>
+    <main class="d-flex align-items-center justify-content-center container-fluid" style="height: 80vh;">
+
         <div class="container mt-5">
             <div class="row">
                 <!-- Left side -->
@@ -67,31 +66,52 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
                             <input type="hidden" name="user_id" value="<?php echo $userAccount["user_id"] ?>">
                             <div class="row">
                                 <div class="mb-2 col-md-6">
-                                    <input class="form-control" type="text" placeholder="First Name" name="fName" value="<?php if(isset($userAccount)){echo $userAccount["user_first_name"];} ?>">
+                                    <input class="form-control" type="text" placeholder="First Name" name="fName" value="<?php if(isset($userAccount)){echo $userAccount["user_first_name"];} ?>" require>
                                 </div>
                                 <div class="mb-2 col-md-6">
-                                    <input class="form-control" type="text" placeholder="Last Name" name="lName" value="<?php if(isset($userAccount)){echo $userAccount["user_last_name"];} ?>">
+                                    <input class="form-control" type="text" placeholder="Last Name" name="lName" value="<?php if(isset($userAccount)){echo $userAccount["user_last_name"];} ?>" require>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-2 col-md-12">
-                                    <input class="form-control" type="text" placeholder="Address" name="streetAddress" value="<?php if(isset($userAccount)){echo $userAccount["user_street_address"];} ?>">
+                                    <input class="form-control" type="text" placeholder="Address" name="streetAddress" value="<?php if(isset($userAccount)){echo $userAccount["user_street_address"];} ?>" require>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-6">
-                                    <input class="form-control" type="text" placeholder="City" name="city" value="<?php if(isset($userAccount)){echo $userAccount["user_city"];} ?>">
+                                    <input class="form-control" type="text" placeholder="City" name="city" value="<?php if(isset($userAccount)){echo $userAccount["user_city"];} ?>" require>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <input class="form-control" type="text" placeholder="State" name="state" value="<?php if(isset($userAccount)){echo $userAccount["user_state"];} ?>">
+                                    <input class="form-control" type="text" placeholder="State" name="state" value="<?php if(isset($userAccount)){echo $userAccount["user_state"];} ?>" require>
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <input class="form-control" type="text" placeholder="Zip Code" name="zipCode" value="<?php if(isset($userAccount)){echo $userAccount["user_zip_code"];} ?>">
+                                    <input class="form-control" type="text" placeholder="Zip Code" name="zipCode" value="<?php if(isset($userAccount)){echo $userAccount["user_zip_code"];} ?>" require>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-12">
-                                    <input class="form-control" type="email" placeholder="Email" name="email" value="<?php if(isset($userAccount)){echo $userAccount["user_email"];} ?>">
+                                    <input class="form-control" type="email" placeholder="Email" name="email" value="<?php if(isset($userAccount)){echo $userAccount["user_email"];} ?>" require>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-4">
+                                    <h4>What's your payment information?</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>Enter Your card information</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" mb-4 col-md-6">
+                                    <input class="form-control" type="text" placeholder="Card Information" name="cardNumber" value="<?php if(isset($userAccount)){echo $userAccount["user_card_number"];} ?>" require>
+                                </div>
+                                <div class="col-md-3">
+                                    <input class="form-control" type="text" placeholder="Date" name="cardDate" value="<?php if(isset($userAccount)){echo $userAccount["user_card_date"];} ?>" require>
+                                </div>
+                                <div class="col-md-3">
+                                    <input class="form-control" type="text" placeholder="CSV" name="cardCSV" value="<?php if(isset($userAccount)){echo $userAccount["user_csv"];} ?>" require>
                                 </div>
                             </div>
                         <div class="row">

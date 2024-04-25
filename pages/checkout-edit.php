@@ -9,6 +9,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $city = htmlspecialchars($_POST["city"]);
     $state = htmlspecialchars($_POST["state"]);
     $zipCode = htmlspecialchars($_POST["zipCode"]);
+    $cardNumber = htmlspecialchars($_POST["cardNumber"]);
+    $cardDate = htmlspecialchars($_POST["cardDate"]);
+    $cardCSV = htmlspecialchars($_POST["cardCSV"]);
     $success = true;
 }
 
@@ -17,7 +20,7 @@ if ($success){
 
     // Running the sql statement putting the info into the database
     $sql = "update user set user_first_name = :fname, user_last_name = :lname, user_email = :email, user_street_address = :streetAddress, 
-    user_city = :city, user_state = :state, user_zip_code = :zipCode WHERE user_id = :userId";
+    user_city = :city, user_state = :state, user_zip_code = :zipCode, user_card_number = :cardNumber, user_card_date = :cardDate, user_csv = :cardCSV WHERE user_id = :userId";
 
     $statement = $db->prepare($sql);
 
@@ -30,6 +33,9 @@ if ($success){
     $statement->bindValue(":city", $city);
     $statement->bindValue(":state", $state);
     $statement->bindValue(":zipCode", $zipCode);
+    $statement->bindValue(":cardNumber", $cardNumber);
+    $statement->bindValue(":cardDate", $cardDate);
+    $statement->bindValue(":cardCSV", $cardCSV);
 
     if ($statement->execute()) {
         $statement->closeCursor();
@@ -97,7 +103,7 @@ if ($success){
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
                             <h5>Payment</h5>
-                            <p>Payment details</p>
+                            <p>Card Ending in <?php if($success){ echo substr($cardNumber ,-4) ;}?></p>
                         </div>
                         <a href="#">Edit</a>
                     </div>
