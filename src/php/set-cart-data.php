@@ -5,6 +5,13 @@ session_start();
 $cart_items = json_decode(file_get_contents("php://input"), true);
 $_SESSION["cart_items"] = $cart_items;
 
+$updated_cart_items = [];
+foreach ($cart_items as $key => $value) {
+    $new_key = preg_replace('/_/', '', $key, 1);
+    $updated_cart_items[$new_key] = $value;
+}
+$cart_items = $updated_cart_items;
+
 if ($cart_items == null) {
     echo "true";
     exit;

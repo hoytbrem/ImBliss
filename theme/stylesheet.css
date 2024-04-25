@@ -31,4 +31,26 @@ body {
 .checkout-product-name {
   padding-left: 20px;
   font-size: 20px;
+}
+
+.invalid-input {
+  background: rgba(167, 40, 40, 0.2509803922) !important;
+}
+.invalid-input::after {
+  content: " Please Check Again.";
+}
+.invalid-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.2509803922);
+}
+
+.valid-input {
+  background: 28a75540 !important;
+}
+.valid-input::after {
+  font-size: 2em;
+  color: black;
+  content: " Looks Good!";
+}
+.valid-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 85, 0.2509803922);
 }/*# sourceMappingURL=stylesheet.css.map */

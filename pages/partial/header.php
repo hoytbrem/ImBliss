@@ -1,6 +1,6 @@
 <?php
 
-function renderHeader($page_title, $dirLevel)
+function renderHeader($page_title, $dirLevel, $needsDatabase = false)
 {
   $php_page_name ??= basename($_SERVER["PHP_SELF"], ".php");
   $php_page_name = preg_replace_callback('/(-)|(\b[a-z])/', function ($matches) {
@@ -43,6 +43,7 @@ function renderHeader($page_title, $dirLevel)
   <script src="<?php echo $dirLevel ?>src/js/imbliss.js" defer></script>
 
 <?php // <!-- "Global" variables --> 
+echo $_SESSION["admin-login"] ??= "no admin";
 }
 
 ?>
