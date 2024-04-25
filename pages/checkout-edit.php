@@ -1,18 +1,61 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $userId = htmlspecialchars($_POST["user_id"]);
+    $fName = htmlspecialchars($_POST["fName"]);
+    $lName = htmlspecialchars($_POST["lName"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $streetAddress = htmlspecialchars($_POST["streetAddress"]);
+    $city = htmlspecialchars($_POST["city"]);
+    $state = htmlspecialchars($_POST["state"]);
+    $zipCode = htmlspecialchars($_POST["zipCode"]);
+    $success = true;
+}
+
+if ($success){
+    require_once("../src/php/connect-db.php");
+
+    // Running the sql statement putting the info into the database
+    $sql = "update user set user_first_name = :fname, user_last_name = :lname, user_email = :email, user_street_address = :streetAddress, 
+    user_city = :city, user_state = :state, user_zip_code = :zipCode WHERE user_id = :userId";
+
+    $statement = $db->prepare($sql);
+
+    // BINDS
+    $statement->bindValue(":userId", $userId);
+    $statement->bindValue(":fname", $fName);
+    $statement->bindValue(":lname", $lName);
+    $statement->bindValue(":email", $email);
+    $statement->bindValue(":streetAddress", $streetAddress);
+    $statement->bindValue(":city", $city);
+    $statement->bindValue(":state", $state);
+    $statement->bindValue(":zipCode", $zipCode);
+
+    if ($statement->execute()) {
+        $statement->closeCursor();
+        // Message that will display for the user letting them know their account was created
+        $userMessage = "<h4>The account has been updated! You will be redirected in 5 seconds.</h4>";
+    }
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 <?php 
-$_SESSION["cart_items"] = "somethin";
-    // <!-- Header Includes -->
-    include ("../src/php/function-helpers.php"); // Various helpful functions    
-    $dirLevel = getDirLevel(1); // this will return "../" 
-    include("{$dirLevel}partial/every-page.html"); // Google Analytics
-    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
-    include("{$dirLevel}src/php/grab-cart-variables.php"); grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist.
-    ?>
-    <?php include("partial/every-page.html"); ?>
+    $_SESSION["cart_items"] = "somethin";
+    // Header Includes
+    include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
+    <?php // <!-- "Global" variables --> 
+    $dirLevel = getDirLevel(1); // this will return "../"  
+    include ("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
+    include ("{$dirLevel}pages/partial/header.php");
+    renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include ("{$dirLevel}src/php/grab-cart-variables.php");
+    grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. ?>
 </head>
 
 <body class="container-fluid">
@@ -26,7 +69,7 @@ $_SESSION["cart_items"] = "somethin";
                 <div class="col-md-8">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="mb-0">Checkout</h4>
-                        <a href="#">Back to shopping</a>
+                        <a href="product-page.php">Back to shopping</a>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
@@ -38,9 +81,9 @@ $_SESSION["cart_items"] = "somethin";
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
                             <h5>Shipping</h5>
-                            <p>Address details</p>
+                            <p><?php if($success){ echo $streetAddress . " " . $city . ", " . $state ;}?></p>
                         </div>
-                        <a href="#">Edit</a>
+                        <a href="checkout-form.php">Edit</a>
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between align-items-center mb-3">

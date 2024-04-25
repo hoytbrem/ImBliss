@@ -24,6 +24,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
 
 <head>
     <?php // <!-- Header Includes -->
+    $_SESSION["cart_items"] = "somethin";
     include("../src/php/function-helpers.php"); // Various helpful functions    
     ?>
     <?php // <!-- "Global" variables --> 
@@ -58,22 +59,23 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
                 <div class="col-md-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="mb-0">Checkout</h4>
-                        <a href="#">Back to shopping</a>
+                        <a href="product-page.php">Back to shopping</a>
                     </div>
                     <div>
                         <h5>Where's This Order Going?</h5>
-                        <form>
+                        <form action="checkout-edit.php" method="POST">
+                            <input type="hidden" name="user_id" value="<?php echo $userAccount["user_id"] ?>">
                             <div class="row">
                                 <div class="mb-2 col-md-6">
-                                    <input class="form-control" type="text" placeholder="First Name" name="fname" value="<?php if(isset($userAccount)){echo $userAccount["user_first_name"];} ?>">
+                                    <input class="form-control" type="text" placeholder="First Name" name="fName" value="<?php if(isset($userAccount)){echo $userAccount["user_first_name"];} ?>">
                                 </div>
                                 <div class="mb-2 col-md-6">
-                                    <input class="form-control" type="text" placeholder="Last Name" name="lname" value="<?php if(isset($userAccount)){echo $userAccount["user_last_name"];} ?>">
+                                    <input class="form-control" type="text" placeholder="Last Name" name="lName" value="<?php if(isset($userAccount)){echo $userAccount["user_last_name"];} ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-2 col-md-12">
-                                    <input class="form-control" type="text" placeholder="Address" name="address" value="<?php if(isset($userAccount)){echo $userAccount["user_street_address"];} ?>">
+                                    <input class="form-control" type="text" placeholder="Address" name="streetAddress" value="<?php if(isset($userAccount)){echo $userAccount["user_street_address"];} ?>">
                                 </div>
                             </div>
                             <div class="row">
@@ -84,19 +86,19 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
                                     <input class="form-control" type="text" placeholder="State" name="state" value="<?php if(isset($userAccount)){echo $userAccount["user_state"];} ?>">
                                 </div>
                                 <div class="mb-3 col-md-3">
-                                    <input class="form-control" type="text" placeholder="Zip Code" name="zip_code" value="<?php if(isset($userAccount)){echo $userAccount["user_zip_code"];} ?>">
+                                    <input class="form-control" type="text" placeholder="Zip Code" name="zipCode" value="<?php if(isset($userAccount)){echo $userAccount["user_zip_code"];} ?>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-12">
-                                    <input class="form-control" type="email" placeholder="Email" name="phone" value="<?php if(isset($userAccount)){echo $userAccount["user_email"];} ?>">
+                                    <input class="form-control" type="email" placeholder="Email" name="email" value="<?php if(isset($userAccount)){echo $userAccount["user_email"];} ?>">
                                 </div>
                             </div>
-                        </form>
                         <div class="row">
                             <div class="col-md-8"></div>
                             <div class="col-md-4">
-                                <button class="btn btn-primary wide-btn">Next</button>
+                                    <button class="btn btn-primary wide-btn">Next</button>
+                                </form>
                             </div>
                         </div>
                     </div>

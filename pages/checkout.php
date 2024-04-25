@@ -9,6 +9,7 @@
 
 <head>
     <?php // Header Includes
+    $_SESSION["cart_items"] = "somethin";
     include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
     <?php // <!-- "Global" variables --> 
     $dirLevel = getDirLevel(1); // this will return "../"  
@@ -40,7 +41,7 @@
                 <div class="col-md-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="mb-0">Checkout</h4>
-                        <a href="#">Back to shopping</a>
+                        <a href="product-page.php">Back to shopping</a>
                     </div>
                     <div>
                         <h5>Sign In</h5>
