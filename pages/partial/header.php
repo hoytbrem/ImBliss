@@ -43,7 +43,6 @@ function renderHeader($page_title, $dirLevel, $needsDatabase = false)
   <script src="<?php echo $dirLevel ?>src/js/imbliss.js" defer></script>
 
 <?php // <!-- "Global" variables --> 
-echo $_SESSION["admin-login"] ??= "no admin";
 }
 
 ?>
