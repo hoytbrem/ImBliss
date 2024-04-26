@@ -12,20 +12,13 @@
     include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
     <?php // <!-- "Global" variables --> 
     $dirLevel = getDirLevel(1); // this will return "../"  
-    include ("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
-    include ("{$dirLevel}pages/partial/header.php");
-    renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
-    include ("{$dirLevel}src/php/grab-cart-variables.php");
-    grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. ?>
-    
-    <!-- <?php
-    // <!-- Header Includes -->
-    // include ("../src/php/function-helpers.php"); // Various helpful functions    
-    // $dirLevel = getDirLevel(1); // this will return "../" 
-    //include("{$dirLevel}partial/every-page.html"); // Google Analytics
-    // include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
-    ?> -->
+    include("{$dirLevel}partial/every-page.html"); // Google Analytics
+    include("{$dirLevel}pages/partial/header.php"); 
+    renderHeader("Checkout", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}src/php/grab-cart-variables.php"); 
+    grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist.?>
     <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/contact/contact.css" />
+
 </head>
 
 <body class="container-fluid">
@@ -79,21 +72,21 @@
                                 foreach ($cart_items as $cart_item) {
                                     ?>
 
-                                    <div class="col-sm-6">
-                                        <img src="<?php echo $dirLevel ?>images/product-images/<?php echo $cart_item["_image"] ?>"
-                                            alt="<?php echo $cart_item["_alt_text"] ?>" class="imbliss-checkout-img">
-                                        <div class="col-sm-6">
-                                            <h3 class="checkout-product-name"><?php echo $cart_item["_name"] ?></h3>
-                                            <div class="rating-group col-sm-4"></div>
-                                            <div class="review-count col-sm-8">120 Reviews</div>
+                            <div class="col-sm-6">
+                                <img src="<?php echo $dirLevel ?>images/product-images/<?php echo $cart_item["_image"] ?>"
+                                    alt="<?php echo $cart_item["_alt_text"] ?>" class="imbliss-checkout-img">
+                                <div class="col-sm-6">
+                                    <h3 class="checkout-product-name"><?php echo $cart_item["_name"] ?></h3>
+                                    <div class="rating-group col-sm-4"></div>
+                                    <div class="review-count col-sm-8">120 Reviews</div>
 
-                                            <p class="dollar-amount">&dollar;<?php echo $cart_item["_price"] ?></p>
-                                            <p class="quantity-amount">Qty: <?php echo $cart_item["_qty"] ?></p>
-                                        </div>
-                                    </div>
+                                    <p class="dollar-amount">&dollar;<?php echo $cart_item["_price"] ?></p>
+                                    <p class="quantity-amount">Qty: <?php echo $cart_item["_qty"] ?></p>
                                 </div>
+                            </div>
+                        </div>
 
-                                <?php
+                        <?php
                                 }
                             }
                             ?>

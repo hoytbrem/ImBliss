@@ -3,16 +3,14 @@
 <html lang="en">
 
 <head>
-    <?php // <!-- Header Includes -->
-    include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
-    <?php // <!-- "Global" variables --> 
-    $dirLevel = getDirLevel(1); // this will return "../"   ?>
-    <title>Login</title>
-    <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
-    <meta name="description"
-        content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
-    <meta name="keywords" content="healthy, snacks, nutritious" />
-    <?php include("partial/every-page.html"); ?>
+    <?php 
+    // <!-- Header Includes -->
+    include ("../src/php/function-helpers.php"); // Various helpful functions    
+    $dirLevel = getDirLevel(1); // this will return "../" 
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
+    include("{$dirLevel}pages/partial/header.php"); 
+    renderHeader("Checkout Address", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    ?>
 </head>
 
 <body class="container-fluid">

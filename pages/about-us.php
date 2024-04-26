@@ -11,7 +11,8 @@
     include ("../src/php/function-helpers.php"); // Various helpful functions    
     $dirLevel = getDirLevel(1); // this will return "../" 
     include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
-    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}pages/partial/header.php"); 
+    renderHeader("About Us", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     ?>
     <link rel="stylesheet" type="text/css" href="../theme/about-us/about.css" />
 </head>
@@ -23,7 +24,8 @@
     include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
 
     <!-- Banner Image with About Us -->
-    <div class="text-center bg-image banner" style="background-image: url('../images/about/fruit-nuts-display.jpg');">
+    <div class="text-center bg-image banner"
+        style="background-image: url('<?php echo $dirLevel ?>/images/about/fruit-nuts-display.jpg');">
         <div class="mask d-flex justify-content-center align-items-center">
             <h1>About Us</h1>
         </div>
@@ -118,7 +120,7 @@
     <div class="text-center bg-image full-width-image"
         style="background-image: url('../images/about/ImBliss-healthy-bars-display2.jpg');">
         <div class="mask d-flex justify-content-center align-items-center padding-box">
-            <h1 class="" style="background: #FFFFFF 0% 0% no-repeat; border-radius: 35px; opacity: 0.75;">
+            <h1 style="background: #FFFFFF 0% 0% no-repeat; border-radius: 35px; opacity: 0.75;">
                 ImBliss, The Snack With No Downside!</h1>
         </div>
     </div>

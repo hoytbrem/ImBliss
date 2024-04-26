@@ -51,7 +51,8 @@ if ($success){
 <html lang="en">
 
 <head>
-<?php 
+
+    <?php 
     $_SESSION["cart_items"] = "somethin";
     // Header Includes
     include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
@@ -62,6 +63,7 @@ if ($success){
     renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include ("{$dirLevel}src/php/grab-cart-variables.php");
     grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. ?>
+
 </head>
 
 <body class="container-fluid">
@@ -71,9 +73,9 @@ if ($success){
     <main>
         <div class="container">
             <!-- Temporary Solution to spacing issue -->
-        <div class="row mb-5"></div>
-        <div class="row mb-5"></div>
-        <div class="row mb-5"></div>
+            <div class="row mb-5"></div>
+            <div class="row mb-5"></div>
+            <div class="row mb-5"></div>
             <div class="row">
                 <!-- Left side -->
                 <div class="col-md-8">

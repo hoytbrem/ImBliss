@@ -10,7 +10,8 @@
     // <!-- Header Includes -->
     include ("../src/php/function-helpers.php"); // Various helpful functions    
     $dirLevel = getDirLevel(1); // this will return "../" 
-    include("{$dirLevel}pages/partial/header.php"); renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    include("{$dirLevel}pages/partial/header.php"); 
+    renderHeader("Home", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
     <link rel="stylesheet" type="text/css" href="../theme/main-page.css" />
@@ -24,7 +25,8 @@
     include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
 
     <!-- Hero Section -->
-    <div class="jumbotron d-flex align-items-center" id="hero-section">
+    <div class="jumbotron d-flex align-items-center" id="hero-section" style="background: linear-gradient(90deg, #ffffff 0%, #ffffff00 100%),
+    url('<?php echo $dirLevel?>/images/main/kitchen-countertop-background.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -41,8 +43,8 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img src="../images/main/ImBliss-Blend-Bar-Featured-Product.png" class="img-fluid"
-                        id="hero-section-image" alt="Product Image">
+                    <img src="<?php echo $dirLevel?>/images/main/ImBliss-Blend-Bar-Featured-Product.png"
+                        class="img-fluid" id="hero-section-image" alt="Product Image">
                 </div>
             </div>
         </div>
@@ -52,16 +54,16 @@
     <div class="container my-4">
         <div class="row">
             <div class="col-md-4">
-                <img src="../images/main/ImBliss-Variety-Pack-Chocolate.jpg" class="img-fluid product-mockups"
-                    alt="Imbliss Variety Pack of chocolate">
+                <img src="<?php echo $dirLevel?>/images/main/ImBliss-Variety-Pack-Chocolate.jpg"
+                    class="img-fluid product-mockups" alt="Imbliss Variety Pack of chocolate">
             </div>
             <div class="col-md-4">
-                <img src="../images/main/ImBliss-Pina-Colada-Granola.jpg" class="img-fluid product-mockups"
-                    alt="Pina Colada Granola">
+                <img src="<?php echo $dirLevel?>/images/main/ImBliss-Pina-Colada-Granola.jpg"
+                    class="img-fluid product-mockups" alt="Pina Colada Granola">
             </div>
             <div class="col-md-4">
-                <img src="../images/main/ImBliss-Carefree-Coffee-Bars.jpg" class="img-fluid product-mockups"
-                    alt="Imbliss Carefree Coffee Bar">
+                <img src="<?php echo $dirLevel?>/images/main/ImBliss-Carefree-Coffee-Bars.jpg"
+                    class="img-fluid product-mockups" alt="Imbliss Carefree Coffee Bar">
             </div>
         </div>
     </div>
@@ -79,10 +81,12 @@
                         delicious. Our selection of ingredients is bountiful and abundant in natural fiber,
                         antioxidants, curated to align with vegan lifestyles, and free of any added sugars, providing
                         you with a guilt-free indulgence that nourishes both body and soul.</p>
-                    <img src="../images/main/healthy-natural-vegetables-display.jpg" class="img-fluid" alt="Image">
+                    <img src="<?php echo $dirLevel?>/images/main/healthy-natural-vegetables-display.jpg"
+                        class="img-fluid sink" alt="Image">
                 </div>
                 <div class="col-md-6">
-                    <img src="../images/main/healthy-natural-oats-display.jpg" class="img-fluid" alt="Image">
+                    <img src="<?php echo $dirLevel?>/images/main/healthy-natural-oats-display.jpg"
+                        class="img-fluid sink" alt="Image">
                 </div>
             </div>
         </div>
@@ -93,11 +97,12 @@
         <div class="row">
             <div class="col-md-6" id="new-arrivals-container">
                 <h2>New Arrivals</h2>
-                <a class="btn btn-primary" href="#" role="button">Explore</a>
+                <a class="btn btn-primary" href="<?php echo $dirLevel?>/pages/product-page.php"
+                    role="button">Explore</a>
             </div>
             <div class="col-md-6" id="dedicated-to-our-planet-container">
                 <h2>Dedicated to our planet</h2>
-                <a class="btn btn-primary" href="#" role="button">Learn More</a>
+                <a class="btn btn-primary" href="<?php echo $dirLevel?>/pages/about-us.php" role="button">Learn More</a>
             </div>
         </div>
     </div>
@@ -142,8 +147,8 @@
         <h1 class="display-4">Sign up today and get</h1>
         <p class="lead">15% off</p>
         <p>Your first purchase</p>
-        <p><a class="btn btn-primary btn-lg" href="../pages/sign-up.php" style="background: #FFFFFF; color: #707070;"
-                role="button">Sign
+        <p><a class="btn btn-primary btn-lg" href="<?php echo $dirLevel?>/pages/sign-up.php"
+                style="background: #FFFFFF; color: #707070;" role="button">Sign
                 Up</a></p>
     </div>
     </main>

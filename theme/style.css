@@ -1,7 +1,21 @@
 /* Globals */
-
+@import url("https://p.typekit.net/p.css?s=1&k=kxn5mjl&ht=tk&f=7821.36495.36496.36497.36499.36500.45945&a=121649505&app=typekit&e=css");
 :root {
   --background-color: #e0d9d9;
+}
+
+* {
+  font-family: "Komet", sans-serif;
+}
+h1 {
+  font-family: serif;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Petersburg", serif;
 }
 
 body {
@@ -62,10 +76,11 @@ body {
 /* Footer Parents */
 footer {
   display: flex;
-  background-color: #83bead;
+  background: transparent linear-gradient(180deg, #32b2ad 0%, #257e7b 100%) 0%
+    0% no-repeat padding-box;
+  margin: auto;
   padding: 1%;
-  bottom: 0px;
-  margin: 0;
+  text-decoration: none;
 }
 #footer-logo {
   flex: 0 0 20%;
@@ -73,14 +88,23 @@ footer {
 #footer-links {
   flex: 0 0 40%;
 }
-#footer-contact {
+.footer-link {
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0 20px;
+  color: white;
+}
+#footer-contacts {
   flex: 0 0 40%;
+}
+.footer-contact {
+  color: white !important;
+  margin-right: 2%;
 }
 /* Footer Children */
 footer > * > ul {
   display: flex;
 }
-footer > * > ul > li {
+footer div ul li {
   list-style-type: none;
-  margin: 0 20px;
 }

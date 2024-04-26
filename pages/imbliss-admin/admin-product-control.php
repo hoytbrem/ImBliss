@@ -3,10 +3,10 @@ session_start();
 if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
     } else {
         ?>
-            <script>
-                window.location.replace("login.php");
-            </script>
-        <?php
+<script>
+window.location.replace("login.php");
+</script>
+<?php
     }
 include ("header.php") ?>
 <div class="col-sm-6">
@@ -104,7 +104,7 @@ include ("header.php") ?>
         <input type="file" required name="image" id="image" class="form-control">
 
         <?php if (isset($image)): ?>
-            <img src="./images/<?php echo $image ?? "" ?>" alt="<?php echo $alt_text ?? "" ?>">
+        <img src="./images/<?php echo $image ?? "" ?>" alt="<?php echo $alt_text ?? "" ?>">
         <?php endif ?>
         <input type="hidden" name="meta_table_description" value="<?php echo $meta_table_description ?? "" ?>">
         <input type="hidden" name="title" value="<?php echo $title ?? "" ?>">
