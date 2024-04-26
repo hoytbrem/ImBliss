@@ -5,13 +5,6 @@ session_start();
 $cart_items = json_decode(file_get_contents("php://input"), true);
 $_SESSION["cart_items"] = $cart_items;
 
-$updated_cart_items = [];
-foreach ($cart_items as $key => $value) {
-    $new_key = preg_replace('/_/', '', $key, 1);
-    $updated_cart_items[$new_key] = $value;
-}
-$cart_items = $updated_cart_items;
-
 if ($cart_items == null) {
     echo "true";
     exit;
@@ -34,20 +27,22 @@ if ($validateItems) {
 
         // validating the results.
         for ($index = 0; $index < count($results); $index++) {
-            $item_id = $results[$index]["item_id"] ?? $results[$index]["_item_id"];
-            $price = (float)$results[$index]["price"] ?? (float)$results[$index]["_price"];
+            $item_id = $results[$index]["_item_id"];
+            $price = number_format((float)$results[$index]["price"] ?: (float)$results[$index]["_price"], 2, '.', '');
             // Iterating over the JSON data
-            foreach ($_SESSION["cart_items"] as $cart_item) {
-                if ($cart_item["item_id"] == $item_id || $cart_item["_item_id"] == $item_id) {
-                    $check_id = $cart_item["item_id"] ?? $cart_item["_item_id"];
-                    $checking_price = (float)$cart_item["price"] ?? (float)$cart_item["_price"];
+            foreach ($cart_items as $cart_item) {
+                if ($cart_item["_item_id"] == $item_id) {
+                    $check_id = $cart_item["_item_id"];
+                    $checking_price = number_format((float)$cart_item["price"] ?: (float)$cart_item["_price"], 2, '.', '');
                     if ($checking_price != $price) {
                         try{
-                            echo "false";
+                            echo "false {$checking_price} (JSON) vs. {$price} (PHP)";
                             exit;
                         } catch (Exception $e) {
 
                         }
+                    } else if ($checking_price == $price) {
+                        echo "Validated: {$checking_price} (JSON) vs. {$price} (PHP)";
                     } 
                 }
             }

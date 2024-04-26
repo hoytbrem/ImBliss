@@ -12,7 +12,8 @@ class Item {
         this._totalPrice = price ?? 0;
         this._cartPrice = document.createElement("span");
         this._buttonQuantitySpacer = document.createElement("div");
-
+        this._listGroupItemContainer = document.createElement("div");
+        this._listGroupItem = document.createElement("div");
     }
 
     addPrice(value) {
@@ -39,40 +40,49 @@ class Item {
             });
             localStorage.setItem("cart_items", minList);
         } else if (!justQty) {
-            localStorage.setItem("cart_items", JSON.stringify(cartList));
+            localStorage.setItem("cart_items", JSON.stringify(cartList || []));
         }
     };
 
-    async updateTotalAndPrice() {
+    updateTotalAndPrice() {
         let tempList = [...cartList];
         let sum = 0;
 
         for (let tempItem of tempList) {
-            sum += await tempItem.getTotal();
-        }
+            sum += tempItem.totalPrice;
+        
         let subTotal =  document.getElementById("subTotal");
         let itemCount = document.getElementById("cart-item-count");
-        this._totalPrice = this._qty * this._price;
-        this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
+
         // Corrected the syntax for template literals below
+        if (typeof sum !== 'number') 
+            sum = Number(sum);
         subTotal.innerHTML = `&dollar;${sum.toFixed(2) ?? 0.00}`;
         itemCount.innerHTML = tempList.length > 0 ? `${tempList.length} Items` : tempList == 1 ? `1 Item` : `No Items`;
         //cart_items();
     }
+    this._totalPrice = this._qty * this._price;
+    this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
+    }
+    setAttributes(element, attributes) {
+        for (let key in attributes) {
+            element.setAttribute(key, attributes[key]);
+        }
+    }
+    
 
     renderCartItem(imblissCartContainer) {
         // New List Item with its own container.
-        let listGroupItemContainer = document.createElement("div");
-        setAttributes(listGroupItemContainer, { "class": "row" });
-        imblissCartContainer.appendChild(listGroupItemContainer);
-        let listGroupItem = document.createElement("div");
-        setAttributes(listGroupItem, { "class": "list-group-item col-sm-7" });
-        imblissCartContainer.append(listGroupItemContainer);
+        setAttributes(this._listGroupItemContainer, { "class": "row item-holder" });
+        imblissCartContainer.appendChild(this._listGroupItemContainer);
+
+        setAttributes(this._listGroupItem, { "class": "list-group-item col-sm-7" });
+        imblissCartContainer.append(this._listGroupItemContainer);
 
         // Container for product
         let cartItemRow = document.createElement("div");
         setAttributes(cartItemRow, { "class": "imbliss-cart-item row" });
-        listGroupItem.appendChild(cartItemRow);
+        this._listGroupItem.appendChild(cartItemRow);
 
         // Cart product image
         let cartItemImage = document.createElement("img");
@@ -82,8 +92,8 @@ class Item {
             "alt": this._alt_text
         });
 
-        listGroupItemContainer.append(cartItemImage);
-        listGroupItemContainer.append(listGroupItem);
+        this._listGroupItemContainer.append(cartItemImage);
+        this._listGroupItemContainer.append(this._listGroupItem);
 
         // Cart header
         let cartHeader = document.createElement("h3");
@@ -111,6 +121,9 @@ class Item {
         // Price 
         setAttributes(this._cartPrice, { "class": "col-sm-12 price-tag" });
         this.updateTotalAndPrice();
+        if (typeof this._totalPrice !== 'number') 
+            this._totalPrice = Number(this._totalPrice);
+        
         this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
         cartItemRow.append(this._cartPrice);
 
@@ -137,17 +150,18 @@ class Item {
             this._qty--;
             this.subtractPrice(this._price);
             if (this._qty <= 0) {
-                listGroupItemContainer.remove();
+                this._listGroupItemContainer.remove();
                 cartList = removeItem(this._item_id, cartList);
 
                 // Renders empty item if there's no items in the cart.
-                console.log(cartList);
                 if (cartList.length == 0)
                     handleIfEmpty(imblissCartContainer);
             }
             this.updateTotalAndPrice();
             this.setCartItemsStorage();
             this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
+            if (typeof this._totalPrice !== 'number') 
+                this._totalPrice = Number(this._totalPrice);
             this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
         });
         cartButtonGroup.append(cartButtonMinus);
@@ -176,6 +190,8 @@ class Item {
             this.updateTotalAndPrice(); // Call the updateTotalAndPrice() function here
             this.setCartItemsStorage();
             this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
+            if (typeof this._totalPrice !== 'number') 
+                this._totalPrice = Number(this._totalPrice);
             this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
         });
 
@@ -221,6 +237,14 @@ class Item {
         return this._totalPrice;
     }
 
+    get listGroupItemContainer() {
+        return this._listGroupItemContainer;
+    }
+
+    get listGroupItem() {
+        return this._listGroupItem;
+    }
+
     set item_id(value) {
         this._item_id = value;
     }
@@ -236,7 +260,8 @@ class Item {
     set qty(value) {
         this._qty = value;
         this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
-        this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
+        //this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
+        
     }
 
     set description(value) {
@@ -262,4 +287,14 @@ class Item {
     set totalPrice(value) {
         this._totalPrice = value;
     }
+
+    getItemObject() {
+        // Create a new item object without underscores in the property names.
+        const modifiedObject = {};
+        for (const key in this) {
+          const modifiedKey = key.replace('_', ''); // Remove underscores
+          modifiedObject[modifiedKey] = this[key];
+        }
+        return modifiedObject;
+      }
 }

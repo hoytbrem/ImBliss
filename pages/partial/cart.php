@@ -11,7 +11,7 @@
 <div class="row" id="cartRow">
     <div class="imbliss-cart-controlled-container" id="cartCollapse">
         <div class="d-flex justify-content-end">
-            <form action="<?php echo $dirLevel ?>pages/checkout.php" class="imbliss-cart-container" method="POST">
+            <form id="cartCheckoutButton" action="<?php echo $dirLevel ?>pages/checkout.php" class="imbliss-cart-container" method="POST">
 
                 <div class="row" id="imbliss-cart-toolbar-row">
                     <div class="col-sm-9" id="cart-header">
