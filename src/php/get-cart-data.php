@@ -15,7 +15,6 @@ $validateItems = ($_SERVER["REQUEST_METHOD"] == "POST" && count($_SESSION["cart_
 include ("connect-db.php");
 
 if ($validateItems) {
-    $_SESSION["cart_test"] = "Cart item!";
     $sql = "SELECT
                 item.item_id, item.name, item.price, item.totalPrice, item.description, item.category, item.image, 
                 meta.alt_text

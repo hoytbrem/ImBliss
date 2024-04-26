@@ -1,9 +1,23 @@
 <?php
 
-function renderHeader($page_title, $dirLevel)
+function renderHeader($page_title, $dirLevel, $needsDatabase = false)
 {
-  ?>
-  <title><?php echo $page_title ?></title>
+  $php_page_name ??= basename($_SERVER["PHP_SELF"], ".php");
+  $php_page_name = preg_replace_callback('/(-)|(\b[a-z])/', function ($matches) {
+
+    if (!empty ($matches[1])) { // If the match is a hyphen
+
+      return " "; // Replace it with a space
+
+    } else { // If the match is the first letter of a word
+      
+      return strtoupper($matches[0]); // Capitalize it
+    }
+  }, $php_page_name);
+
+  $php_page_name = $php_page_name == "Index" ? "Home" : $php_page_name ?>
+
+  <title><?php echo !str_contains(ucfirst($page_title), $php_page_name) ? $php_page_name : $page_title ?></title>
   <meta name="title" content="ImBliss :: Healthy, nutritious, and absolutely delicious snacks." />
   <meta name="description"
     content="We sell environmentally friendly, home-grown snacks & treats that serve as a delicious reminder that healthy doesn't have to taste bad at all." />
@@ -19,11 +33,11 @@ function renderHeader($page_title, $dirLevel)
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/style.css" />
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/normalize.css" />
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/stylesheet.css" />
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/sage-styles.css" />
-  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>/theme/nav/account-context.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/style.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/stylesheet.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/sage-styles.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/nav/account-context.css" />
 
   <!-- Scripts -->
   <script src="<?php echo $dirLevel ?>src/js/imbliss.js" defer></script>

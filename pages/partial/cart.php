@@ -3,13 +3,16 @@
 
 <!-- Cart JavaScript -->
 <script src="<?php echo $dirLevel ?>src/js/cart.js"></script>
+<script src="<?php echo $dirLevel ?>src/js/function-helpers.js"></script>
+<script src="<?php echo $dirLevel ?>src/js/Item.js"></script>
+
 
 <!-- Cart Item Container -->
 <div class="row" id="cartRow">
     <div class="imbliss-cart-controlled-container" id="cartCollapse">
         <div class="d-flex justify-content-end">
+            <form id="cartCheckoutButton" action="<?php echo $dirLevel ?>pages/checkout.php" class="imbliss-cart-container" method="POST">
 
-            <div class="imbliss-cart-container">
                 <div class="row" id="imbliss-cart-toolbar-row">
                     <div class="col-sm-9" id="cart-header">
                         <h3>Shopping Cart</h3>
@@ -30,11 +33,8 @@
                         <p id="subTotal">&dollar;0.00</p>
                     </div>
                     <button class="col-sm-3" id="checkOut">Checkout</button>
-                    <form action="POST">
-                        
-                    </form>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>

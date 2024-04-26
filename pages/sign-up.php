@@ -13,6 +13,7 @@ window.location.replace("index.php");
 <html lang="en">
 
 <head>
+
     <?php 
     // <!-- Header Includes -->
     include ("../src/php/function-helpers.php"); // Various helpful functions    
@@ -22,15 +23,18 @@ window.location.replace("index.php");
     renderHeader("Sign Up", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     ?>
     <link rel="stylesheet" href="<?php echo $dirLevel ?>/theme/sign-up/sign-up.css" />
+
 </head>
 
 <body>
     <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
     include ("./partial/cart.php"); // Cart ?>
+
     <main class="d-flex align-items-center justify-content-center"
         style="height: 80vh; background: url('../images/sign-up/organic-natural-display.jpg') no-repeat; background-size: cover;">
         <div class="card " style="width: 40rem;">
+
             <div class="card-body">
                 <h5 class="card-title text-center">Sign Up</h5>
                 <h6 class="card-subtitle mb-2 text-muted text-center">Already have an account? <a

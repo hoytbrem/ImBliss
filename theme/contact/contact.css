@@ -7,3 +7,14 @@
 h2 {
   font-family: serif;
 }
+
+.wide-btn{
+  width: 125px;
+  background-color: #FF6421;
+  border-color: #FF6421;
+}
+
+.wide-btn:hover{
+  background-color: #32B2AD;
+  border-color: #32B2AD;
+}

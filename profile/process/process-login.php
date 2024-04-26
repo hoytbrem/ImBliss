@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["logged_in"] = true;
                     $_SESSION["user-id"] = $u["user_id"];
                     $_SESSION["fName"] = $u["user_first_name"];
+                    $_SESSION["user_email"] = $u["user_email"];
 
                     if ($u["user_admin"] == 1) {
                         $_SESSION["admin-login"] = true;
@@ -34,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
 ?>
                     <script>
-                        window.location.replace("../../pages/index.php");
+                        window.location.replace("../../pages/account.php");
                     </script>
                 <?php
                 } else {
