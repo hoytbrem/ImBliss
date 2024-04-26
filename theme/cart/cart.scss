@@ -12,6 +12,29 @@
     z-index: 2;
 }
 
+@keyframes addItem {
+    0% {
+        background-color: #FFFFFF;
+    }
+    25% {
+        background-color: #19aaaa;
+    }
+    100% {
+        background-color: #FFFFFF;
+    }
+}
+
+.item-holder{
+    transition: background-color .5s ease-in-out;
+    background-color: #FFFFFF;
+}
+
+.add-item {
+    animation: addItem;
+    animation-duration: .5s;
+    animation-delay: .10s;
+}
+
 #cartOverflow {
     height: 734px !important;
     width: 634px !important;
@@ -216,6 +239,6 @@
 }
 
 .cart-collapse-open {
-    top: 115px !important;
+    top: 90px !important;
     opacity: 1 !important;
 }

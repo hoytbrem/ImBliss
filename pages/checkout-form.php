@@ -21,7 +21,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
 
 <head>
     <?php // <!-- Header Includes -->
-    $_SESSION["cart_items"] = "somethin";
     include("../src/php/function-helpers.php"); // Various helpful functions    
     ?>
     <?php // <!-- "Global" variables --> 

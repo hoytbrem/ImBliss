@@ -9,14 +9,14 @@ let revive = (key, value) => {
         case "item_id":
             return parseInt(value);
         case "_qty":
-        case "qty":    
+        case "qty":
             return parseInt(value);
         case "_name":
-        case "name":           
+        case "name":
             return value.toString();
         case "_price":
         case "price":
-            return parseFloat(value);
+            return parseFloat(value).toFixed(2);
         case "_rating":
         case "rating":
             return parseInt(value);
@@ -28,11 +28,52 @@ let revive = (key, value) => {
     }
 };
 
-async function getCartItems(testingFor = "") {
+// let transformObject = (obj) => {
+//     let transformed = {};
+//     Object.entries(obj).forEach(([key, value]) => {
+//         // Remove the first underscore from the key if it exists
+//         let newKey = key.startsWith('_') ? key.substring(1) : key;
 
-    let storage_cart_items = await JSON.parse(localStorage.getItem("cart_items"), revive);
+//         // Apply transformations based on the original key
+//         switch (key) {
+//             case "_item_id":
+//             case "item_id":
+//                 transformed[newKey] = parseInt(value);
+//                 break;
+//             case "_qty":
+//             case "qty":
+//                 transformed[newKey] = parseInt(value);
+//                 break;
+//             case "_name":
+//             case "name":
+//                 transformed[newKey] = value.toString();
+//                 break;
+//             case "_price":
+//             case "price":
+//                 transformed[newKey] = parseFloat(value);
+//                 break;
+//             case "_rating":
+//             case "rating":
+//                 transformed[newKey] = parseInt(value);
+//                 break;
+//             case "_totalPrice":
+//             case "totalPrice":
+//                 transformed[newKey] = parseFloat(value);
+//                 break;
+//             default:
+//                 transformed[newKey] = value;
+//         }
+//     });
+//     return transformed;
+// }
 
-    console.log(`Storage: ${storage_cart_items}`);
+
+function getCartItems(testingFor = "") {
+
+    let storage_cart_items = localStorage.getItem("cart_items") || [];
+
+    if (storage_cart_items.length != 0)
+        storage_cart_items = JSON.parse(storage_cart_items, revive);
 
     switch (testingFor) {
         case "empty":
@@ -40,11 +81,15 @@ async function getCartItems(testingFor = "") {
                 return "test";
             break;
         default:
-            if (!storage_cart_items)
-                return null;
+            if (!storage_cart_items) {
+                return [];
+            } else {
+                //storage_cart_items = await JSON.parse(storage_cart_items, revive);
+            }
     }
 
     console.log("Cart storage complete.");
+
     return storage_cart_items;
 }
 
@@ -53,7 +98,7 @@ async function getCartItems(testingFor = "") {
  * @param {boolean} justQty rebuilds just the cart item objects with item_ids and qtys.
  * @returns Either a minimal or complex list of item objects.
  */
-function setCartItemsStorage(justQty = false) {
+async function setCartItemsStorage(justQty = false) {
 
     if (justQty) {
         let minList = cartList.map(item => {
@@ -64,7 +109,8 @@ function setCartItemsStorage(justQty = false) {
         });
         localStorage.setItem("cart_items", minList);
     } else if (!justQty) {
-        localStorage.setItem("cart_items", JSON.stringify(cartList));
+
+        localStorage.setItem("cart_items", JSON.stringify(cartList || []));
     }
 };
 
@@ -81,9 +127,9 @@ function setAttributes(element, attributes) {
  * @param {Array} dataReceived - The data received to populate the cart list.
  * @param {Function} itemRender - The function used to render each item in the cart list.
 */
-async function populateCart(dataReceived, itemRender) {
+function populateCart(dataReceived, itemRender) {
 
-    let paddedControlledContainer = await document.getElementById("imbliss-cart-list");
+    let paddedControlledContainer = document.getElementById("imbliss-cart-list");
 
     setAttributes(imblissCartContainer, {
         "class": "imbliss-cart-list",
@@ -95,18 +141,23 @@ async function populateCart(dataReceived, itemRender) {
         handleIfEmpty(imblissCartContainer);
         return null;
     }
-    data = [...await dataReceived ?? []];
+    try {
+        data = [...dataReceived ?? []];
+    } catch {
+        return null;
+    }
 
     if (data.length == 0 && cartList.length == 0) {
         handleIfEmpty(imblissCartContainer);
     }
 
-    await data.forEach(itemObject => {
+    data.forEach(itemObject => {
         itemRender(itemObject, imblissCartContainer);
     });
 
     setCartItemsStorage();
     initialLoad = false;
+    validateItems(data);
 
     if (data.length == 0) {
         return false;
@@ -119,10 +170,9 @@ async function populateCart(dataReceived, itemRender) {
 
 
 
-async function validateItems() {
-
+function validateItems(cartList) {
     if (cartList.length == 0)
-        return true;
+        return [];
     // This allows more secure data encapsulation.
     let myRequest = new Request(`${dirLevel}src/php/set-cart-data.php`);
     console.log("Performing a cart validation test.");
@@ -152,8 +202,7 @@ async function validateItems() {
                     cartList = [];
                     localStorage.clear();
                     handleIfEmpty(imblissCartContainer);
-
-                    return false;
+                    throw new Error("Could not grab cart data.");
                 }
             }
 
@@ -192,68 +241,34 @@ function renderCartItem(itemObject, imblissCartContainer) {
 
 function createNewItemObject(itemObject) {
 
-    let { item_id, name, price, description, category, image, alt_text, qty = 1 } = itemObject;
+    if (Array.isArray(itemObject) && itemObject.length > 0) {
+        itemObject = itemObject[0];
+    } else if (Array.isArray(itemObject) && itemObject.length === 0) {
+        throw new Error("Item Object Array is empty.");
+    }
+
+    let { item_id, name, price, description, category, image, meta_alt_text, qty = 1 } = itemObject;
 
     if (!item_id) {
-        let { _item_id, _name, _price, _description, _category, _image, _alt_text, _qty = 1 } = itemObject;
+        let { _item_id, _name, _price, _description, _category, _image, _meta_alt_text, _qty = 1 } = itemObject;
 
         if (!_item_id) {
             throw new Error("Item Object Parameter Error.");
         } else {
             try {
-                return new Item(_item_id, _name, _price, _description, _category, _image, _alt_text, _qty);
+                return new Item(_item_id, _name, _price, _description, _category, _image, _meta_alt_text, _qty);
             } catch {
                 throw new Error("Item Object Type/Variable missing.");
             }
         }
 
     } else { // if the item_id is found in normal format.
-        try {
-            return new Item(item_id, name, price, description, category, image, alt_text, qty);
-        } catch {
-            throw new Error("Item Object Type/Variable missing.");
-        }
+
+        return new Item(item_id, name, price, description, category, image, meta_alt_text, qty);
+
     }
 }
 
-/**
- * Adds an item to the cart.
- * @param {Item} itemObject - The item object to be added.
- * The properties needed:  item_id, name, price, description, category, image, alt_text
- * 
-*/
-async function addItem(itemObject) {
-
-    if (!documentDone) {
-        console.log("Document is not finished loading. Cannot add item just yet.");
-        return false;
-    }
-
-    let filteredItemObject = Object.keys(itemObject).reduce((acc, key) => {
-        const newKey = key.replace(/^_/, ''); // Remove underscore at the beginning of the key
-        acc[newKey] = itemObject[key];
-        return acc;
-    }, {});
-    console.log(filteredItemObject);
-
-    let { item_id } = filteredItemObject;
-    if (documentDone) {
-        let found = false;
-        found = cartList.filter((element) => {
-            if (element.item_id == item_id) {
-                element.qty++;
-                setCartItemsStorage();
-                console.log(item_id);
-                return true;
-            }
-        });
-
-        if (found.length == 0) {
-            renderCartItem(filteredItemObject, imblissCartContainer);
-            handleIfEmpty(imblissCartContainer);
-        }
-    }
-}
 
 /**
  * Renders an empty list item in the cart container.
@@ -283,34 +298,100 @@ document.addEventListener("DOMContentLoaded", () => {
     documentDone = true;
     cartMain();
 });
+var addingItem = false;
 
-async function cartMain() {
-    // Get the cart row element
+function handleCartOpen(addingItems = false) {
     let cartCollapse = document.getElementById("cartRow");
-    // Get the cart open button element
     let cartOpenButton = document.getElementById("cartOpenButton");
+
+    if (cartCollapse.classList.contains("cart-collapse-open")) {
+        if (!addingItems) {
+            cartOpenButton.click();
+        }
+    } else {
+        cartOpenButton.click();
+    }
+}
+
+function cartMain() {
+
+    // Get the cart row element
+    var cartCollapse = document.getElementById("cartRow");
+    // Get the cart open button element
+    var cartOpenButton = document.getElementById("cartOpenButton");
     cartOpenButton.addEventListener("click", () => {
-        cartCollapse.classList.toggle("cart-collapse-open")
+        cartCollapse.classList.toggle("cart-collapse-open");
     });
 
-    if (await populateCart(getCartItems(), renderCartItem)) {
-        await validateItems();
+    let cartCheckoutButton = document.getElementById("cartCheckoutButton");
+
+    cartCheckoutButton.addEventListener("submit", (event) => {
+        console.log("this is a test");
+        setInterval(() => {
+            console.log("finished");
+        }, 5000);
+    });
+
+    let cartItemsReceived = getCartItems() || [];
+
+    let populateResult = populateCart(cartItemsReceived, renderCartItem);
+
+    if (populateResult) {
+
     } else {
 
     }
+}
 
 
+/**
+ * Adds an item to the cart.
+ * @param {Item} itemObject - The item object to be added.
+ * The properties needed:  item_id, name, price, description, category, image, meta_alt_text
+ * 
+*/
+function addItem(itemObject) {
+
+    itemObject = JSON.parse(itemObject, revive);
+
+    if (!documentDone) {
+        console.log("Document is not finished loading. Cannot add item just yet.");
+        return false;
+    }
+
+    handleCartOpen(true);
+
+    let { item_id } = itemObject;
+    if (documentDone) {
+        let found = false;
+        found = cartList.filter((element) => {
+            if (element.item_id == item_id) {
+                element.qty++;
+                element.updateTotalAndPrice();
+                setCartItemsStorage();
+                element.listGroupItem.classList.toggle("add-item");
+                return true;
+            }
+        });
+
+        if (found.length == 0) {
+            renderCartItem(itemObject, imblissCartContainer);
+            handleIfEmpty(imblissCartContainer);
+        }
+    }
+
+    validateItems(cartList);
 }
 
 /**
  * Sets up a repeating interval that attempts to update the total and price of the first item in a cart list.
  * This operation is attempted every 1000 milliseconds (1 second).
  */
-setInterval(() => {
-    try {
-        handleIfEmpty(imblissCartContainer);
-        if (cartList.length > 0) {
-            cartList[0].updateTotalAndPrice();
-        }
-    } catch { }
-}, 1000);
+// setInterval(() => {
+//     try {
+//         handleIfEmpty(imblissCartContainer);
+//         if (cartList.length > 0) {
+//             cartList[0].updateTotalAndPrice();
+//         }
+//     } catch { }
+// }, 1000);

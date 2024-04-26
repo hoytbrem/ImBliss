@@ -9,7 +9,6 @@
 
 <head>
     <?php // Header Includes
-    $_SESSION["cart_items"] = "somethin";
     include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
     <?php // <!-- "Global" variables --> 
     $dirLevel = getDirLevel(1); // this will return "../"  
