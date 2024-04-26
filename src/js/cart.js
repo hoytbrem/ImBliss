@@ -370,7 +370,6 @@ function addItem(itemObject) {
                 element.updateTotalAndPrice();
                 setCartItemsStorage();
                 element.listGroupItem.classList.toggle("add-item");
-                element.scrollIntoView({ behavior:"smooth", block: "start", inline: "nearest" });
                 return true;
             }
         });
