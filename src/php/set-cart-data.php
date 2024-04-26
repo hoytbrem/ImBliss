@@ -27,13 +27,13 @@ if ($validateItems) {
 
         // validating the results.
         for ($index = 0; $index < count($results); $index++) {
-            $item_id = $results[$index]["_item_id"];
-            $price = number_format((float)$results[$index]["price"] ?: (float)$results[$index]["_price"], 2, '.', '');
+            $item_id = $results[$index]["item_id"];
+            $price = number_format((float)$results[$index]["price"], 2, '.', '');
             // Iterating over the JSON data
             foreach ($cart_items as $cart_item) {
                 if ($cart_item["_item_id"] == $item_id) {
                     $check_id = $cart_item["_item_id"];
-                    $checking_price = number_format((float)$cart_item["price"] ?: (float)$cart_item["_price"], 2, '.', '');
+                    $checking_price = number_format((float)$cart_item["_price"], 2, '.', '');
                     if ($checking_price != $price) {
                         try{
                             echo "false {$checking_price} (JSON) vs. {$price} (PHP)";
@@ -42,7 +42,7 @@ if ($validateItems) {
 
                         }
                     } else if ($checking_price == $price) {
-                        echo "Validated: {$checking_price} (JSON) vs. {$price} (PHP)";
+                        //echo "Validated: {$checking_price} (JSON) vs. {$price} (PHP)";
                     } 
                 }
             }
