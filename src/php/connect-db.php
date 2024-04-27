@@ -1,10 +1,10 @@
 <?php
 
-$servername = "mysql:host=localhost;dbname=imbliss_db";
-$dbuser = "root";
+$servername = "mysql:host=localhost;dbname=deesmjua_imbliss_db";
+$dbuser = "deesmjua_imbliss";
 // $dbpass = "password"; This is commented out as my local database doesn't have a password.
 // $dbpass = "thepassword";
-$dbpass = ""; // just ignore this change. its just because i dont have the password
+$dbpass = "iwcAdmin2024";
 
 try {
     $db = new PDO($servername, $dbuser, $dbpass);
