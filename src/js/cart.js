@@ -279,6 +279,10 @@ function handleIfEmpty(cartContainer) {
     let emptyListItem = document.getElementById("emptyListItem") ?? document.createElement("div");
     if (cartList.length == 0) {
         paddedControlledContainer.innerHTML = "";
+        let subTotal = document.getElementById("subTotal");
+        let cartItemCount = document.getElementById("cart-item-count");
+        cartItemCount.innerHTML = `No Items`;
+        subTotal.innerHTML = `&dollar;0.00`;
         emptyListItem.innerHTML = "<h3>No Items Yet!</h3>";
         setAttributes(emptyListItem, {
             "class": "col-sm-12 text-center w-100 mt-4 text-larger tk-source-serif-4-display",
@@ -387,11 +391,12 @@ function addItem(itemObject) {
  * Sets up a repeating interval that attempts to update the total and price of the first item in a cart list.
  * This operation is attempted every 1000 milliseconds (1 second).
  */
-// setInterval(() => {
-//     try {
-//         handleIfEmpty(imblissCartContainer);
-//         if (cartList.length > 0) {
-//             cartList[0].updateTotalAndPrice();
-//         }
-//     } catch { }
-// }, 1000);
+ setInterval(() => {
+    try {
+        handleIfEmpty(imblissCartContainer);
+        if (cartList.length > 0) {
+            cartList[0].updateTotalAndPrice();
+        } else {}
+
+    } catch { }
+}, 1000);
