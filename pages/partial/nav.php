@@ -28,7 +28,7 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?php echo $dirLevel ?>pages/index.php">
                 <div id="imblissHeaderLogo" class="d-flex align-items-center p-3">
                     <img src="<?php echo $dirLevel ?>/images/main/IWC_Final_Logo.svg"
                         alt="ImBliss main logo, in a serif font, with green-teal leaves to the left.">
