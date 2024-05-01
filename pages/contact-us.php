@@ -23,7 +23,7 @@ session_start();
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
 
     <?php // <!-- Other Includes -->
-    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
+    include ("{$dirLevel}pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <div class="container my-5 text-center">
         <div class="row justify-content-center">
             <div class="col-12 col-md-4">

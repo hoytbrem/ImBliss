@@ -171,7 +171,7 @@ function validateItems(cartList) {
     if (cartList.length == 0)
         return [];
     // This allows more secure data encapsulation.
-    let myRequest = new Request(`${dirLevel}src/php/set-cart-data.php`);
+    let myRequest = new Request(`${dirLevel}src/php/cart-data.php`);
     console.log("Performing a cart validation test.");
     fetch(myRequest, {
         method: "POST",

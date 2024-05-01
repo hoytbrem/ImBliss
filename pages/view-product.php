@@ -48,7 +48,7 @@
 <body>
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
+    include ("{$dirLevel}pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <div class="container mt-5">
         <div class="row product">
             <div class="col-md-6">

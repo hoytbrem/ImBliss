@@ -26,7 +26,7 @@ session_start();
 
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
+    include ("{$dirLevel}pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <div class="row">
         <!-- Filter Section -->
         <div class="col-3 filter-section"

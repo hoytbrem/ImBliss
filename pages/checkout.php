@@ -25,7 +25,7 @@
     <?php include ("./partial/nav.php"); ?>
     <?php
     // <!-- Other Includes -->
-    include ("./partial/cart.php"); // Cart ?>
+    include ("./partial/cart.php");// Cart ?>
     <main class="d-flex align-items-center justify-content-center container-fluid" style="height: 80vh;">
         <div class="container">
             <div class="row">
@@ -66,29 +66,9 @@
                         <div class="row">
                             <?php
 
-                            $cart_items = $_COOKIE["cart_items"];
+                            $cart_items = json_decode($_COOKIE["cart_items"]);
 
-                            if (isset($_COOKIE["cart_items"])) {
-                                foreach ($cart_items as $cart_item) {
-                                    ?>
-
-                            <div class="col-sm-6">
-                                <img src="<?php echo $dirLevel ?>images/product-images/<?php echo $cart_item["_image"] ?>"
-                                    alt="<?php echo $cart_item["_alt_text"] ?>" class="imbliss-checkout-img">
-                                <div class="col-sm-6">
-                                    <h3 class="checkout-product-name"><?php echo $cart_item["_name"] ?></h3>
-                                    <div class="rating-group col-sm-4"></div>
-                                    <div class="review-count col-sm-8">120 Reviews</div>
-
-                                    <p class="dollar-amount">&dollar;<?php echo $cart_item["_price"] ?></p>
-                                    <p class="quantity-amount">Qty: <?php echo $cart_item["_qty"] ?></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <?php
-                                }
-                            }
+                            renderItemContainer();
                             ?>
                     </div>
                 </div>

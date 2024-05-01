@@ -22,7 +22,7 @@
 
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
+    include ("{$dirLevel}pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
 
     <!-- Hero Section -->
     <div class="jumbotron d-flex align-items-center" id="hero-section" style="background: linear-gradient(90deg, #ffffff 0%, #ffffff00 100%),

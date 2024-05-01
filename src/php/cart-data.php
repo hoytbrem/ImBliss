@@ -3,7 +3,6 @@
 session_start();
 
 $cart_items = json_decode(file_get_contents("php://input"), true);
-setcookie("cart_items", $cart_items, time() + (86400 * 30));
 
 if ($cart_items == null) {
     echo "true";
@@ -51,6 +50,7 @@ if ($validateItems) {
         $success = true;
 
         echo 'true';
+        setcookie("cart_items", json_encode($cart_items), time() + (86400 * 30), "/");
         exit;
     } else {
         echo 'false';
@@ -58,4 +58,3 @@ if ($validateItems) {
         exit;
     }
 }
-

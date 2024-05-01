@@ -68,7 +68,7 @@ if ($success) {
 <body>
     <?php include("../../pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("../../pages/partial/cart.php"); // Cart ?>
+    include ("../../pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <main class="d-flex align-items-center justify-content-center" style="height: 80vh;">
         <div class="container">
             <article>
