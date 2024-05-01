@@ -1,7 +1,8 @@
 <?php
-
-function renderHeader($page_title, $dirLevel, $needsDatabase = false)
+function renderHeader($page_title, $needsDatabase = false)
 {
+   // global grabs the variable after it from the global scope, which $dirLevel is not within the scope normally here.
+  global $dirLevel;
   $php_page_name ??= basename($_SERVER["PHP_SELF"], ".php");
   $php_page_name = preg_replace_callback('/(-)|(\b[a-z])/', function ($matches) {
 
@@ -14,6 +15,10 @@ function renderHeader($page_title, $dirLevel, $needsDatabase = false)
       return strtoupper($matches[0]); // Capitalize it
     }
   }, $php_page_name);
+
+
+
+  require("{$dirLevel}/src/php/connect-db.php");
 
   $php_page_name = $php_page_name == "Index" ? "Home" : $php_page_name ?>
 

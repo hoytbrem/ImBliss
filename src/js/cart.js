@@ -320,9 +320,22 @@ function cartMain() {
     var cartCollapse = document.getElementById("cartRow");
     // Get the cart open button element
     var cartOpenButton = document.getElementById("cartOpenButton");
+    let imblissHeader = document.getElementById("imbliss-Header");
+    let cartOpen = false;
     cartOpenButton.addEventListener("click", () => {
-        cartCollapse.classList.toggle("cart-collapse-open");
+        
+        if (!cartOpen) {
+            cartCollapse.style.top = `${imblissHeader.offsetHeight}px`;
+            cartCollapse.style.opacity = 1;
+        } else {
+            cartCollapse.style.top = `-1000px`;
+            cartCollapse.style.opacity = 0.75;
+        }
+        //cartCollapse.classList.toggle("cart-collapse-open");
+        cartOpen = !cartOpen;
     });
+    
+    
 
     let cartCheckoutButton = document.getElementById("cartCheckoutButton");
 

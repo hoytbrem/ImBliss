@@ -12,7 +12,7 @@ session_start();
     include ("../src/php/function-helpers.php"); // Various helpful functions    
     $dirLevel = getDirLevel(1); // this will return "../" 
     include("{$dirLevel}pages/partial/header.php"); 
-    renderHeader("Product Page", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    renderHeader("Product Page", $dirLevel, true); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
     <link rel="stylesheet" href="<?php echo $dirLevel ?>/theme/product/product-page.css" />

@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         header("Location: ../../pages/index.php");
 
     $item_id = $_GET["item_id"];
-    include ("connect-db.php");
+    include("connect-db.php");
 
     $sql = "SELECT item_id, name, price, description, category, image, rating, totalPrice FROM item
             WHERE item_id = :item_id";

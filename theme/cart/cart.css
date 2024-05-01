@@ -188,7 +188,84 @@
   width: 12px;
 }
 
+.imbliss-checkout-container {
+  /* UI Properties */
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #eae4e2;
+  opacity: 1;
+  position: fixed;
+  transition: top 5s ease-in-out;
+  overflow: hidden;
+}
+.imbliss-checkout-container .cart-button-size {
+  width: 23px !important;
+  height: 23px !important;
+  max-width: 23px !important;
+  max-height: 23px !important;
+  font-size: 12px;
+  box-shadow: none;
+  border: none;
+  margin-right: 5px;
+}
+.imbliss-checkout-container .cart-button-size div {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 23px !important;
+  padding-right: 5px;
+  text-align: center;
+}
+.imbliss-checkout-container .cart-button-size div .item-qty {
+  font-size: 12px;
+  position: relative;
+  left: 3px;
+}
+.imbliss-checkout-container #cartOverflow {
+  height: 734px !important;
+}
+.imbliss-checkout-container .imbliss-cart-add-button {
+  border-radius: 5px;
+  background: url(../../images/cart-assets/plus-button.svg);
+}
+.imbliss-checkout-container .imbliss-cart-minus-button {
+  border-radius: 5px;
+  background: url(../../images/cart-assets/minus-button.svg);
+}
+.imbliss-checkout-container .imbliss-cart-img {
+  width: 257px !important;
+  height: 201px !important;
+}
+.imbliss-checkout-container .list-group-item {
+  padding: 10px;
+  border: none;
+}
+.imbliss-checkout-container .list-group-item .imbliss-cart-item {
+  padding: 20px;
+}
+.imbliss-checkout-container .list-group-item .imbliss-cart-item h3 {
+  font-size: 25px;
+  font-family: "source-serif-4-display", serif, monospace;
+}
+.imbliss-checkout-container .list-group-item .imbliss-cart-item .price-tag {
+  font-size: 22px;
+  font-family: "source-serif-4-display", serif, monospace;
+  margin-top: 8px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+.imbliss-checkout-container .rating-group {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.imbliss-checkout-container .rating-group .rating-star {
+  flex: 0 0 20%;
+  background: url(../../images/cart-assets/filled-star.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 12px;
+  width: 12px;
+}
+
 .cart-collapse-open {
-  top: 90px !important;
+  top: 115px !important;
   opacity: 1 !important;
 }/*# sourceMappingURL=cart.css.map */

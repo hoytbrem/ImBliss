@@ -236,6 +236,12 @@
 }
 
 .imbliss-checkout-container {
+  $headerFooterBgColor: #eae4e2;
+  $petersBurg: "petersburg-web", sans-serif, monospace;
+  $source4: "source-serif-4-display", serif, monospace;
+  $komet: "komet", serif, monospace;
+  $darkOrange: #ff6421;
+  $white: #f9f8f7;
   $teal-seal: #19aaaa;
   //height: 734px !important;
   /* UI Properties */
@@ -329,6 +335,6 @@
 }
 
 .cart-collapse-open {
-  top: 90px !important;
+  top: 115px !important;
   opacity: 1 !important;
 }
