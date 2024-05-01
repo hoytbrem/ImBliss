@@ -36,10 +36,12 @@ if ($validateItems) {
                     $checking_price = number_format((float)$cart_item["_price"], 2, '.', '');
                     if ($checking_price != $price) {
                         try{
+                            $success = false;
                             echo "false {$checking_price} (JSON) vs. {$price} (PHP)";
+                            setcookie("cart_items", "", time() - 3600); // deleting cart items
                             exit;
                         } catch (Exception $e) {
-
+                            exit;
                         }
                     } else if ($checking_price == $price) {
                         //echo "Validated: {$checking_price} (JSON) vs. {$price} (PHP)";
@@ -49,7 +51,7 @@ if ($validateItems) {
         }
 
         $success = true;
-
+        setcookie("cart_items", $cart_items, time() + (86400 * 30), "/"); // setting cart items
         echo 'true';
         exit;
     } else {

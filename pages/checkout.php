@@ -66,9 +66,9 @@
                         <div class="row">
                             <?php
 
-                            $cart_items = $_SESSION["cart_items"];
+                            $cart_items = $_COOKIE["cart_items"] ?: null;
 
-                            if (isset($_SESSION["cart_items"])) {
+                            if ($cart_items) {
                                 foreach ($cart_items as $cart_item) {
                                     ?>
 
