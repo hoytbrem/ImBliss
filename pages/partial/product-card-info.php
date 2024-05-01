@@ -16,10 +16,8 @@
                             <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
                             <button type="submit" class="btn view-button">View</a>
                         </form>
-                        <button onclick='addItem(` <?php $i["qty"] = 1;
-                        echo json_encode($i); ?> `)'
-                            class="btn add-to-cart-button">Add to
-                            Cart</button>
+                        <button onclick='addItem(<?php echo $i["item_id"]; ?>)' class="btn add-to-cart-button">Add to
+                        Cart</button>
                         <button class="btn"><img src="../images/products/heart.svg" alt="star" /></button>
                     </div>
                     <div class="mt-4">

@@ -167,9 +167,6 @@ function populateCart(dataReceived, itemRender) {
 }
 
 
-
-
-
 function validateItems(cartList) {
     if (cartList.length == 0)
         return [];
@@ -354,37 +351,54 @@ function cartMain() {
  * The properties needed:  item_id, name, price, description, category, image, meta_alt_text
  * 
 */
-function addItem(itemObject) {
+function addItem(itemId) {
+    handleAddItem(itemId)
+}
 
-    itemObject = JSON.parse(itemObject, revive);
+async function handleAddItem(itemId) {
 
-    if (!documentDone) {
-        console.log("Document is not finished loading. Cannot add item just yet.");
-        return false;
-    }
-
-    handleCartOpen(true);
-
-    let { item_id } = itemObject;
-    if (documentDone) {
-        let found = false;
-        found = cartList.filter((element) => {
-            if (element.item_id == item_id) {
-                element.qty++;
-                element.updateTotalAndPrice();
-                setCartItemsStorage();
-                element.listGroupItem.classList.toggle("add-item");
-                return true;
+    fetch(`${dirLevel}src/php/add-item.php?item_id=${itemId}`, {
+        method: "GET"
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Could not grab cart data.");
             }
-        });
+            return response.json();
+        })
+        .then((data) => {
+            if (data != null) {
+                itemObject = data;
 
-        if (found.length == 0) {
-            renderCartItem(itemObject, imblissCartContainer);
-            handleIfEmpty(imblissCartContainer);
-        }
-    }
-
-    validateItems(cartList);
+                if (!documentDone) {
+                    console.log("Document is not finished loading. Cannot add item just yet.");
+                    return false;
+                }
+            
+                handleCartOpen(true);
+            
+                let { item_id } = itemObject;
+                if (documentDone) {
+                    let found = false;
+                    found = cartList.filter((element) => {
+                        if (element.item_id == item_id) {
+                            element.qty++;
+                            element.updateTotalAndPrice();
+                            setCartItemsStorage();
+                            element.listGroupItem.classList.toggle("add-item");
+                            return true;
+                        }
+                    });
+            
+                    if (found.length == 0) {
+                        renderCartItem(itemObject, imblissCartContainer);
+                        handleIfEmpty(imblissCartContainer);
+                    }
+                }
+            
+                validateItems(cartList);
+            }
+        })
 }
 
 /**

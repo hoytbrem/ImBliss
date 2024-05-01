@@ -12,7 +12,7 @@
     include ("../src/php/function-helpers.php"); // Various helpful functions    ?>
     <?php // <!-- "Global" variables --> 
     $dirLevel = getDirLevel(1); // this will return "../"  
-    include("{$dirLevel}partial/every-page.html"); // Google Analytics
+    include("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     include("{$dirLevel}pages/partial/header.php"); 
     renderHeader("Checkout", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include("{$dirLevel}src/php/grab-cart-variables.php"); 
@@ -66,9 +66,9 @@
                         <div class="row">
                             <?php
 
-                            $cart_items = $_COOKIE["cart_items"] ?: null;
+                            $cart_items = $_COOKIE["cart_items"];
 
-                            if ($cart_items) {
+                            if (isset($_COOKIE["cart_items"])) {
                                 foreach ($cart_items as $cart_item) {
                                     ?>
 
