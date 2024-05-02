@@ -61,7 +61,7 @@ body {
   height: 983px;
   top: 115px;
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7882352941) 65%, rgba(255, 255, 255, 0.4117647059) 87%, rgba(255, 255, 255, 0) 100%), url(../images/product-page-assets/leafy-background.png) !important;
-  margin-top: 115px;
+  margin-top: 22px;
 }
 
 .sticky-placeholder {
@@ -70,6 +70,10 @@ body {
 }
 
 #productGrid {
+  position: relative;
+}
+
+footer {
   position: relative;
 }
 

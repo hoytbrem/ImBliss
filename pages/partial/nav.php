@@ -86,6 +86,8 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
     <!-- <div id="linearGradientDivider"></div> -->
 </header>
 
+<div class="sticky-nav-container"></div>
+
 <?php // including the context menu for managing account quickly.
 include ("{$dirLevel}/pages/partial/account-context-menu.php");
 ?>

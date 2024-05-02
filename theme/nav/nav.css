@@ -69,6 +69,10 @@
   opacity: 1;
 }
 
+.sticky-nav-container {
+  height: 115px;
+}
+
 .account-context-collapse-open {
   top: 115px !important;
   opacity: 1 !important;

@@ -40,23 +40,29 @@ function main() {
         navAccountContextMenu.classList.toggle("account-context-collapse-open");
     });
     
-    let productGrid = document.getElementById("productGrid");
-    let imblissHeader = document.getElementById("imbliss-Header");
+    var productGrid = document.getElementById("productGrid");
+    var imblissHeader = document.getElementById("imbliss-Header");
+    var footer = document.getElementById("imblissFooter");
     let cartForm = document.getElementById("cartForm");
 
-    if (productGrid)
-        setYPosition(productGrid, imblissHeader);
+    if (productGrid) {
+        //setYPosition(productGrid, imblissHeader, footer);
+        console.log(productGrid, imblissHeader, footer);
+    }
     window.addEventListener("resize", (event) => {
-        if (productGrid.style.top != imblissHeader.offsetHeight)
+        if (productGrid.style.top != imblissHeader.offsetHeight) {
             setYPosition(productGrid, imblissHeader);
-
-        // if (window.innerWidth < 1200) {
-        //     cartForm.style.width = `100%`;
-        // }
+        }
     });
 }
 
 // sets the top position of an element (Y-Axis) based on the second parameter element's height.
-function setYPosition(elementToMove, elementToReference) {
-    elementToMove.style.top = `${elementToReference.offsetHeight}px`;
+function setYPosition(elementToMove, aboveElement, belowElement = null) {
+    if (belowElement != null) {
+        elementToMove.style.top = `${aboveElement.offsetHeight}px`;
+    } else {
+        elementToMove.style.top = `${aboveElement.offsetHeight}px`;
+        belowElement.top = `${aboveElement.offsetHeight}px`;
+    }
+
 }

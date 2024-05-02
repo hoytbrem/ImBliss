@@ -24,14 +24,15 @@ session_start();
 
 <body>
     <?php include ("{$dirLevel}pages/partial/nav.php"); ?>
-    <?php // <!-- Other Includes -->
-    include ("{$dirLevel}pages/partial/cart.php");
-    renderCart($dirLevel); // Cart ?>
+    <main>
+        <?php // <!-- Other Includes -->
+        include ("{$dirLevel}pages/partial/cart.php");
+        renderCart($dirLevel); // Cart ?>
         <!-- Filter Section -->
-        <div class="row">
+        <div class="row container-fluid">
             <!-- <div class="sticky-placeholder"></div> -->
             <div id="filterSection" class="col-3 filter-section">
-                <div class="list-group" style=" margin: 10px; margin-left: 50px; margin-top: 50px;">
+                <div class="list-group" style="margin-left: 50px;">
                     <form id="filterForm">
                         <div class="row">
                             <div class="col-6">
@@ -107,15 +108,16 @@ session_start();
                 </div>
             </div>
             <!-- Product Grid -->
-            <div id="productGrid" class="col-9">
+            <div id="productGrid" class="col-9 container-fluid">
                 <div class="container-fluid">
-                    <div id="filteredProducts" class="container-fluid row" style="margin-top: 50px;">
+                    <div id="filteredProducts" class="container-fluid row">
                         <!-- Filtered items will be displayed here -->
                     </div>
                 </div>
             </div>
         </div>
-        <?php include ("./partial/footer.html"); ?>
+    </main>
+    <?php include ("./partial/footer.html"); ?>
 </body>
 
 </html>
