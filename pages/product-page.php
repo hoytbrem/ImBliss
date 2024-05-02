@@ -12,7 +12,7 @@ session_start();
     include ("../src/php/function-helpers.php"); // Various helpful functions    
     $dirLevel = getDirLevel(1); // this will return "../" 
     include ("{$dirLevel}pages/partial/header.php");
-    renderHeader("Product Page", $dirLevel, true); // Meta data, BootStrap, Stylesheet(s), Scripts 
+    renderHeader("Product Page", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include ("{$dirLevel}pages/partial/every-page.html"); // Google Analytics
     ?>
     <link rel="stylesheet" href="<?php echo $dirLevel ?>/theme/product/product-page.css" />
@@ -32,9 +32,9 @@ session_start();
         <div class="row container-fluid">
             <!-- <div class="sticky-placeholder"></div> -->
             <div id="filterSection" class="col-3 filter-section">
-                <div class="list-group" style="margin-left: 50px;">
+                <div class="list-group">
                     <form id="filterForm">
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label class="form-check-label" for="filter1">ImBliss Bars</label>
                             </div>
@@ -42,7 +42,7 @@ session_start();
                                 <input class="form-check-input" type="checkbox" name="filter" id="filter1">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-7">
                                 <label class="form-check-label" for="filter2">ImBliss Variety Pack</label>
                             </div>
@@ -50,7 +50,7 @@ session_start();
                                 <input class="form-check-input" type="checkbox" name="filter" id="filter2">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label class="form-check-label" for="filter3">Energy Bites</label>
                             </div>
@@ -59,7 +59,7 @@ session_start();
                                     value="energy bites">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label class="form-check-label" for="filter4">Granola</label>
                             </div>
@@ -68,7 +68,7 @@ session_start();
                                     value="granola">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label class="form-check-label" for="filter5">Merch</label>
                             </div>
@@ -78,7 +78,7 @@ session_start();
                             </div>
                         </div>
                         <div class="mb-3"></div> <!-- Little space -->
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label class="form-check-label" for="filter7">Price low to high</label>
                             </div>
@@ -86,7 +86,7 @@ session_start();
                                 <input class="form-check-input" type="radio" name="sort" id="sortLowToHigh">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label class="form-check-label" for="filter8">Price high to low</label>
                             </div>
@@ -94,7 +94,7 @@ session_start();
                                 <input class="form-check-input" type="radio" name="sort" id="sortHighToLow">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row form-group">
                             <div class="col-6">
                                 <label class="form-check-label" for="filter9">Highest rating</label>
                             </div>

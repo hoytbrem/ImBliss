@@ -41,9 +41,10 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <!-- Navigation Collapse -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-
+                <!-- Navigation Items -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
@@ -86,7 +87,7 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
     <!-- <div id="linearGradientDivider"></div> -->
 </header>
 
-<div class="sticky-nav-container"></div>
+<div id="stickyNav"></div>
 
 <?php // including the context menu for managing account quickly.
 include ("{$dirLevel}/pages/partial/account-context-menu.php");

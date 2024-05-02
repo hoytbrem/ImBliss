@@ -74,6 +74,21 @@ body {
     url(../images/product-page-assets/leafy-background.png) !important;
 
     margin-top: calc($headerHeight - 93px);
+
+    .form-check-input {
+        width: 25px;
+        height: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 1em;
+        font-family: "source-serif-4-display",serif;
+        font-size: 20px;
+    }
+
+    .list-group {
+        margin-left: 15px;
+    }
 }
 
 .sticky-placeholder {

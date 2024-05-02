@@ -1,5 +1,9 @@
 $headerHeight: 115px;
 
+#stickyNav {
+    height: $headerHeight;
+}
+
 #imbliss-Header {
     --navBackground: #EFEAE9;
     $navBackground: var(--navBackground);
@@ -89,9 +93,7 @@ $headerHeight: 115px;
     }
 }
 
-.sticky-nav-container {
-    height: $headerHeight;
-}
+
 
 .account-context-collapse-open {
     top: $headerHeight !important;

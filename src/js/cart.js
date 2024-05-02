@@ -322,12 +322,13 @@ function cartMain() {
     var cartCollapse = document.getElementById("cartRow");
     // Get the cart open button element
     var cartOpenButton = document.getElementById("cartOpenButton");
-    let imblissHeader = document.getElementById("imbliss-Header");
+    let imblissHeader = document.getElementById("stickyNav");
 
     cartOpenButton.addEventListener("click", () => {
         
         if (!cartOpen) {
-            cartCollapse.style.top = `${imblissHeader.offsetHeight}px`;
+            cartCollapse.style.top = 0;
+            console.log(imblissHeader.offsetHeight);
             cartCollapse.style.opacity = 1;
         } else {
             cartCollapse.style.top = `-1000px`;

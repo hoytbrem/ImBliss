@@ -43,9 +43,8 @@ function main() {
     var productGrid = document.getElementById("productGrid");
     var imblissHeader = document.getElementById("imbliss-Header");
     var footer = document.getElementById("imblissFooter");
-    let cartForm = document.getElementById("cartForm");
 
-    if (productGrid) {
+    if (productGrid != null) {
         //setYPosition(productGrid, imblissHeader, footer);
         console.log(productGrid, imblissHeader, footer);
     }
@@ -58,7 +57,7 @@ function main() {
 
 // sets the top position of an element (Y-Axis) based on the second parameter element's height.
 function setYPosition(elementToMove, aboveElement, belowElement = null) {
-    if (belowElement != null) {
+    if (belowElement == null) {
         elementToMove.style.top = `${aboveElement.offsetHeight}px`;
     } else {
         elementToMove.style.top = `${aboveElement.offsetHeight}px`;
