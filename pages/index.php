@@ -35,7 +35,7 @@
                     <p>
                         <a class="btn btn-primary btn-lg" id="hero-section-view-button" href="./view-product.php?item_id=14" role="button">View</a>
                         <a class="btn btn-secondary btn-lg" id="hero-section-add-to-cart-button"
-                        onclick='addItem(` {"item_id":14,"0":14,"name":"ImBliss Blend Granola","1":"ImBliss Blend Granola","price":8,"2":8,"description":"Our fan-favorite ImBliss blend in a snackable granola form! Fruit, nuts, toasted oats and chocolate go perfectly with a plant based milk, yogurt, or on its own as a quick energy boost.","3":"Our fan-favorite ImBliss blend in a snackable granola form! Fruit, nuts, toasted oats and chocolate go perfectly with a plant based milk, yogurt, or on its own as a quick energy boost.","category":"granola","4":"granola","image":"ImBliss-Blend-Granola.jpg","5":"ImBliss-Blend-Granola.jpg","meta_id":26,"6":26,"rating":0,"7":0,"totalPrice":0,"8":0,"meta_alt_text":"A bag of ImBliss granola, decorated with pecans, chocolate, oats and dried fruit.","9":"A bag of ImBliss granola, decorated with pecans, chocolate, oats and dried fruit.","qty":1} `)'
+                        onclick='addItem(14)'
                             role="button">Add to Cart</a>
                     </p>
                 </div>

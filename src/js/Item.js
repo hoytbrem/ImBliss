@@ -70,7 +70,6 @@ class Item {
         }
     }
     
-
     renderCartItem(imblissCartContainer) {
         // New List Item with its own container.
         setAttributes(this._listGroupItemContainer, { "class": "row item-holder" });
@@ -189,6 +188,7 @@ class Item {
             //item.totalPrice = item.price * item.qty;
             this.updateTotalAndPrice(); // Call the updateTotalAndPrice() function here
             this.setCartItemsStorage();
+            validateItems();
             this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
             if (typeof this._totalPrice !== 'number') 
                 this._totalPrice = Number(this._totalPrice);
