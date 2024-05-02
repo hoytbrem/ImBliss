@@ -34,7 +34,7 @@
                         <div class="col-sm-3" id="totalContainer">
                             <p id="subTotal">&dollar;0.00</p>
                         </div>
-                        <button class="col-sm-3" id="checkOut">Checkout</button>
+                        <button type="submit" class="col-sm-3" id="checkOut">Checkout</button>
                 </form>
             </div>
         </div>

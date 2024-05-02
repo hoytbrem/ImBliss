@@ -1,5 +1,6 @@
 const directoryLevelOfPage = dirLevel
 let initialLoad = true;
+var cartOpen = false;
 var cartList = [];
 
 let revive = (key, value) => {
@@ -172,7 +173,6 @@ function validateItems(cartList) {
         return [];
     // This allows more secure data encapsulation.
     let myRequest = new Request(`${dirLevel}src/php/cart-data.php`);
-    console.log("Performing a cart validation test.");
     fetch(myRequest, {
         method: "POST",
         body: JSON.stringify(cartList),
@@ -192,7 +192,7 @@ function validateItems(cartList) {
                 return null;
             } else {
                 if (data == "true") {
-                    console.log("Clean cart.");
+                    console.log("Item added.");
                     return true;
                 } else {
                     console.log("Cart integrity has been damaged.");
@@ -305,7 +305,7 @@ function handleCartOpen(addingItems = false) {
     let cartCollapse = document.getElementById("cartRow");
     let cartOpenButton = document.getElementById("cartOpenButton");
 
-    if (cartCollapse.classList.contains("cart-collapse-open")) {
+    if (cartOpen) {
         if (!addingItems) {
             cartOpenButton.click();
         }
@@ -321,7 +321,7 @@ function cartMain() {
     // Get the cart open button element
     var cartOpenButton = document.getElementById("cartOpenButton");
     let imblissHeader = document.getElementById("imbliss-Header");
-    let cartOpen = false;
+
     cartOpenButton.addEventListener("click", () => {
         
         if (!cartOpen) {
@@ -335,17 +335,6 @@ function cartMain() {
         cartOpen = !cartOpen;
     });
     
-    
-
-    let cartCheckoutButton = document.getElementById("cartCheckoutButton");
-
-    cartCheckoutButton.addEventListener("submit", (event) => {
-        console.log("this is a test");
-        setInterval(() => {
-            console.log("finished");
-        }, 5000);
-    });
-
     let cartItemsReceived = getCartItems() || [];
 
     let populateResult = populateCart(cartItemsReceived, renderCartItem);

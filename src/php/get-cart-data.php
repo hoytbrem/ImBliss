@@ -10,7 +10,8 @@ if ($cart_items == null) {
 }
 
 $validateItems = ($_SERVER["REQUEST_METHOD"] == "POST" && count($cart_items) > 0) ? true : false;
-include ("connect-db.php");
+include("connect-db.php");
+include("save-cart-data.php");
 
 if ($validateItems) {
     $sql = "SELECT item.item_id, item.price
@@ -48,7 +49,7 @@ if ($validateItems) {
         }
 
         $success = true;
-
+        saveCartItems($cart_items);
         echo json_encode($cart_items);
         exit;
     } else {

@@ -2,7 +2,7 @@
 
 function grabCartVariables($dirLevel)
 {
-    if (!isset($_SESSION["cart_items"])) {
+    if (!isset($_COOKIE["cart_items"])) {
         header("Location: {$dirLevel}pages/");
         exit();
     }
