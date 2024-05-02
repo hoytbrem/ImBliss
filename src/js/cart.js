@@ -1,4 +1,5 @@
-const directoryLevelOfPage = dirLevel
+const directoryLevelOfPage = dirLevel;
+const DEV_MODE = true;
 let initialLoad = true;
 var cartOpen = false;
 var cartList = [];
@@ -287,6 +288,7 @@ function handleIfEmpty(cartContainer) {
         });
         paddedControlledContainer.appendChild(emptyListItem);
     } else {
+        cartItemCount = cartList.length == 1 ? "1 Item" : `${cartList.length} Items`;
         emptyListItem.remove();
     }
 }
@@ -334,6 +336,10 @@ function cartMain() {
         //cartCollapse.classList.toggle("cart-collapse-open");
         cartOpen = !cartOpen;
     });
+
+    // Checks a constant at the top of this script, opens the cart automatically when dev mode is true.
+    if (DEV_MODE) 
+        cartOpenButton.click();
     
     let cartItemsReceived = getCartItems() || [];
 
@@ -385,6 +391,7 @@ async function handleAddItem(itemId) {
                     found = cartList.filter((element) => {
                         if (element.item_id == item_id) {
                             element.qty++;
+                            handleIfEmpty(imblissCartContainer);
                             element.updateTotalAndPrice();
                             setCartItemsStorage();
                             element.listGroupItem.classList.toggle("add-item");

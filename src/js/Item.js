@@ -130,7 +130,7 @@ class Item {
 
         let cartButtonGroup = document.createElement("div");
         setAttributes(cartButtonGroup, {
-            "class": "btn-group col-sm-4",
+            "class": "btn-group col-sm-5",
             "role": "group",
             "aria-label": "cart-btn-group"
         });
@@ -188,14 +188,32 @@ class Item {
             //item.totalPrice = item.price * item.qty;
             this.updateTotalAndPrice(); // Call the updateTotalAndPrice() function here
             this.setCartItemsStorage();
-            validateItems();
+            validateItems(cartList);
+            handleIfEmpty(imblissCartContainer);
             this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
             if (typeof this._totalPrice !== 'number') 
                 this._totalPrice = Number(this._totalPrice);
             this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
         });
-
         cartButtonGroup.append(cartButtonAdd);
+
+        // Remove Button
+        let removeButton = document.createElement("button");
+        setAttributes(removeButton, {
+            "class": "imbliss-cart-remove-button cart-button-size"
+        });
+
+        removeButton.addEventListener("click", () => {
+            this._listGroupItemContainer.remove();
+            cartList = removeItem(this._item_id, cartList);
+
+            // Renders empty item if there's no items in the cart.
+            if (cartList.length == 0)
+                handleIfEmpty(imblissCartContainer);
+        });
+        cartButtonGroup.append(removeButton);
+
+        
     }
     get item_id() {
         return this._item_id;

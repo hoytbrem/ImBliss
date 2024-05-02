@@ -192,6 +192,14 @@
       background: url(../../images/cart-assets/minus-button.svg);
     }
 
+    .imbliss-cart-remove-button {
+      background: url(../../images/cart-assets/trash3.svg) 0% 0% no-repeat padding-box;
+      position: relative;
+      margin-left: 5px;
+      top: 2px;
+      opacity: 1; 
+    }
+
     .imbliss-cart-img {
       width: 257px !important;
       height: 201px !important;
