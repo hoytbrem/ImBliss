@@ -22,6 +22,12 @@
   height: 93px;
   background-color: var(--navBackground);
 }
+#imbliss-Header nav #functionPanel {
+  flex-wrap: wrap;
+}
+#imbliss-Header nav #functionPanel #search_query {
+  width: unset !important;
+}
 #imbliss-Header nav #functionPanel > * {
   padding-right: 20px !important;
 }
@@ -58,7 +64,7 @@
 #imbliss-Header nav #searchBar #search_query {
   background: #FFFFFF 0% 0% no-repeat padding-box;
   position: relative;
-  width: 442px !important;
+  width: 442px;
   padding-left: 40px;
   left: -20px;
   width: 100%;

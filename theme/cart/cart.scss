@@ -2,7 +2,7 @@
 
 #cartRow {
   position: relative;
-  top: -1000px;
+  top: -4000px;
   right: 0;
   float: right;
   display: block;
@@ -37,11 +37,15 @@
   animation-delay: 0.1s;
 }
 
+#cartForm {
+  transition: 1s ease height;
+}
+
 #cartOverflow {
-  height: 734px;
   width: 634px;
   overflow: scroll;
   overflow-x: hidden;
+  transition: 1s ease height;
 }
 
 #imbliss-cart-toolbar-row {
@@ -93,7 +97,7 @@
 
   #imbliss-cart-footer-row {
     height: 45px;
-    bottom: -2px;
+    bottom: -4px;
     position: relative;
 
     #cart-footer {
@@ -179,7 +183,7 @@
     }
 
     #cartOverflow {
-      height: 734px !important;
+      height: fit-content;
     }
 
     .imbliss-cart-add-button {
@@ -287,7 +291,8 @@
   }
 
   #cartOverflow {
-    height: 734px !important;
+    height: 100%;
+    overflow-y: scroll;
   }
 
   .imbliss-cart-add-button {

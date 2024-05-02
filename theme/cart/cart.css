@@ -1,6 +1,6 @@
 #cartRow {
   position: relative;
-  top: -1000px;
+  top: -4000px;
   right: 0;
   float: right;
   display: block;
@@ -32,11 +32,15 @@
   animation-delay: 0.1s;
 }
 
+#cartForm {
+  transition: 1s ease height;
+}
+
 #cartOverflow {
-  height: 734px;
   width: 634px;
   overflow: scroll;
   overflow-x: hidden;
+  transition: 1s ease height;
 }
 
 .imbliss-cart-controlled-container #cart-item-count-header #cart-item-count {
@@ -70,7 +74,7 @@
 }
 .imbliss-cart-controlled-container #imbliss-cart-footer-row {
   height: 45px;
-  bottom: -2px;
+  bottom: -4px;
   position: relative;
 }
 .imbliss-cart-controlled-container #imbliss-cart-footer-row #cart-footer {
@@ -143,7 +147,8 @@
   left: 3px;
 }
 .imbliss-cart-controlled-container .imbliss-cart-container #cartOverflow {
-  height: 734px !important;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .imbliss-cart-controlled-container .imbliss-cart-container .imbliss-cart-add-button {
   border-radius: 5px;
@@ -227,7 +232,8 @@
   left: 3px;
 }
 .imbliss-checkout-container #cartOverflow {
-  height: 734px !important;
+  height: 100%;
+  overflow-y: scroll;
 }
 .imbliss-checkout-container .imbliss-cart-add-button {
   border-radius: 5px;

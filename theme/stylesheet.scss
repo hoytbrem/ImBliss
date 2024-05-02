@@ -1,4 +1,5 @@
 $headerHeight: 115px;
+$navBackground: #EFEAE9;
 
 html {
     overflow-x: hidden;
@@ -67,11 +68,11 @@ body {
     position: sticky;
     width: 346px;
     height: 983px;
-    top: $headerHeight;
+    //top: $headerHeight;
 
     background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFFC9 65%, #FFFFFF69 87%, #FFFFFF00 100%),
-    //linear-gradient(90deg, #FFFFFF 0%, #FFFFFFC9 35%, #FFFFFF69 57%, #FFFFFF00 100%),
-    url(../images/product-page-assets/leafy-background.png) !important;
+        //linear-gradient(90deg, #FFFFFF 0%, #FFFFFFC9 35%, #FFFFFF69 57%, #FFFFFF00 100%),
+        url(../images/product-page-assets/leafy-background.png) !important;
 
     margin-top: calc($headerHeight - 93px);
 
@@ -82,7 +83,7 @@ body {
 
     .form-group {
         margin-bottom: 1em;
-        font-family: "source-serif-4-display",serif;
+        font-family: "source-serif-4-display", serif;
         font-size: 20px;
     }
 
@@ -95,6 +96,7 @@ body {
     width: 346px;
     height: 983px;
     //top: 0 !important;
+    position: fixed;
 }
 
 #productGrid {
@@ -107,34 +109,70 @@ footer {
 
 @media only screen and (max-width: 1079px) {
 
+
+    #imbliss-Header {
+        position: unset !important;
+        overflow: unset !important;
+    }
+
     .sticky-placeholder {
-        height: 0px !important;
-        width: 0px !important;
+        display: none !important;
+    }
+
+    #navbarSupportedContent {
+        background-color: $navBackground;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    #cartRow {
+        top: -4000px;
+        opacity: 0.75;
+        display: none !important;
+    }
+
+    #stickyNav {
+        display: none !important;
+    }
+
+    #filterSection {
+        display: none !important;
+    }
+
+    form {
+        padding: none !important;
+
+        & #searchBar, #functionalPanel img {
+            margin: 2px !important;
+        }
+    }
+
+    .rating-star {
+        flex: 0 0 5% !important;
+        background: url(../../images/cart-assets/filled-star.svg);
     }
 
     #cartRow {
 
-        position: relative;
+        position: relative !important;
 
         #cartForm {
             width: 100%;
             position: relative;
             display: inline;
         }
-    
+
         #cartOverflow {
             width: unset !important;
             display: flex;
             z-index: inherit;
             position: relative;
         }
-    
+
         #imbliss-Header {
             position: unset !important;
         }
-    
-        #cartNoItems {
-            
-        }
+
+        #cartNoItems {}
     }
 }

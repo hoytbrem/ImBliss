@@ -44,14 +44,12 @@ function main() {
     var imblissHeader = document.getElementById("imbliss-Header");
     var footer = document.getElementById("imblissFooter");
 
-    if (productGrid != null) {
-        //setYPosition(productGrid, imblissHeader, footer);
-        console.log(productGrid, imblissHeader, footer);
-    }
     window.addEventListener("resize", (event) => {
-        if (productGrid.style.top != imblissHeader.offsetHeight) {
-            setYPosition(productGrid, imblissHeader);
-        }
+        try {
+            if (productGrid.style.top != imblissHeader.offsetHeight) {
+                setYPosition(productGrid, imblissHeader);
+            }
+        } catch {}
     });
 }
 

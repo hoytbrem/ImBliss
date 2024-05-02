@@ -59,7 +59,6 @@ body {
   position: sticky;
   width: 346px;
   height: 983px;
-  top: 115px;
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7882352941) 65%, rgba(255, 255, 255, 0.4117647059) 87%, rgba(255, 255, 255, 0) 100%), url(../images/product-page-assets/leafy-background.png) !important;
   margin-top: 22px;
 }
@@ -79,6 +78,7 @@ body {
 .sticky-placeholder {
   width: 346px;
   height: 983px;
+  position: fixed;
 }
 
 #productGrid {
@@ -90,12 +90,41 @@ footer {
 }
 
 @media only screen and (max-width: 1079px) {
+  #imbliss-Header {
+    position: unset !important;
+    overflow: unset !important;
+  }
   .sticky-placeholder {
-    height: 0px !important;
-    width: 0px !important;
+    display: none !important;
+  }
+  #navbarSupportedContent {
+    background-color: #EFEAE9;
+    padding: 10px;
+    border-radius: 5px;
   }
   #cartRow {
-    position: relative;
+    top: -4000px;
+    opacity: 0.75;
+    display: none !important;
+  }
+  #stickyNav {
+    display: none !important;
+  }
+  #filterSection {
+    display: none !important;
+  }
+  form {
+    padding: none !important;
+  }
+  form #searchBar, form #functionalPanel img {
+    margin: 2px !important;
+  }
+  .rating-star {
+    flex: 0 0 5% !important;
+    background: url(../../images/cart-assets/filled-star.svg);
+  }
+  #cartRow {
+    position: relative !important;
   }
   #cartRow #cartForm {
     width: 100%;

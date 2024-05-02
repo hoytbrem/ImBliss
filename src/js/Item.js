@@ -200,7 +200,8 @@ class Item {
         // Remove Button
         let removeButton = document.createElement("button");
         setAttributes(removeButton, {
-            "class": "imbliss-cart-remove-button cart-button-size"
+            "class": "imbliss-cart-remove-button cart-button-size",
+            "type": "button"
         });
 
         removeButton.addEventListener("click", () => {

@@ -29,7 +29,7 @@ session_start();
         include ("{$dirLevel}pages/partial/cart.php");
         renderCart($dirLevel); // Cart ?>
         <!-- Filter Section -->
-        <div class="row container-fluid">
+        <div id="filteredRow" class="row container-fluid">
             <!-- <div class="sticky-placeholder"></div> -->
             <div id="filterSection" class="col-3 filter-section">
                 <div class="list-group">

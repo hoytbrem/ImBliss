@@ -24,6 +24,19 @@ $headerHeight: 115px;
     }
 
     nav {
+        #functionPanel {
+            flex-wrap: wrap;
+
+            img {
+                //margin-top: 10px;
+            }
+
+            #search_query {
+                width: unset !important;
+
+            }
+        }
+
         width: 100%;
         height: 93px;
         background-color: $navBackground;
@@ -63,7 +76,7 @@ $headerHeight: 115px;
         }
         
         #searchBar {
-            $searchBarWidth: 442px !important;
+            $searchBarWidth: 442px;
             //width: $searchBarWidth;
             height: 43px;
             border-radius: 22px;
