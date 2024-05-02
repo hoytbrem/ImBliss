@@ -210,6 +210,13 @@ class Item {
             // Renders empty item if there's no items in the cart.
             if (cartList.length == 0)
                 handleIfEmpty(imblissCartContainer);
+
+            this.updateTotalAndPrice();
+            this.setCartItemsStorage();
+            this._buttonQuantitySpacer.innerHTML = `<span class="item-qty">${this._qty}</span>`;
+            if (typeof this._totalPrice !== 'number') 
+                this._totalPrice = Number(this._totalPrice);
+            this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
         });
         cartButtonGroup.append(removeButton);
 
