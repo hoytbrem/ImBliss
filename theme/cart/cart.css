@@ -33,8 +33,8 @@
 }
 
 #cartOverflow {
-  height: 734px !important;
-  width: 634px !important;
+  height: 734px;
+  width: 634px;
   overflow: scroll;
   overflow-x: hidden;
 }

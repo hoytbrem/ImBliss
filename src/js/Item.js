@@ -51,7 +51,7 @@ class Item {
         for (let tempItem of tempList) {
             sum += tempItem.totalPrice;
         
-        let subTotal =  document.getElementById("subTotal");
+        let subTotal = document.getElementById("subTotal");
         let itemCount = document.getElementById("cart-item-count");
 
         // Corrected the syntax for template literals below
@@ -219,7 +219,6 @@ class Item {
             this._cartPrice.innerHTML = `&dollar;${this._totalPrice.toFixed(2)}`;
         });
         cartButtonGroup.append(removeButton);
-
         
     }
     get item_id() {

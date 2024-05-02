@@ -53,4 +53,46 @@ body {
 }
 .valid-input:focus {
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 85, 0.2509803922);
+}
+
+#filterSection {
+  position: sticky;
+  width: 346px;
+  height: 983px;
+  top: 115px;
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7882352941) 65%, rgba(255, 255, 255, 0.4117647059) 87%, rgba(255, 255, 255, 0) 100%), url(../images/product-page-assets/leafy-background.png) !important;
+  margin-top: 115px;
+}
+
+.sticky-placeholder {
+  width: 346px;
+  height: 983px;
+}
+
+#productGrid {
+  position: relative;
+}
+
+@media only screen and (max-width: 1079px) {
+  .sticky-placeholder {
+    height: 0px !important;
+    width: 0px !important;
+  }
+  #cartRow {
+    position: relative;
+  }
+  #cartRow #cartForm {
+    width: 100%;
+    position: relative;
+    display: inline;
+  }
+  #cartRow #cartOverflow {
+    width: unset !important;
+    display: flex;
+    z-index: inherit;
+    position: relative;
+  }
+  #cartRow #imbliss-Header {
+    position: unset !important;
+  }
 }/*# sourceMappingURL=stylesheet.css.map */

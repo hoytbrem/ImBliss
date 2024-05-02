@@ -78,7 +78,6 @@ footer {
   display: flex;
   background: transparent linear-gradient(180deg, #32b2ad 0%, #257e7b 100%) 0%
     0% no-repeat padding-box;
-  margin: auto;
   padding: 1%;
   text-decoration: none;
 }

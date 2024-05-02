@@ -1,5 +1,5 @@
 const directoryLevelOfPage = dirLevel;
-const DEV_MODE = true;
+const DEV_MODE = false;
 let initialLoad = true;
 var cartOpen = false;
 var cartList = [];
@@ -281,7 +281,7 @@ function handleIfEmpty(cartContainer) {
         let cartItemCount = document.getElementById("cart-item-count");
         cartItemCount.innerHTML = `No Items`;
         subTotal.innerHTML = `&dollar;0.00`;
-        emptyListItem.innerHTML = "<h3>No Items Yet!</h3>";
+        emptyListItem.innerHTML = "<h3 id='cartNoItems'>No Items Yet!</h3>";
         setAttributes(emptyListItem, {
             "class": "col-sm-12 text-center w-100 mt-4 text-larger tk-source-serif-4-display",
             "id": "emptyListItem"
@@ -345,6 +345,8 @@ function cartMain() {
 
     let populateResult = populateCart(cartItemsReceived, renderCartItem);
 
+    updateTotalAndPrice();
+
     if (populateResult) {
 
     } else {
@@ -363,7 +365,7 @@ function addItem(itemId) {
     handleAddItem(itemId)
 }
 
-async function handleAddItem(itemId) {
+function handleAddItem(itemId) {
 
     fetch(`${dirLevel}src/php/add-item.php?item_id=${itemId}`, {
         method: "GET"
@@ -402,6 +404,7 @@ async function handleAddItem(itemId) {
                     if (found.length == 0) {
                         renderCartItem(itemObject, imblissCartContainer);
                         handleIfEmpty(imblissCartContainer);
+                        updateTotalAndPrice();
                     }
                 }
             
@@ -410,16 +413,21 @@ async function handleAddItem(itemId) {
         })
 }
 
-/**
- * Sets up a repeating interval that attempts to update the total and price of the first item in a cart list.
- * This operation is attempted every 1000 milliseconds (1 second).
- */
- setInterval(() => {
-    try {
-        handleIfEmpty(imblissCartContainer);
-        if (cartList.length > 0) {
-            cartList[0].updateTotalAndPrice();
-        } else {}
+function updateTotalAndPrice() {
+    let tempList = [...cartList];
+    let sum = 0;
 
-    } catch { }
-}, 1000);
+    for (let tempItem of tempList) {
+        sum += tempItem.totalPrice;
+    
+    let subTotal = document.getElementById("subTotal");
+    let itemCount = document.getElementById("cart-item-count");
+
+    // Corrected the syntax for template literals below
+    if (typeof sum !== 'number') 
+        sum = Number(sum);
+    subTotal.innerHTML = `&dollar;${sum.toFixed(2) ?? 0.00}`;
+    itemCount.innerHTML = tempList.length > 0 ? `${tempList.length} Items` : tempList == 1 ? `1 Item` : `No Items`;
+    //cart_items();
+}
+}

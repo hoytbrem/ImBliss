@@ -1,18 +1,10 @@
-<!-- Cart Styles -->
-<link rel="stylesheet" href="<?php echo $dirLevel ?>theme/cart/cart.css">
-
-<!-- Cart JavaScript -->
-<script src="<?php echo $dirLevel ?>src/js/cart.js"></script>
-<script src="<?php echo $dirLevel ?>src/js/function-helpers.js"></script>
-<script src="<?php echo $dirLevel ?>src/js/Item.js"></script>
-
 <?php function renderCart($dirLevel)
 { ?>
     <!-- Cart Item Container -->
     <div class="row" id="cartRow">
         <div class="imbliss-cart-controlled-container" id="cartCollapse">
             <div class="d-flex justify-content-end">
-                <form id="cartCheckoutButton" action="<?php echo $dirLevel ?>pages/checkout.php"
+                <form id="cartForm" action="<?php echo $dirLevel ?>pages/checkout.php"
                     class="imbliss-cart-container" method="POST">
 
                     <div class="row" id="imbliss-cart-toolbar-row">
@@ -50,7 +42,7 @@
         <div class="row" id="cartRow">
             <div class="imbliss-cart-controlled-container" id="cartCollapse">
                 <div class="d-flex justify-content-end">
-                    <form id="cartCheckoutButton" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="imbliss-cart-container"
+                    <form id="cartForm" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="imbliss-cart-container"
                         method="POST">
 
                         <div class="row" id="imbliss-cart-toolbar-row">

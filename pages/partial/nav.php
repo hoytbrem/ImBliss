@@ -25,7 +25,7 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
 
 <header class="" id="imbliss-Header">
 
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-xxl">
         <div class="container-fluid">
 
             <a class="navbar-brand" href="<?php echo $dirLevel ?>pages/index.php">
@@ -62,38 +62,25 @@ if (isset($_SESSION["admin-login"]) && $_SESSION["admin-login"] == true) {
                             href="<?php echo $dirLevel ?>pages/contact-us.php">Contact</a>
                     </li>
                 </ul>
-
-                <!-- <form class="d-flex" role="search">
-          <input id="searchBar" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
-
-                <!-- <div class="input-group mb-3">
-          <div class="input-group-prepend">
-          <button style="border: none; background: transparent;"><img class="" src="<?php //echo $dirLevel ?>images/nav-assets/cart3.svg" id="cartOpenButton"></button>
-          </div>
-          <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-        </div> f-->
-
-        <div class="d-flex" id="functionPanel">
-          <form action="product-page.php" method="GET">
-            <div class="search " id="searchBar">
-              <span id="imbliss-search-icon"></span>
-                <input id="search_query" class="rounded-pill" name="search_query" type="text" placeholder="Search">
-          </form>
-        </div>
-
-                    <!-- Open Account -->
-                    <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/person-circle.svg" type="button"
-                        id="accountOpenButton">
-
-
-                    <!-- Open Shopping Cart -->
-                    <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/cart3.svg" type="button"
-                        id="cartOpenButton">
+                <div class="d-flex" id="functionPanel">
+                    <form action="product-page.php" method="GET">
+                        <div class="search " id="searchBar">
+                            <span id="imbliss-search-icon"></span>
+                            <input id="search_query" class="rounded-pill" name="search_query" type="text"
+                                placeholder="Search">
+                    </form>
                 </div>
 
+                <!-- Open Account -->
+                <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/person-circle.svg" type="button"
+                    id="accountOpenButton">
+
+
+                <!-- Open Shopping Cart -->
+                <img class="custom" src="<?php echo $dirLevel ?>images/nav-assets/cart3.svg" type="button"
+                    id="cartOpenButton">
             </div>
+
         </div>
     </nav>
     <!-- <div id="linearGradientDivider"></div> -->

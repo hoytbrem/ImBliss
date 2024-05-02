@@ -43,8 +43,16 @@ function renderHeader($page_title, $needsDatabase = false)
   <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/stylesheet.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/sage-styles.css" />
   <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/nav/account-context.css" />
+  <!-- Cart Styles -->
+  <link rel="stylesheet" href="<?php echo $dirLevel ?>theme/cart/cart.css">
 
   <!-- Scripts -->
+
+
+  <!-- Cart JavaScript -->
+  <script src="<?php echo $dirLevel ?>src/js/cart.js"></script>
+  <script src="<?php echo $dirLevel ?>src/js/function-helpers.js"></script>
+  <script src="<?php echo $dirLevel ?>src/js/Item.js"></script>
   <script src="<?php echo $dirLevel ?>src/js/imbliss.js" defer></script>
 
 <?php // <!-- "Global" variables --> 
