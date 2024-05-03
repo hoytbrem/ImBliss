@@ -105,7 +105,6 @@ footer {
   #cartRow {
     top: -4000px;
     opacity: 0.75;
-    display: none !important;
   }
   #stickyNav {
     display: none !important;
