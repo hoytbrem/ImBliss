@@ -4,8 +4,7 @@
     <div class="">
         <div class="row g-0">
             <div class="col-md-6">
-                <img src="../images/product-images/<?php echo $i["image"]; ?>" class="img-fluid rounded-start"
-                    alt="<?php echo $i["meta_alt_text"]; ?>" />
+                <img src="../images/product-images/<?php echo $i["image"]; ?>" class="img-fluid rounded-start" alt="<?php echo $i["meta_alt_text"]; ?>" />
             </div>
             <div class="col-md-6" style="padding-left: 15px;">
                 <div class="card-body">
@@ -16,9 +15,29 @@
                             <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
                             <button type="submit" class="btn view-button">View</a>
                         </form>
-                        <button onclick='addItem(<?php echo $i["item_id"]; ?>)' class="btn add-to-cart-button">Add to
-                        Cart</button>
-                        <button class="btn"><img src="../images/products/heart.svg" alt="star" /></button>
+                        <button onclick='addItem(<?php echo $i["item_id"]; ?>)' class="btn add-to-cart-button">Add to Cart</button>
+
+                        <!-- Putting in either a full heart or an empty head depending on it an item is added to a user's favorites. -->
+                        <?php
+                            if($favoriteItemCheck && in_array($i["item_id"], array_column($favoriteItems, "item_id")) ){
+                                    ?>
+                                        <form action="../profile/process/process-remove-favorite.php" method="POST">
+                                            <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
+                                            <button id="item-favorite" class="btn"><img src="../images/products/filled-heart.svg" alt="Picture of an empty favorite heart"></button>
+                                        </form>
+                                    <?php
+                                }
+                            else{
+                                ?>
+                                    <form action="../profile/process/process-add-favorite.php" method="POST">
+                                        <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
+                                        <button id="item-favorite" class="btn"><img src="../images/products/empty-heart.svg" alt="Picture of an empty favorite heart"></button>
+                                    </form>
+                                <?php
+                            }
+                        ?>
+
+
                     </div>
                     <div class="mt-4">
                         <div class="row">
@@ -29,7 +48,7 @@
                                 <img src="../images/products/star-fill.svg" alt="star" />
                                 <img src="../images/products/star-fill.svg" alt="star" />
                             </div>
-                            <div class="col-4"><span class="ms-2">120 Reviews</span></div>
+                            <div class="col-4"><span class="ms-2">50 Reviews</span></div>
                             <div class="col-1">
                                 <strong class="mt-1">$<?php echo number_format($i["price"], 2); ?></strong>
                             </div>
