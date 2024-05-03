@@ -16,7 +16,7 @@
 <body>
     <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("./partial/cart.php"); // Cart ?>
+    include ("./partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <div style="max-width: 50%; margin: auto;">
         <p>Privacy Policy
             Privacy Policy

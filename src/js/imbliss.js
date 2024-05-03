@@ -39,4 +39,27 @@ function main() {
     accountOpenButton.addEventListener("click", () => {
         navAccountContextMenu.classList.toggle("account-context-collapse-open");
     });
+    
+    var productGrid = document.getElementById("productGrid");
+    var imblissHeader = document.getElementById("imbliss-Header");
+    var footer = document.getElementById("imblissFooter");
+
+    window.addEventListener("resize", (event) => {
+        try {
+            if (productGrid.style.top != imblissHeader.offsetHeight) {
+                setYPosition(productGrid, imblissHeader);
+            }
+        } catch {}
+    });
+}
+
+// sets the top position of an element (Y-Axis) based on the second parameter element's height.
+function setYPosition(elementToMove, aboveElement, belowElement = null) {
+    if (belowElement == null) {
+        elementToMove.style.top = `${aboveElement.offsetHeight}px`;
+    } else {
+        elementToMove.style.top = `${aboveElement.offsetHeight}px`;
+        belowElement.top = `${aboveElement.offsetHeight}px`;
+    }
+
 }

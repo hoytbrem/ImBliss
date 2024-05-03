@@ -1,26 +1,23 @@
-<?php
-// this regex will remove all underscores from property names replace(/"_([^"]+)":/g, '"$1":'));
-
-// SQL to grab cart data.
+<?php 
 
 session_start();
 
 $cart_items = json_decode(file_get_contents("php://input"), true);
-$_SESSION["cart_items"] = $cart_items;
 
-//$_SESSION["test"] = json_decode($_SESSION["test"]);
+if ($cart_items == null) {
+    echo "true";
+    exit;
+}
 
-//echo $_SESSION["test"];
-$validateItems = ($_SERVER["REQUEST_METHOD"] == "POST" && count($_SESSION["cart_items"]) > 0) ? true : false;
-include ("connect-db.php");
+$validateItems = ($_SERVER["REQUEST_METHOD"] == "POST" && count($cart_items) > 0) ? true : false;
+include("connect-db.php");
+include("save-cart-data.php");
 
 if ($validateItems) {
-    $sql = "SELECT
-                item.item_id, item.name, item.price, item.totalPrice, item.description, item.category, item.image, 
-                meta.alt_text
-                FROM item
-                INNER JOIN meta
-                ON item.meta_id = meta.meta_id";
+    $sql = "SELECT item.item_id, item.price
+            FROM item
+            INNER JOIN meta
+            ON item.meta_id = meta.meta_id";
 
     $statement = $db->prepare($sql);
 
@@ -31,44 +28,33 @@ if ($validateItems) {
         // validating the results.
         for ($index = 0; $index < count($results); $index++) {
             $item_id = $results[$index]["item_id"];
-            $price = (float)$results[$index]["price"];
+            $price = number_format((float)$results[$index]["price"], 2, '.', '');
             // Iterating over the JSON data
-            foreach ($_SESSION["cart_items"] as $cart_item) {
-                if ($cart_item["item_id"] == $item_id) {
-                    $cart_item["price"] = (float)$cart_item["price"];
-                    if ($cart_item["price"] != $price) {
-                        throw new ErrorException("Cart is dirty");
+            foreach ($cart_items as $cart_item) {
+                if ($cart_item["_item_id"] == $item_id) {
+                    $check_id = $cart_item["_item_id"];
+                    $checking_price = number_format((float)$cart_item["_price"], 2, '.', '');
+                    if ($checking_price != $price) {
+                        try{
+                            echo "false {$checking_price} (JSON) vs. {$price} (PHP)";
+                            exit;
+                        } catch (Exception $e) {
+
+                        }
+                    } else if ($checking_price == $price) {
+                        //echo "Validated: {$checking_price} (JSON) vs. {$price} (PHP)";
                     } 
                 }
             }
         }
 
         $success = true;
+        saveCartItems($cart_items);
+        echo json_encode($cart_items);
+        exit;
     } else {
+        echo 'false';
         $success = false;
+        exit;
     }
-
-
-    echo json_encode($cart_items);
-} else { // just an old copy underneath, doesnt do anything yet.
-    $_SESSION["cart_test"] = "Cart item!";
-    $sql = "SELECT
-                item.item_id, item.name, item.price, item.totalPrice, item.description, item.category, item.image, 
-                meta.alt_text
-                FROM item
-                INNER JOIN meta
-                ON item.meta_id = meta.meta_id";
-
-    $statement = $db->prepare($sql);
-
-    if ($statement->execute()) {
-        $results = $statement->fetchAll();
-        $statement->closeCursor();
-        $success = true;
-    } else {
-        $success = false;
-    }
-    echo json_encode($cart_items);
 }
-
-

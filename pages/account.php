@@ -46,7 +46,7 @@
 <body>
     <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("./partial/cart.php"); // Cart ?>
+    include ("./partial/cart.php"); renderCart($dirLevel); // Cart ?>
 
     <div class="row" style="margin-top: 70px;">
         <!-- Sidebar -->

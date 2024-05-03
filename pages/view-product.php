@@ -47,8 +47,9 @@
 
 <body>
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
+    <main>
     <?php // <!-- Other Includes -->
-    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
+    include ("{$dirLevel}pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <div class="container mt-5">
         <div class="row product">
             <div class="col-md-6">
@@ -96,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-add-to-cart mt-3"><span><img src="../images/view-page-assets/cart.svg"></span>Add
+                <button class="btn btn-add-to-cart mt-3"><span><img onclick='addItem(<?php echo $item_id ?? null ?>)' src="../images/view-page-assets/cart.svg"></span>Add
                     to Cart</button>
                 <div class="input-group mt-3">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
@@ -164,6 +165,7 @@
                 </div>
             </div>
         </div>
+        </main>
         <?php include("./partial/footer.html"); ?>
 </body>
 

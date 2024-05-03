@@ -26,7 +26,7 @@ window.location.replace("index.php");
 <body>
     <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("./partial/cart.php"); // Cart ?>
+    include ("./partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <main class="d-flex align-items-center justify-content-center"
         style="height: 80vh; width: auto ;background: url('../images/login/organic-natural-display.jpg'); background-size: cover;">
         <div class="card" style="width: 30rem; padding-top: 70px; padding-bottom: 70px;">

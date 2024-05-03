@@ -1,4 +1,4 @@
-<?php
+    <?php
     session_start();
 ?>
 
@@ -22,7 +22,7 @@
 
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
+    include ("{$dirLevel}pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
 
     <!-- Hero Section -->
     <div class="jumbotron d-flex align-items-center" id="hero-section" style="background: linear-gradient(90deg, #ffffff 0%, #ffffff00 100%),
@@ -30,15 +30,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="display-4">Featured Product: ImBliss Blend!</h1>
-                    <p class="lead">ImBliss blend bars combine flavors of sweet chocolate and dried fruit, and pairs it
-                        with roasted organic coconut and pecans. The result? A treat you can enjoy- that's healthy too!
-                        Our featured ImBliss blend bars are specially made to be healthy, eco-friendly, and delicious.
-                        Plus, all our products feature a list of organic, vegan ingredients. That way, we live up to our
-                        green promise. And, you can conveniently enjoy guilt-free (And delicious!) food.</p>
+                    <h1 class="display-4">Featured Product: ImBliss Blend Granola!</h1>
+                    <p class="lead">Our fan-favorite ImBliss blend in a snackable granola form! Fruit, nuts, toasted oats and chocolate go perfectly with a plant based milk, yogurt, or on its own as a quick energy boost... You'll regret if you don't try it!</p>
                     <p>
-                        <a class="btn btn-primary btn-lg" id="hero-section-view-button" href="#" role="button">View</a>
-                        <a class="btn btn-secondary btn-lg" id="hero-section-add-to-cart-button" href="#"
+                        <a class="btn btn-primary btn-lg" id="hero-section-view-button" href="./view-product.php?item_id=14" role="button">View</a>
+                        <a class="btn btn-secondary btn-lg" id="hero-section-add-to-cart-button"
+                        onclick='addItem(14)'
                             role="button">Add to Cart</a>
                     </p>
                 </div>

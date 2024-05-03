@@ -46,7 +46,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
         <?php include("./partial/nav.php"); ?>
         <?php
         // <!-- Other Includes -->
-        include("./partial/cart.php"); // Cart 
+        include("./partial/cart.php"); renderCart($dirLevel); // Cart 
         ?>
     <div class="row mb-5"></div>
     <main class="d-flex align-items-center justify-content-center container-fluid" style="height: 80vh;">

@@ -16,7 +16,7 @@
 <body class="container-fluid">
     <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("./partial/cart.php"); // Cart ?>
+    include ("./partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <main>
         <div class="container">
             <div class="row">

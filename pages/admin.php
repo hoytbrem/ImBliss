@@ -26,7 +26,7 @@ window.location.replace("login.php");
 <body class="container-fluid">
     <?php include("{$dirLevel}pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("{$dirLevel}pages/partial/cart.php"); // Cart ?>
+    include ("{$dirLevel}pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
     <!-- Main content -->
     <div class="col-md-2" style="margin-top: 115px;"></div>
     <div class="col-md-8">

@@ -29,7 +29,7 @@ window.location.replace("index.php");
 <body>
     <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("./partial/cart.php"); // Cart ?>
+    include ("./partial/cart.php"); renderCart($dirLevel); // Cart ?>
 
     <main class="d-flex align-items-center justify-content-center"
         style="height: 80vh; background: url('../images/sign-up/organic-natural-display.jpg') no-repeat; background-size: cover;">

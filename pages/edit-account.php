@@ -41,7 +41,7 @@ if ($statement->execute()) {
 <body class="container-fluid">
     <?php include("./partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include("./partial/cart.php"); // Cart 
+    include("./partial/cart.php"); renderCart($dirLevel); // Cart 
     ?>
     <main class="d-flex align-items-center justify-content-center" style="height: 80vh;">
         <div class="card" style="width: 40rem;">

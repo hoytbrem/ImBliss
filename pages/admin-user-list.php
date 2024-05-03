@@ -41,7 +41,7 @@ window.location.replace("login.php");
 
     <?php include("../pages/partial/nav.php"); ?>
     <?php // <!-- Other Includes -->
-    include ("../pages/partial/cart.php"); // Cart ?>
+    include ("../pages/partial/cart.php"); renderCart($dirLevel); // Cart ?>
 
     <main style="margin-top: 115px;">
         <h2>All Users</h2>
