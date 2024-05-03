@@ -16,6 +16,8 @@
     include("{$dirLevel}src/php/grab-cart-variables.php");
     grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. 
     ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/contact/contact.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/checkout/checkout.css" />
 </head>
 
 <body class="container-fluid">
@@ -69,37 +71,43 @@
                         <button type="submit" class="btn btn-primary mb-3">Review Order</button>
                     </form>
                 </div>
-                <!-- Right side -->
-                <div class="col-md-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="mb-0">Order Summary</h4>
-                        <a href="#">Edit</a>
+                        <!-- Order items go here -->
+                        <div id="checkoutCartContainer" class="row">
+                            <?php
+
+                            $cart_items = json_decode($_COOKIE["cart_items"]);
+
+                            renderItemContainer();
+                            ?>
                     </div>
-                    <!-- Order items go here -->
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between">
-                            <span>Subtotal</span>
-                            <span>$0.00</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span>Tax</span>
-                            <span>$0.00</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span>Shipping</span>
-                            <span>$0.00</span>
-                        </div>
-                    </div>
-                    <hr>
+                </div>
+
+
+
+                <div class="mb-3">
                     <div class="d-flex justify-content-between">
-                        <h5>Estimated Total</h5>
-                        <h5>$0.00</h5>
+                        <span>Subtotal</span>
+                        <span id="subTotal">$0.00</span>
                     </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Tax</span>
+                        <span>$0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Shipping</span>
+                        <span>$0.00</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <h5>Estimated Total</h5>
+                    <h5 id="totalFooterText">$0.00</h5>
                 </div>
             </div>
         </div>
+        </div>
     </main>
-    <?php include("./partial/footer.html"); ?>
+    <?php include ("./partial/footer.html"); ?>
 </body>
 
 </html>
