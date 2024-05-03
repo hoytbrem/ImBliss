@@ -43,6 +43,7 @@
     <meta name="title" content="<?php echo $item["meta_title"]?>" />
     <meta name="description" content="<?php echo $item["meta_description"]?>" />
     <meta name="keywords" content="<?php echo $item["meta_keywords"]?>" />
+    <link rel="stylesheet" type="text/css" href="../theme/view-product/view-product.css">
 </head>
 
 <body>
@@ -97,10 +98,10 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-add-to-cart mt-3"><span><img onclick='addItem(<?php echo $item_id ?? null ?>)' src="../images/view-page-assets/cart.svg"></span>Add
+                <button class="btn btn-add-to-cart mt-3 cursor-pointer"><span class="cursor-pointer" ><img class="cursor-pointer" src="../images/view-page-assets/cart.svg"></span>Add
                     to Cart</button>
-                <div class="input-group mt-3">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
+                <div class="input-group mt-3 cursor-pointer">
+                    <button onclick='addItem(<?php echo $_GET["item_id"] ?? null ?>)' class="btn btn-outline-secondary" type="button" id="button-addon1">-</button>
                     <span><input type="text" class="form-control quantity-input" style="width: 40px" placeholder="1"
                             aria-label="Example text with button addon" aria-describedby="button-addon1"></span>
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">+</button>
