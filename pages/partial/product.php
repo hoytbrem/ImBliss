@@ -1,27 +1,44 @@
 <?php
-    include("../../src/php/function-helpers.php");
-$dirLevel = getDirLevel(2);
+session_start();
+include("../../src/php/function-helpers.php");
+    $dirLevel = getDirLevel(2);
     
 $categoryOrder = ["bars", "variety pack", "energy bites", "granola", "merch"];
 
-require_once("$dirLevel/src/php/connect-db.php");
+$loginStatus = false;
 
+require_once("$dirLevel/src/php/connect-db.php");
 
 $searchQuery = isset($_GET["search_query"]) ? $_GET["search_query"] : null;
 
+//First Query
 if($searchQuery !== null){
     $searchQuery = $_GET["search_query"];
-    $sql = "SELECT item.*, meta.alt_text as meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id WHERE item.name LIKE :searchQuery ORDER BY item.name";
-    $statement = $db->prepare($sql);
-    $statement->bindValue(":searchQuery", "%".$searchQuery."%");
+    $sql1 = "SELECT item.*, meta.alt_text as meta_alt_text, meta.keywords, meta.description FROM item INNER JOIN meta ON item.meta_id = meta.meta_id WHERE item.name LIKE :searchQuery OR item.description LIKE :searchQuery OR meta.keywords LIKE :searchQuery OR meta.description LIKE :searchQuery ORDER BY item.name";
+    $statement1 = $db->prepare($sql1);
+    $statement1->bindValue(":searchQuery", "%".$searchQuery."%");
 }else{
-    $sql = "SELECT item.*, meta.alt_text as meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id ORDER BY item.name";
-    $statement = $db->prepare($sql);
+    $sql1 = "SELECT item.*, meta.alt_text as meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id ORDER BY item.name";
+    $statement1 = $db->prepare($sql1);
 }
 
-if ($statement->execute()) {
-    $item = $statement->fetchAll();
-    $statement->closeCursor();
+if ($statement1->execute()) {
+    $item = $statement1->fetchAll();
+    $statement1->closeCursor();
+}
+
+//Second Query
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
+    $sqlFavorite = "SELECT DISTINCT item_id FROM user_item_favorite WHERE user_id = :user_id";
+    $statementFavorite = $db->prepare($sqlFavorite);
+    $statementFavorite->bindValue(":user_id", $_SESSION["user-id"]);
+    
+    if ($statementFavorite->execute()) {
+        $favoriteItemCheck = true;
+        $favoriteItems = $statementFavorite->fetchAll();
+        $statementFavorite->closeCursor();
+    }
+
 }
 
 if (isset($_GET['sort'])) {
