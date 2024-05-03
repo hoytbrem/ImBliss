@@ -3,3 +3,7 @@ function setAttributes(element, attributes) {
         element.setAttribute(key, attributes[key]);
     }
 }
+
+function awaitElement() {
+    
+}

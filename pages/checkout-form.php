@@ -134,7 +134,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
                         <div class="row">
                             <?php
 
-                            $cart_items = $_SESSION["cart_items"];
+                            $cart_items = $_COOKIE["cart_items"] ?? header("Location: {$dirLevel}index.php");
 
                             if (isset($_SESSION["cart_items"])) {
                                 foreach ($cart_items as $cart_item) {

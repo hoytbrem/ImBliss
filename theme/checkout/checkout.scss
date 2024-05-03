@@ -1,0 +1,133 @@
+$source4: "source-serif-4-display", serif;
+
+a.col-sm-3 {
+    color: #FF6421;
+    font-family: "petersburg-web", serif;
+    font-size: 20px;
+
+    &:visited {
+        color: #FF6421;
+    }
+}
+
+div.justify-content-center>a:nth-child(2) {
+    color: #32B2AD;
+}
+
+.item-count {
+    font-family: "petersburg-web", serif;
+    font-size: 20px;
+}
+
+.imbliss-cart-remove-button {
+    background: url(../../images/cart-assets/trash3.svg) 0% 0% no-repeat padding-box;
+    position: relative;
+    margin-left: 5px;
+    top: 2px;
+    opacity: 1;
+}
+
+.item-holder {
+    margin-bottom: 40px;
+}
+
+#checkoutCartContainer {
+    $teal-seal: #19aaaa;
+    opacity: 1;
+    overflow: hidden;
+
+    #imbliss-cart-list {
+        border: unset;
+    }
+
+    
+
+    .cart-button-size {
+        width: 23px !important;
+        height: 23px !important;
+
+        max-width: 23px !important;
+        max-height: 23px !important;
+        font-size: 12px;
+        box-shadow: none;
+        border: none;
+        margin-right: 5px;
+
+        div {
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 23px !important;
+            padding-right: 5px;
+            text-align: center;
+
+            .item-qty {
+                font-size: 12px;
+                position: relative;
+                left: 3px;
+            }
+        }
+    }
+
+    #cartOverflow {
+        height: fit-content;
+    }
+
+    .imbliss-cart-add-button {
+        border-radius: 5px;
+        background: url(../../images/cart-assets/plus-button.svg);
+    }
+
+    .imbliss-cart-minus-button {
+        border-radius: 5px;
+        background: url(../../images/cart-assets/minus-button.svg);
+    }
+
+    .imbliss-cart-remove-button {
+        background: url(../../images/cart-assets/trash3.svg) 0% 0% no-repeat padding-box;
+        position: relative;
+        margin-left: 5px;
+        top: 2px;
+        opacity: 1;
+    }
+
+    .imbliss-cart-img {
+        width: 257px !important;
+        height: 201px !important;
+    }
+
+    .list-group-item {
+        padding: 10px;
+        border: none;
+
+        .imbliss-cart-item {
+            padding: 20px;
+
+            h3 {
+                font-size: 25px;
+                font-family: $source4;
+            }
+
+            .price-tag {
+                font-size: 22px;
+                font-family: $source4;
+                margin-top: 8px;
+                margin-bottom: 25px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .rating-group {
+        display: flex;
+        flex-wrap: nowrap;
+
+        .rating-star {
+            flex: 0 0 20%;
+            background: url(../../images/cart-assets/filled-star.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 12px;
+            width: 12px;
+        }
+    }
+}
