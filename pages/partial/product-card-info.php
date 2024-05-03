@@ -19,7 +19,7 @@
 
                         <!-- Putting in either a full heart or an empty head depending on it an item is added to a user's favorites. -->
                         <?php
-                            if($favoriteItemCheck && in_array($i["item_id"], array_column($favoriteItems, "item_id")) ){
+                            if(isset($favoriteItemCheck) && in_array($i["item_id"], array_column($favoriteItems, "item_id")) ){
                                     ?>
                                         <form action="../profile/process/process-remove-favorite.php" method="POST">
                                             <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
