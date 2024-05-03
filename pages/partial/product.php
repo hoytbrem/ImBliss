@@ -14,7 +14,7 @@ $searchQuery = isset($_GET["search_query"]) ? $_GET["search_query"] : null;
 //First Query
 if($searchQuery !== null){
     $searchQuery = $_GET["search_query"];
-    $sql1 = "SELECT item.*, meta.alt_text as meta_alt_text FROM item INNER JOIN meta ON item.meta_id = meta.meta_id WHERE item.name LIKE :searchQuery ORDER BY item.name";
+    $sql1 = "SELECT item.*, meta.alt_text as meta_alt_text, meta.keywords, meta.description FROM item INNER JOIN meta ON item.meta_id = meta.meta_id WHERE item.name LIKE :searchQuery OR item.description LIKE :searchQuery OR meta.keywords LIKE :searchQuery OR meta.description LIKE :searchQuery ORDER BY item.name";
     $statement1 = $db->prepare($sql1);
     $statement1->bindValue(":searchQuery", "%".$searchQuery."%");
 }else{
