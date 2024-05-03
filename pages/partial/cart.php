@@ -4,8 +4,8 @@
     <div class="row" id="cartRow">
         <div class="imbliss-cart-controlled-container" id="cartCollapse">
             <div class="d-flex justify-content-end">
-                <form id="cartForm" action="<?php echo $dirLevel ?>pages/checkout.php"
-                    class="imbliss-cart-container" method="POST">
+                <form id="cartForm" action="<?php echo $dirLevel ?>pages/checkout.php" class="imbliss-cart-container"
+                    method="POST">
 
                     <div class="row" id="imbliss-cart-toolbar-row">
                         <div class="col-sm-9" id="cart-header">
@@ -39,7 +39,7 @@
 
     <div style="visibility: hidden;">
         <!-- Cart Item Container -->
-        <div class="row" id="cartRow">
+        <div class="row" id="itemRow">
             <div class="imbliss-cart-controlled-container" id="cartCollapse">
                 <div class="d-flex justify-content-end">
                     <form id="cartForm" action="<?php echo $_SERVER["PHP_SELF"] ?>" class="imbliss-cart-container"
@@ -52,16 +52,8 @@
                             <div class="col-sm-3" id="cart-item-count-header">
                                 <h3 id="cart-item-count">No Items</h3>
                             </div>
-                        </div>
-
-                        <div class="row" id="imbliss-cart-footer-row">
-                            <div class="col-sm-6" id="cart-footer">
-                                <h3 id="totalFooterText">Total</h3>
-                            </div>
-                            <div class="col-sm-3" id="totalContainer">
-                                <p id="subTotal">&dollar;0.00</p>
-                            </div>
                             <button class="col-sm-3" id="checkOut">Checkout</button>
+                        </div>
                     </form>
                 </div>
             </div>

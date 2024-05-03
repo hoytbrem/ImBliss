@@ -1,13 +1,15 @@
 const directoryLevelOfPage = dirLevel;
 var imblissCartContainer = document.createElement("div");
-const DEV_MODE = false;
+var itemHeight = 0;
+var cartHeight = 0;
+const DEV_MODE = true;
 var removeClicked = false;
 let initialLoad = true;
+var itemElementList = [];
 var cartOpen = false;
 var cartList = [];
 
 let revive = (key, value) => {
-
     switch (key) {
         case "_item_id":
         case "item_id":
@@ -121,8 +123,15 @@ function populateCart(dataReceived, itemRender) {
         handleIfEmpty(imblissCartContainer);
     }
 
+    if (phpPage.includes("checkout"))
+        var checkoutCartContainer = document.getElementById("checkoutCartContainer");
+
     data.forEach(itemObject => {
-        itemRender(itemObject, imblissCartContainer);
+        if (phpPage.includes("checkout")) {
+            itemRender(itemObject, checkoutCartContainer);
+        } else {
+            itemRender(itemObject, imblissCartContainer);
+        }
     });
 
     setCartItemsStorage();
@@ -268,7 +277,7 @@ function createNewItemObject(itemObject) {
  * Renders an empty list item in the cart container.
  * @param {HTMLElement} cartContainer - The container element where the empty list item will be appended.
 */
-function handleIfEmpty(cartContainer) {
+async function handleIfEmpty(cartContainer) {
     let paddedControlledContainer = document.getElementById("targetContainer");
     let emptyListItem = document.getElementById("emptyListItem") ?? document.createElement("div");
     if (cartList.length == 0) {
@@ -288,23 +297,26 @@ function handleIfEmpty(cartContainer) {
         emptyListItem.remove();
     }
 
-    cartOverflow = document.getElementById("cartOverflow");
+    cartHeight = cartOverflow.scrollHeight;
     imblissHeader = document.getElementById("stickyNav").offsetHeight;
     imblissFooter = document.getElementById("imblissFooter").offsetHeight;
     spaceAdjust = imblissHeader + imblissFooter;
-    let itemHeight = 0;
-    const itemElementList = document.getElementsByClassName("item-holder");
-
+    itemElementList = document.getElementsByClassName("item-holder");
+    itemHeight = 0;
     for (let index = 0; index < itemElementList.length; index++) {
         itemHeight += itemElementList[index].offsetHeight;
+        itemHeights = itemElementList[index].offsetHeight
     }
 
-    if (cartOverflow.offsetHeight >= (window.innerHeight - spaceAdjust)) {
+    if (cartHeight > (window.innerHeight - spaceAdjust)) {
         cartOverflow.style.height = "80vh";
         cartOverflow.style.overflowY = "scroll";
     } else {
+        cartHeight = itemHeight;
         cartOverflow.style.height = `${itemHeight}px`;
     }
+
+    console.log(cartHeight, (window.innerHeight - spaceAdjust));
 }
 
 var documentDone = false;
@@ -328,6 +340,7 @@ function handleCartOpen(addingItems = false) {
     } else {
         cartOpenButton.click();
     }
+    handleIfEmpty();
 }
 
 /**
@@ -347,34 +360,42 @@ function cartMain() {
 
     document.addEventListener("click", async (event) => {
         await setInterval(() => { }, 200);
-        if (cartCollapse !== event.target && !cartCollapse.contains(event.target) && cartOpenButton !== event.target && cartButtonGroup !== event.target && navToggler !== event.target && !navToggler.contains(event.target)) {
-            cartOpen = true;
-            cartOpenButton.click();
-        } else if (removeClicked) {
-            removeClicked = false;
-            cartOpen = false;
-            cartOpenButton.click();
+        if (cartCollapse != null) {
+            if (cartCollapse !== event.target && !cartCollapse.contains(event.target) && cartOpenButton !== event.target && cartButtonGroup !== event.target && navToggler !== event.target && !navToggler.contains(event.target)) {
+                //cartOpen = true;
+                handleIfEmpty(imblissCartContainer);
+                handleCartOpen(true)
+            } else if (removeClicked) {
+                removeClicked = false;
+                //cartOpen = false;
+                handleIfEmpty(imblissCartContainer);
+                // cartOpenButton.click();
+                handleCartOpen(false);
+            }
         }
     });
 
-    cartOpenButton.addEventListener("click", (event) => {
+    if (!phpPage.includes("checkout")) {
+        cartOpenButton.addEventListener("click", (event) => {
 
-        if (!cartOpen) {
-            cartCollapse.style.top = 0;
-            console.log(imblissHeader.offsetHeight);
-            cartCollapse.style.opacity = 1;
-        } else {
-            cartCollapse.style.top = `-4000px`;
-            cartCollapse.style.opacity = 0.75;
-            cartCollapse.height = 0;
-        }
-        //cartCollapse.classList.toggle("cart-collapse-open");
-        cartOpen = !cartOpen;
-    });
+            if (!cartOpen) {
+                cartCollapse.style.top = 0;
+                cartCollapse.style.opacity = 1;
+            } else {
+                cartCollapse.style.top = `-4000px`;
+                cartCollapse.style.opacity = 0.75;
+                cartCollapse.height = 0;
+            }
+            //cartCollapse.classList.toggle("cart-collapse-open");
+            cartOpen = !cartOpen;
+        });
 
-    // Checks a constant at the top of this script, opens the cart automatically when dev mode is true.
-    if (DEV_MODE)
-        cartOpenButton.click();
+        // Checks a constant at the top of this script, opens the cart automatically when dev mode is true.
+        if (DEV_MODE)
+            cartOpenButton.click();
+
+    }
+
 
     let cartItemsReceived = getCartItems() || [];
 
@@ -390,6 +411,8 @@ function cartMain() {
     }
     updateTotalAndPrice();
 }
+
+
 
 
 /**
@@ -457,6 +480,7 @@ function handleAddItem(itemId) {
 function updateTotalAndPrice() {
     let tempList = [...cartList];
     let sum = 0;
+    let itemHeights = 0;
 
     for (let tempItem of tempList) {
         sum += tempItem.totalPrice;
@@ -467,7 +491,9 @@ function updateTotalAndPrice() {
         // Corrected the syntax for template literals below
         if (typeof sum !== 'number')
             sum = Number(sum);
-        subTotal.innerHTML = `&dollar;${sum.toFixed(2) ?? 0.00}`;
+        subTotal.innerHTML = `$${sum.toFixed(2) ?? 0.00}`;
         itemCount.innerHTML = tempList.length > 0 ? `${tempList.length} Items` : tempList == 1 ? `1 Item` : `No Items`;
     }
+
+
 }

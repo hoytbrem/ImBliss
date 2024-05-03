@@ -16,9 +16,9 @@
     include("{$dirLevel}pages/partial/header.php"); 
     renderHeader("Checkout", $dirLevel); // Meta data, BootStrap, Stylesheet(s), Scripts 
     include("{$dirLevel}src/php/grab-cart-variables.php"); 
-    grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist.?>
+    grabCartVariables($dirLevel); // Grabs cart variables, sends to index if none exist. ?>
     <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/contact/contact.css" />
-
+    <link rel="stylesheet" type="text/css" href="<?php echo $dirLevel ?>theme/checkout/checkout.css" />
 </head>
 
 <body class="container-fluid">
@@ -27,11 +27,11 @@
     // <!-- Other Includes -->
     include ("./partial/cart.php");// Cart ?>
     <main class="d-flex align-items-center justify-content-center container-fluid" style="height: 80vh;">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <!-- Left side -->
                 <div class="col-md-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex justify-content-center align-items-center mb-3">
                         <h4 class="mb-0">Checkout</h4>
                         <a href="product-page.php">Back to shopping</a>
                     </div>
@@ -54,6 +54,7 @@
                         </form>
                     </div>
                 </div>
+
                 <!-- Right side -->
                 <div class="col-md-8">
                     <div class="mb-3">
@@ -63,7 +64,7 @@
                             <a href="#" class="col-sm-3">Edit</a>
                         </div>
                         <!-- Order items go here -->
-                        <div class="row">
+                        <div id="checkoutCartContainer" class="row">
                             <?php
 
                             $cart_items = json_decode($_COOKIE["cart_items"]);
@@ -78,7 +79,7 @@
                 <div class="mb-3">
                     <div class="d-flex justify-content-between">
                         <span>Subtotal</span>
-                        <span>$0.00</span>
+                        <span id="subTotal">$0.00</span>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>Tax</span>
@@ -92,7 +93,7 @@
                 <hr>
                 <div class="d-flex justify-content-between">
                     <h5>Estimated Total</h5>
-                    <h5>$0.00</h5>
+                    <h5 id="totalFooterText">$0.00</h5>
                 </div>
             </div>
         </div>

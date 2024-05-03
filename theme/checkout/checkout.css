@@ -1,0 +1,112 @@
+a.col-sm-3 {
+  color: #FF6421;
+  font-family: "petersburg-web", serif;
+  font-size: 20px;
+}
+a.col-sm-3:visited {
+  color: #FF6421;
+}
+
+div.justify-content-center > a:nth-child(2) {
+  color: #32B2AD;
+}
+
+.item-count {
+  font-family: "petersburg-web", serif;
+  font-size: 20px;
+}
+
+.imbliss-cart-remove-button {
+  background: url(../../images/cart-assets/trash3.svg) 0% 0% no-repeat padding-box;
+  position: relative;
+  margin-left: 5px;
+  top: 2px;
+  opacity: 1;
+}
+
+.item-holder {
+  margin-bottom: 40px;
+}
+
+#checkoutCartContainer {
+  opacity: 1;
+  overflow: hidden;
+}
+#checkoutCartContainer #imbliss-cart-list {
+  border: unset;
+}
+#checkoutCartContainer .cart-button-size {
+  width: 23px !important;
+  height: 23px !important;
+  max-width: 23px !important;
+  max-height: 23px !important;
+  font-size: 12px;
+  box-shadow: none;
+  border: none;
+  margin-right: 5px;
+}
+#checkoutCartContainer .cart-button-size div {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 23px !important;
+  padding-right: 5px;
+  text-align: center;
+}
+#checkoutCartContainer .cart-button-size div .item-qty {
+  font-size: 12px;
+  position: relative;
+  left: 3px;
+}
+#checkoutCartContainer #cartOverflow {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+#checkoutCartContainer .imbliss-cart-add-button {
+  border-radius: 5px;
+  background: url(../../images/cart-assets/plus-button.svg);
+}
+#checkoutCartContainer .imbliss-cart-minus-button {
+  border-radius: 5px;
+  background: url(../../images/cart-assets/minus-button.svg);
+}
+#checkoutCartContainer .imbliss-cart-remove-button {
+  background: url(../../images/cart-assets/trash3.svg) 0% 0% no-repeat padding-box;
+  position: relative;
+  margin-left: 5px;
+  top: 2px;
+  opacity: 1;
+}
+#checkoutCartContainer .imbliss-cart-img {
+  width: 257px !important;
+  height: 201px !important;
+}
+#checkoutCartContainer .list-group-item {
+  padding: 10px;
+  border: none;
+}
+#checkoutCartContainer .list-group-item .imbliss-cart-item {
+  padding: 20px;
+}
+#checkoutCartContainer .list-group-item .imbliss-cart-item h3 {
+  font-size: 25px;
+  font-family: "source-serif-4-display", serif;
+}
+#checkoutCartContainer .list-group-item .imbliss-cart-item .price-tag {
+  font-size: 22px;
+  font-family: "source-serif-4-display", serif;
+  margin-top: 8px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+#checkoutCartContainer .rating-group {
+  display: flex;
+  flex-wrap: nowrap;
+}
+#checkoutCartContainer .rating-group .rating-star {
+  flex: 0 0 20%;
+  background: url(../../images/cart-assets/filled-star.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 12px;
+  width: 12px;
+}/*# sourceMappingURL=checkout.css.map */

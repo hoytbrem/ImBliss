@@ -72,7 +72,7 @@ class Item {
     
     renderCartItem(imblissCartContainer) {
         // New List Item with its own container.
-        setAttributes(this._listGroupItemContainer, { "class": "row item-holder" });
+        setAttributes(this._listGroupItemContainer, { "class": `row item-holder ${(phpPage.includes("checkout")) ? 'col-md-6' : 'col-md-12'}` });
         imblissCartContainer.appendChild(this._listGroupItemContainer);
 
         setAttributes(this._listGroupItem, { "class": "list-group-item col-sm-7" });

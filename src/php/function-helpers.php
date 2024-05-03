@@ -15,7 +15,8 @@ function getDirLevel(int $level)
 
     ?>
     <script>
-    var dirLevel = "<?php echo $directoryLevel ?>"; </script>
+    var dirLevel = "<?php echo $directoryLevel ?>"; 
+    </script>
     <?php
 
     return $directoryLevel;

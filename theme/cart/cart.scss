@@ -43,9 +43,9 @@
 
 #cartOverflow {
   width: 634px;
-  overflow: scroll;
+  overflow-y: scroll;
   overflow-x: hidden;
-  transition: 1s ease height;
+  transition: .25s ease height;
 }
 
 #imbliss-cart-toolbar-row {
