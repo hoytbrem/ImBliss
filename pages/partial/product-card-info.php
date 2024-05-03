@@ -23,7 +23,7 @@
                                     ?>
                                         <form action="../profile/process/process-remove-favorite.php" method="POST">
                                             <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
-                                            <button id="item-favorite" class="btn"><img src="../images/product-page-assets/suit-heart-filled.svg" alt="Picture of an empty favorite heart"></button>
+                                            <button id="item-favorite" class="btn"><img src="../images/product-page-assets/suit-heart-filled.svg" alt="A favorite heart icon"></button>
                                         </form>
                                     <?php
                                 }
@@ -31,7 +31,7 @@
                                 ?>
                                     <form action="../profile/process/process-add-favorite.php" method="POST">
                                         <input type="hidden" name="item_id" value="<?php echo $i["item_id"]; ?>">
-                                        <button id="item-favorite" class="btn"><img src="../images/product-page-assets/suit-heart.svg" alt="Picture of an empty favorite heart"></button>
+                                        <button id="item-favorite" class="btn"><img src="../images/product-page-assets/suit-heart.svg" alt="An empty favorite heart icon"></button>
                                     </form>
                                 <?php
                             }
