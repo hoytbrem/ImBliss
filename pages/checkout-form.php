@@ -105,13 +105,13 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true){
                             </div>
                             <div class="row">
                                 <div class=" mb-4 col-md-6">
-                                    <input class="form-control" type="text" placeholder="Card Information" name="cardNumber" value="<?php if(isset($userAccount)){echo $userAccount["user_card_number"];} ?>" required>
+                                    <input class="form-control" type="text" placeholder="Card Information" name="cardNumber" value="<?php if(isset($userAccount)){echo $userAccount["user_card_number"] ?? "";} ?>" required>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" type="text" placeholder="Date" name="cardDate" value="<?php if(isset($userAccount)){echo $userAccount["user_card_date"];} ?>" required>
+                                    <input class="form-control" type="text" placeholder="Date" name="cardDate" value="<?php if(isset($userAccount)){echo $userAccount["user_card_date"] ?? "";} ?>" required>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" type="text" placeholder="CSV" name="cardCSV" value="<?php if(isset($userAccount)){echo $userAccount["user_csv"];} ?>" required>
+                                    <input class="form-control" type="text" placeholder="CSV" name="cardCSV" value="<?php if(isset($userAccount)){echo $userAccount["user_csv"] ?? "";} ?>" required>
                                 </div>
                             </div>
                         <div class="row">
