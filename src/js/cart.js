@@ -361,17 +361,7 @@ function cartMain() {
     document.addEventListener("click", async (event) => {
         await setInterval(() => { }, 200);
         if (cartCollapse != null) {
-            if (cartCollapse !== event.target && !cartCollapse.contains(event.target) && cartOpenButton !== event.target && cartButtonGroup !== event.target && navToggler !== event.target && !navToggler.contains(event.target)) {
-                //cartOpen = true;
-                handleIfEmpty(imblissCartContainer);
-                handleCartOpen(true)
-            } else if (removeClicked) {
-                removeClicked = false;
-                //cartOpen = false;
-                handleIfEmpty(imblissCartContainer);
-                // cartOpenButton.click();
-                handleCartOpen(false);
-            }
+            cartOpen.click();
         }
     });
 
